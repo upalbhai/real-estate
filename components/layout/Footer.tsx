@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   CheckCircle2,
   Globe2,
-  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -90,12 +89,6 @@ export function Footer() {
 
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-brand-gold" />
-                  <span className="font-heading text-lg font-bold text-foreground">
-                    Confidential Portfolio Dispatch
-                  </span>
-                </div>
                 <span className="text-[10px] font-special uppercase tracking-wider text-brand-gold bg-brand-gold/10 dark:bg-brand-gold/20 px-2.5 py-0.5 rounded-full border border-brand-gold/40 font-semibold">
                   Quarterly Dossier
                 </span>
@@ -163,7 +156,7 @@ export function Footer() {
                 className="p-4 rounded-control border border-border dark:border-[#2A3125] bg-surface-secondary/30 dark:bg-gradient-to-b dark:from-[#191D16] dark:to-[#131611] space-y-2 hover:border-brand-gold/50 hover:dark:border-brand-gold/50 hover:bg-surface-secondary/70 transition-all duration-300 shadow-2xs dark:shadow-[0_6px_20px_rgba(0,0,0,0.35)] group hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-heading text-base font-bold text-foreground group-hover:text-brand-gold transition-colors">
+                  <span className="font-heading text-white font-bold text-foreground group-hover:text-brand-gold transition-colors">
                     {office.city}
                   </span>
                   <span className="text-[10px] font-mono text-brand-gold uppercase tracking-wider border border-brand-gold/30 bg-brand-gold/10 px-2 py-0.5 rounded-full font-semibold">

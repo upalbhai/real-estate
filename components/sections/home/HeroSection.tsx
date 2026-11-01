@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Search,
-  Sparkles,
   Compass,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";

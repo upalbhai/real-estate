@@ -199,6 +199,7 @@ export function PropertyCard({
                   src={property.agent.avatarUrl}
                   alt={property.agent.name}
                   fill
+                  sizes="32px"
                   className="object-cover"
                 />
               </div>
@@ -349,6 +350,7 @@ export function PropertyCard({
                 src={property.agent.avatarUrl}
                 alt={property.agent.name}
                 fill
+                sizes="28px"
                 className="object-cover"
               />
             </div>

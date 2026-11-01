@@ -7,7 +7,6 @@ import {
   CreditCard,
   ArrowRight,
   Palette,
-  Sparkles,
   Maximize2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";

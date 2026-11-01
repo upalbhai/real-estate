@@ -238,6 +238,7 @@ export function ImageGalleryViewer({
               src={heroImage.src}
               alt={heroImage.alt ?? "Featured Estate Prospectus"}
               fill
+              sizes="(max-width: 1024px) 100vw, 60vw"
               className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/25 pointer-events-none" />
@@ -282,6 +283,7 @@ export function ImageGalleryViewer({
                       src={item.src}
                       alt={item.alt ?? `Plates perspective ${idx + 1}`}
                       fill
+                      sizes="(max-width: 640px) 25vw, (max-width: 1024px) 20vw, 15vw"
                       className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/25 group-hover:bg-transparent transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">

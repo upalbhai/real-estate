@@ -434,6 +434,7 @@ export default function AdminPropertiesPage() {
                     src={propertyImages[viewProperty.id] || defaultPropertyImage}
                     alt={viewProperty.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 680px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/25 pointer-events-none" />
@@ -554,6 +555,7 @@ export default function AdminPropertiesPage() {
                               src={photoUrl}
                               alt={`${viewProperty.title} view ${idx + 1}`}
                               fill
+                              sizes="(max-width: 640px) 25vw, 150px"
                               className="object-cover transition-transform duration-300 group-hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-black/25 group-hover:bg-transparent transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">

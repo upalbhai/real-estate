@@ -3,7 +3,6 @@
 import * as React from "react";
 import {
   Maximize2,
-  Sparkles,
   Layers,
   Image as ImageIcon,
   Sliders,

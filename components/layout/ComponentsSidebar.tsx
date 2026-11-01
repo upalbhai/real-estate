@@ -11,7 +11,6 @@ import {
   CreditCard,
   Menu,
   X,
-  Sparkles,
   Building2,
   Layers,
   Shield,

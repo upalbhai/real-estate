@@ -210,10 +210,10 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                 {property.status === "featured"
                   ? "Curated Trophy Asset"
                   : property.status === "exclusive"
-                  ? "Private Dossier"
-                  : property.status === "for_rent"
-                  ? "Prime Seasonal Lease"
-                  : "Available Acquisition"}
+                    ? "Private Dossier"
+                    : property.status === "for_rent"
+                      ? "Prime Seasonal Lease"
+                      : "Available Acquisition"}
               </Badge>
               <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
                 {property.type}
@@ -388,12 +388,6 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
             <div className="lg:col-span-8 space-y-12">
               {/* Section 1: Key Architectural Highlights Grid */}
               <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-brand-gold" />
-                  <h3 className="font-heading text-xl font-bold uppercase tracking-wide text-foreground">
-                    Architectural &amp; Site Highlights
-                  </h3>
-                </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
                   {property.keyHighlights.map((hl) => (
@@ -627,6 +621,7 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                         src={property.agent.avatarUrl}
                         alt={property.agent.name}
                         fill
+                        sizes="48px"
                         className="object-cover"
                       />
                     </div>

@@ -14,7 +14,6 @@ import {
   EyeOff,
   ArrowRight,
   ShieldCheck,
-  Sparkles,
   KeyRound,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -70,6 +69,7 @@ export default function AdminLoginPage() {
             src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85"
             alt="Aura Estates Architecture"
             fill
+            sizes="50vw"
             className="object-cover"
             priority
           />

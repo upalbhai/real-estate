@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Globe2,
-  Sparkles,
   ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -53,6 +52,7 @@ export function AboutContent() {
               alt="Aura Estates Atelier Heritage"
               fill
               priority
+              sizes="(max-width: 1200px) 100vw, 1200px"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
