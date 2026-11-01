@@ -2,6 +2,8 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Heart,
   MapPin,
@@ -44,7 +46,17 @@ export function PropertyCard({
   onViewDetails,
   className,
 }: PropertyCardProps) {
+  const router = useRouter();
   const [isFav, setIsFav] = React.useState(property.isFavorite || false);
+  const targetHref = `/properties/${property.slug || property.id}`;
+
+  const handleCardClick = () => {
+    if (onViewDetails) {
+      onViewDetails(property.id);
+    } else {
+      router.push(targetHref);
+    }
+  };
 
   const toggleFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -74,7 +86,7 @@ export function PropertyCard({
           "group flex flex-col md:flex-row items-stretch overflow-hidden border border-border bg-surface",
           className
         )}
-        onClick={() => onViewDetails?.(property.id)}
+        onClick={handleCardClick}
       >
         {/* Media Column with Interactive ImageViewer */}
         <div
@@ -200,17 +212,23 @@ export function PropertyCard({
               </div>
             </div>
 
-            <Button
-              size="sm"
-              variant="outline"
-              rightIcon={<ArrowUpRight className="h-3.5 w-3.5" />}
+            <Link
+              href={targetHref}
               onClick={(e) => {
-                e.stopPropagation();
-                onViewDetails?.(property.id);
+                if (onViewDetails) {
+                  e.preventDefault();
+                  onViewDetails(property.id);
+                }
               }}
             >
-              View Dossier
-            </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                rightIcon={<ArrowUpRight className="h-3.5 w-3.5" />}
+              >
+                View Dossier
+              </Button>
+            </Link>
           </div>
         </div>
       </Card>
@@ -222,7 +240,7 @@ export function PropertyCard({
     <Card
       variant="interactive"
       className={cn("group flex flex-col h-full bg-surface border border-border", className)}
-      onClick={() => onViewDetails?.(property.id)}
+      onClick={handleCardClick}
     >
       {/* Top Image Hero with Interactive ImageViewer */}
       <div
@@ -339,17 +357,23 @@ export function PropertyCard({
             </span>
           </div>
 
-          <Button
-            size="xs"
-            variant="secondary"
-            rightIcon={<ArrowUpRight className="h-3 w-3" />}
+          <Link
+            href={targetHref}
             onClick={(e) => {
-              e.stopPropagation();
-              onViewDetails?.(property.id);
+              if (onViewDetails) {
+                e.preventDefault();
+                onViewDetails(property.id);
+              }
             }}
           >
-            Explore
-          </Button>
+            <Button
+              size="xs"
+              variant="secondary"
+              rightIcon={<ArrowUpRight className="h-3 w-3" />}
+            >
+              Explore
+            </Button>
+          </Link>
         </div>
       </div>
     </Card>

@@ -32,10 +32,6 @@ export default function ComponentsOverviewPage() {
     <div className="space-y-10 animate-fadeIn">
       {/* Hero Header */}
       <div className="space-y-4">
-        <div className="inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-3 py-1 text-xs font-semibold text-brand-gold">
-          <Sparkles className="h-3.5 w-3.5" />
-          <span>Design System & UI Library</span>
-        </div>
         <h1 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
           Real Estate Component Library
         </h1>
@@ -113,9 +109,8 @@ export default function ComponentsOverviewPage() {
               className="rounded-control border border-border p-3.5 bg-surface-secondary/50 space-y-2.5"
             >
               <div
-                className={`h-14 w-full rounded-control ${color.bg} ${
-                  color.border ? "border border-border" : ""
-                } flex items-center justify-center shadow-xs`}
+                className={`h-14 w-full rounded-control ${color.bg} ${color.border ? "border border-border" : ""
+                  } flex items-center justify-center shadow-xs`}
               />
               <div>
                 <div className="text-sm font-semibold text-foreground">

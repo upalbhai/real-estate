@@ -3,6 +3,7 @@ import { ButtonVariant } from "@/components/ui/button";
 
 export interface PropertyCardData {
   id: string;
+  slug?: string;
   title: string;
   location: string;
   price: number;
@@ -26,6 +27,7 @@ export interface PropertyCardData {
 export const mockPropertyCards: PropertyCardData[] = [
   {
     id: "prop-1",
+    slug: "the-glasshouse-sanctuary",
     title: "The Glasshouse Sanctuary",
     location: "Beverly Hills, Los Angeles, CA",
     price: 18500000,
@@ -48,6 +50,7 @@ export const mockPropertyCards: PropertyCardData[] = [
   },
   {
     id: "prop-2",
+    slug: "tribeca-sky-penthouse",
     title: "Tribeca Sky Penthouse",
     location: "Tribeca, New York, NY",
     price: 14200000,
@@ -70,6 +73,7 @@ export const mockPropertyCards: PropertyCardData[] = [
   },
   {
     id: "prop-3",
+    slug: "biscayne-bay-waterfront-villa",
     title: "Biscayne Bay Waterfront Villa",
     location: "Star Island, Miami Beach, FL",
     price: 24500000,
@@ -92,6 +96,7 @@ export const mockPropertyCards: PropertyCardData[] = [
   },
   {
     id: "prop-4",
+    slug: "red-mountain-alpine-chalet",
     title: "Red Mountain Alpine Chalet",
     location: "Aspen, Pitkin County, CO",
     price: 65000,
@@ -112,6 +117,52 @@ export const mockPropertyCards: PropertyCardData[] = [
     },
     tag: "Direct Ski Access",
     isFavorite: true,
+  },
+  {
+    id: "prop-5",
+    slug: "bel-air-horizon-mansion",
+    title: "Bel Air Horizon Mansion",
+    location: "Bel Air, Los Angeles, CA",
+    price: 28000000,
+    type: "Promontory Estate",
+    status: "featured",
+    bedrooms: 8,
+    bathrooms: 11,
+    areaSqft: 14500,
+    garage: 8,
+    imageUrl:
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
+    agent: {
+      name: "Elena Rostova",
+      avatarUrl:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
+      title: "Senior Partner",
+    },
+    tag: "300° Ocean Vistas",
+    isFavorite: false,
+  },
+  {
+    id: "prop-6",
+    slug: "pacific-palisades-ocean-view",
+    title: "Pacific Palisades Ocean View",
+    location: "Pacific Palisades, CA",
+    price: 9800000,
+    type: "Coastal Modern",
+    status: "for_sale",
+    bedrooms: 5,
+    bathrooms: 6,
+    areaSqft: 6800,
+    garage: 3,
+    imageUrl:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    agent: {
+      name: "Elena Rostova",
+      avatarUrl:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
+      title: "Senior Partner",
+    },
+    tag: "Santa Monica Bay",
+    isFavorite: false,
   },
 ];
 

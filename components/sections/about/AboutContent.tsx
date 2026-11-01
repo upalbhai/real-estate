@@ -31,10 +31,6 @@ export function AboutContent() {
       {/* Hero Section */}
       <MotionFadeIn>
         <div className="section-container space-y-6 max-w-4xl text-center mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-3.5 py-1 text-xs font-semibold text-brand-gold">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>Founded on Architectural Prowess</span>
-          </div>
 
           <h1 className="font-heading text-4xl sm:text-6xl font-bold tracking-tight text-foreground leading-[1.08]">
             Curators of Landmark Living &amp; Sovereign Capital.

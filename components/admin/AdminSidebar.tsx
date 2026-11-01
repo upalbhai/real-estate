@@ -199,7 +199,7 @@ export function AdminSidebar() {
                             className={cn(
                               "ml-2 shrink-0 whitespace-nowrap font-mono text-[10px]",
                               isActive &&
-                                "bg-primary-foreground/20 text-primary-foreground border-transparent"
+                              "bg-primary-foreground/20 text-primary-foreground border-transparent"
                             )}
                           >
                             {item.badge}
@@ -288,10 +288,6 @@ export function AdminSidebar() {
 
         {!sidebarCollapsed && (
           <div className="flex items-center justify-between px-1 text-[11px] text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <Sparkles className="h-3 w-3 text-brand-gold" />
-              <span>Aura v2.6 Pro</span>
-            </span>
             <span className="font-mono text-[10px]">ESCROW: SECURE</span>
           </div>
         )}

@@ -135,10 +135,6 @@ export function ComponentsSidebar() {
 
 
         <div className="rounded-control bg-surface-secondary p-3">
-          <div className="flex items-center gap-2 text-xs font-semibold text-foreground">
-            <Sparkles className="h-3.5 w-3.5 text-brand-gold" />
-            <span>Premium Architecture</span>
-          </div>
           <p className="mt-1 text-[11px] text-muted-foreground">
             Strictly styled with Charcoal, Olive, Ivory &amp; Gold tokens.
           </p>

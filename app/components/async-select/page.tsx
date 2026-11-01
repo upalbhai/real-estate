@@ -157,12 +157,6 @@ export default function AsyncSelectShowcasePage() {
         {/* Example 2: Multi-Select with Removable Badges */}
         <div className="card-base p-6 sm:p-7 space-y-5">
           <div className="flex items-center justify-between pb-3 border-b border-border">
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-brand-gold" />
-              <h2 className="font-heading text-lg font-bold text-foreground">
-                Estate Amenities (Multi-Select)
-              </h2>
-            </div>
             <Badge variant="featured">Multi Tag</Badge>
           </div>
 

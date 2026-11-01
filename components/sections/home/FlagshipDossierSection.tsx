@@ -134,14 +134,14 @@ export function FlagshipDossierSection() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-2.5">
-                    <Link href="/contact" className="flex-1">
+                    <Link href="/properties/the-glasshouse-sanctuary" className="flex-1">
                       <Button variant="gold" size="md" className="w-full justify-center">
-                        Schedule Private Inspection
+                        Inspect Complete Dossier
                       </Button>
                     </Link>
-                    <Link href="/properties">
+                    <Link href="/contact" className="flex-1">
                       <Button variant="outline" size="md" className="w-full justify-center">
-                        View More Estates
+                        Schedule Viewing
                       </Button>
                     </Link>
                   </div>

@@ -185,10 +185,6 @@ export default function AdminAnalyticsPage() {
           </div>
 
           <div className="p-4 rounded-control bg-brand-gold/10 border border-brand-gold/30 text-xs text-foreground space-y-1">
-            <span className="font-semibold text-brand-gold flex items-center gap-1.5">
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>Executive Market Insight</span>
-            </span>
             <p className="text-muted-foreground text-[11px] leading-relaxed">
               Family offices are aggressively redeploying institutional treasury reserves into
               coastal and alpine trophy assets to hedge global liquidity fluctuations.

@@ -255,7 +255,6 @@ export default function AdminLoginPage() {
                       {account.role} • {account.email}
                     </p>
                   </div>
-                  <Sparkles className="h-4 w-4 text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                 </button>
               ))}
             </div>

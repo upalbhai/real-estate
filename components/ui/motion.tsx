@@ -35,7 +35,7 @@ export function MotionFadeIn({
     <motion.div
       initial={{ opacity: 0, y: yOffset }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, margin: "0px 0px -40px 0px" }}
       transition={{
         duration,
         delay,
@@ -81,7 +81,7 @@ export function MotionStaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, margin: "0px 0px -40px 0px" }}
       variants={containerVariants}
       className={className}
       {...props}
@@ -154,7 +154,7 @@ export function MotionSlideIn({
     <motion.div
       initial={{ opacity: 0, ...initialOffset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, margin: "0px 0px -40px 0px" }}
       transition={{
         duration,
         delay,
@@ -191,7 +191,7 @@ export function MotionScale({
     <motion.div
       initial={{ opacity: 0, scale: initialScale }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, margin: "0px 0px -40px 0px" }}
       transition={{
         duration,
         delay,

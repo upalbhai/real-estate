@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { BackToTopButton } from "@/components/navigation/BackToTopButton";
 import { ScrollProgressIndicator, ScrollVelocityMarquee } from "@/components/ui/motion";
 import { HeroSection } from "@/components/sections/home/HeroSection";
 import { FeaturedPropertiesSection } from "@/components/sections/home/FeaturedPropertiesSection";
@@ -60,6 +61,9 @@ export default function Home() {
 
       {/* Public Architectural Footer */}
       <Footer />
+
+      {/* Floating Back to Top Button */}
+      <BackToTopButton />
     </div>
   );
 }

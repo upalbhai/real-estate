@@ -52,12 +52,6 @@ export default function ImageViewerShowcasePage() {
 
       {/* 1. Feature Architecture Pillars */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2">
-          <Sparkles className="h-4 w-4 text-brand-gold" />
-          <h2 className="font-heading text-xl font-bold text-foreground">
-            Core Architecture &amp; Capabilities
-          </h2>
-        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {imageViewerFeatureCards.map((feat) => (
@@ -100,11 +94,10 @@ export default function ImageViewerShowcasePage() {
                 key={aspect}
                 type="button"
                 onClick={() => setSelectedAspect(aspect)}
-                className={`px-3 py-1 text-xs font-mono font-medium rounded-control transition-all capitalize ${
-                  selectedAspect === aspect
+                className={`px-3 py-1 text-xs font-mono font-medium rounded-control transition-all capitalize ${selectedAspect === aspect
                     ? "bg-primary text-primary-foreground shadow-2xs font-bold"
                     : "text-muted-foreground hover:text-foreground"
-                }`}
+                  }`}
               >
                 {aspect}
               </button>

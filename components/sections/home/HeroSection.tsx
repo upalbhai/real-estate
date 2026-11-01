@@ -84,15 +84,6 @@ export function HeroSection() {
         style={{ y: contentY, opacity: contentOpacity }}
         className="section-container relative z-20 pt-20 sm:pt-28 pb-20 sm:pb-24 flex-1 flex flex-col justify-center space-y-8 max-w-5xl will-change-transform"
       >
-        {/* Curatorial Pill */}
-        <MotionFadeIn delay={0.05}>
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-gold/50 bg-black/60 px-3.5 py-1.5 text-xs font-semibold text-brand-gold backdrop-blur-md self-start">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span className="font-special tracking-wider uppercase text-[11px]">
-              Curated Global Architecture
-            </span>
-          </div>
-        </MotionFadeIn>
 
         {/* Large Display Typography */}
         <MotionFadeIn delay={0.15}>

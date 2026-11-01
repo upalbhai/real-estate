@@ -6,11 +6,9 @@ export interface HeaderNavLink {
 
 export const headerNavLinks: HeaderNavLink[] = [
   { label: "Portfolio", href: "/properties" },
-  { label: "Curated Collections", href: "/#collections" },
-  { label: "Flagship Dossier", href: "/#flagship" },
-  { label: "Private Advisors", href: "/#advisors" },
-  { label: "Atelier Heritage", href: "/about" },
-  { label: "Private Consultation", href: "/contact" },
+  { label: "About", href: "/about" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export const luxuryMarqueeItems: string[] = [

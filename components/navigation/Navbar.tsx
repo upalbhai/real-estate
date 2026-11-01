@@ -9,8 +9,6 @@ import {
   X,
   Heart,
   ArrowRight,
-  Shield,
-  Layers,
   ChevronRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -33,48 +31,6 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Handle hash scroll when page loads or transitions
-  React.useEffect(() => {
-    if (typeof window !== "undefined" && window.location.hash) {
-      const targetId = window.location.hash.replace("#", "");
-      const element = document.getElementById(targetId);
-      if (element) {
-        const timer = setTimeout(() => {
-          const navOffset = 88;
-          const targetPosition =
-            element.getBoundingClientRect().top + window.scrollY - navOffset;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
-        }, 200);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [pathname]);
-
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    if (href.startsWith("/#") || href.startsWith("#")) {
-      const targetId = href.replace(/^\/?#/, "");
-      if (pathname === "/") {
-        e.preventDefault();
-        const element = document.getElementById(targetId);
-        if (element) {
-          const navOffset = 88;
-          const targetPosition =
-            element.getBoundingClientRect().top + window.scrollY - navOffset;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
-        }
-      }
-    }
-  };
 
   return (
     <>
@@ -110,8 +66,8 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Center: Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6">
+          {/* Center: Desktop Navigation Links (Portfolio, About, FAQ, Contact Us) */}
+          <nav className="hidden lg:flex items-center gap-8">
             {headerNavLinks.map((link) => {
               const isActive =
                 pathname === link.href ||
@@ -120,7 +76,6 @@ export function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
                   className={cn(
                     "text-xs uppercase tracking-wider font-medium transition-colors relative py-1",
                     isActive
@@ -137,7 +92,7 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Right: Quick Actions, Favorites, Theme, Portal, CTAs */}
+          {/* Right: Quick Actions, Favorites, Theme, CTAs */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Saved Favorites Trigger */}
             <Link
@@ -233,10 +188,7 @@ export function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  onClick={(e) => {
-                    handleNavClick(e, link.href);
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={() => setMobileMenuOpen(false)}
                   className={cn(
                     "flex items-center justify-between px-3.5 py-2.5 rounded-control text-sm font-medium transition-colors",
                     isActive
@@ -250,31 +202,6 @@ export function Navbar() {
               );
             })}
           </nav>
-
-          {/* Portal & Component Quick Shortcuts */}
-          <div className="pt-2 border-t border-border space-y-2">
-            <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-special font-semibold">
-              Portals &amp; Systems
-            </span>
-            <div className="grid grid-cols-2 gap-2">
-              <Link
-                href="/admin"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-2 rounded-control border border-border bg-surface-secondary/40 text-xs font-medium text-foreground hover:border-brand-gold/40"
-              >
-                <Shield className="h-3.5 w-3.5 text-brand-gold" />
-                <span>Admin Terminal</span>
-              </Link>
-              <Link
-                href="/components"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-2 rounded-control border border-border bg-surface-secondary/40 text-xs font-medium text-foreground hover:border-brand-gold/40"
-              >
-                <Layers className="h-3.5 w-3.5 text-brand-gold" />
-                <span>UI Library</span>
-              </Link>
-            </div>
-          </div>
         </div>
 
         {/* Drawer Bottom Footer with Theme & Contact */}
