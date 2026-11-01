@@ -2,7 +2,7 @@ export interface OverviewComponentItem {
   title: string;
   description: string;
   href: string;
-  iconName: "SquareTerminal" | "TableProperties" | "ListFilter" | "CheckSquare" | "CreditCard";
+  iconName: "SquareTerminal" | "TableProperties" | "ListFilter" | "CheckSquare" | "CreditCard" | "Maximize2";
   count: string;
   badge: string;
 }
@@ -52,6 +52,15 @@ export const overviewComponentsList: OverviewComponentItem[] = [
     iconName: "CreditCard",
     count: "4 Components",
     badge: "Showcase",
+  },
+  {
+    title: "Image Viewer",
+    description:
+      "Interactive lightbox photo viewer with multi-plate architectural galleries, pinch-to-zoom, pan, rotation, and custom overlays.",
+    href: "/components/image-viewer",
+    iconName: "Maximize2",
+    count: "Lightbox UI",
+    badge: "New",
   },
 ];
 
@@ -146,7 +155,7 @@ export const homeFeatureHighlights: HomeFeatureHighlight[] = [
 export interface SidebarNavItem {
   name: string;
   href: string;
-  iconName: "Layers" | "SquareTerminal" | "TableProperties" | "ListFilter" | "CheckSquare" | "CreditCard" | "Shield";
+  iconName: "Layers" | "SquareTerminal" | "TableProperties" | "ListFilter" | "CheckSquare" | "CreditCard" | "Shield" | "Maximize2";
   badge?: string;
   isNew?: boolean;
 }
@@ -216,7 +225,127 @@ export const sidebarNavSections: SidebarNavSection[] = [
         badge: "Properties",
         isNew: true,
       },
+      {
+        name: "Image Viewer",
+        href: "/components/image-viewer",
+        iconName: "Maximize2",
+        badge: "Lightbox",
+        isNew: true,
+      },
     ],
   },
 ];
+
+export interface ImageViewerShowcaseItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  location: string;
+  price: string;
+  src: string;
+  aspectRatio: "wide" | "video" | "square";
+}
+
+export const imageViewerShowcaseItems: ImageViewerShowcaseItem[] = [
+  {
+    id: "glasshouse",
+    title: "The Glasshouse Sanctuary",
+    subtitle: "Ultra-Modern Villa",
+    location: "Beverly Hills, CA",
+    price: "$18,500,000",
+    src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85",
+    aspectRatio: "wide",
+  },
+  {
+    id: "tribeca",
+    title: "Tribeca Sky Penthouse",
+    subtitle: "Duplex Penthouse",
+    location: "Tribeca, New York, NY",
+    price: "$14,200,000",
+    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
+    aspectRatio: "video",
+  },
+  {
+    id: "malibu",
+    title: "Malibu Cliffside Modernist",
+    subtitle: "Oceanfront Compound",
+    location: "Malibu, CA",
+    price: "$27,000,000",
+    src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=85",
+    aspectRatio: "video",
+  },
+];
+
+export interface GalleryPlateItem {
+  src: string;
+  alt: string;
+  title: string;
+  caption: string;
+}
+
+export const imageViewerGalleryPlates: GalleryPlateItem[] = [
+  {
+    src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85",
+    alt: "Exterior Modernist Facade",
+    title: "Primary South-Facing Elevation",
+    caption: "Cantilevered travertine framing with floor-to-ceiling tempered glass curtain walls.",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
+    alt: "Grand Living Salon",
+    title: "Double-Height Great Room",
+    caption: "Bookmatched Calacatta marble fireplace with automated pocketing Fleetwood sliders.",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=1600&q=85",
+    alt: "Infinity Pool & Terrace",
+    title: "Zero-Edge Heated Saltwater Pool",
+    caption: "Panoramic canyon-to-ocean vistas with integrated Baja tanning shelf and fire pit.",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85",
+    alt: "Culinary Suite",
+    title: "Chef's Kitchen by Boffi",
+    caption: "Dual waterfall marble islands outfitted with Gaggenau 400 Series appliances.",
+  },
+];
+
+export interface ImageViewerFeatureCard {
+  id: string;
+  title: string;
+  description: string;
+  badge: string;
+}
+
+export const imageViewerFeatureCards: ImageViewerFeatureCard[] = [
+  {
+    id: "touch",
+    title: "Fluid Touch & Gesture Controls",
+    description:
+      "Supports natural pinch-to-zoom on mobile and touchpad, wheel zooming, and drag panning across any resolution.",
+    badge: "Gestures",
+  },
+  {
+    id: "rotation",
+    title: "90° Rotation & Flip Controls",
+    description:
+      "Built-in toolbar controls allow rotating architectural plans, elevations, and vertical dossiers on demand.",
+    badge: "Orientation",
+  },
+  {
+    id: "carousel",
+    title: "Multi-Plate Navigation",
+    description:
+      "Seamless left/right keyboard arrows, swipe navigation, and slide indicators across estate image sets.",
+    badge: "Slideshow",
+  },
+  {
+    id: "isolation",
+    title: "Zero Prop Bleed & Isolation",
+    description:
+      "Propagations are cleanly handled so card clicks, favorites, and actions do not inadvertently trigger the viewer.",
+    badge: "Event Safety",
+  },
+];
+
 

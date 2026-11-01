@@ -36,8 +36,8 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border font-medium transition-colors select-none",
-        size === "sm" ? "px-2 py-0.5 text-[11px]" : "px-3 py-1 text-xs",
+        "inline-flex items-center justify-center rounded-full border font-medium transition-colors select-none whitespace-nowrap shrink-0",
+        size === "sm" ? "px-2 py-0.5 text-[10px] leading-tight" : "px-3 py-1 text-xs",
         badgeVariants[variant],
         className
       )}

@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { Card } from "./card";
 import { Badge, BadgeVariant } from "./badge";
 import { Button } from "./button";
+import { ImageViewerProvider, ImageViewerItem } from "./image-viewer";
 import { PropertyCardData } from "@/data/mock-cards-data";
 
 export interface PropertyCardProps {
@@ -75,19 +76,34 @@ export function PropertyCard({
         )}
         onClick={() => onViewDetails?.(property.id)}
       >
-        {/* Media Column */}
-        <div className="relative w-full md:w-2/5 min-h-[240px] md:min-h-full overflow-hidden bg-muted">
-          <Image
-            src={property.imageUrl}
-            alt={property.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 40vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:hidden" />
+        {/* Media Column with Interactive ImageViewer */}
+        <div
+          className="relative w-full md:w-2/5 min-h-[240px] md:min-h-full overflow-hidden bg-muted group/media"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <ImageViewerProvider>
+            <ImageViewerItem src={property.imageUrl}>
+              <div className="relative h-full w-full min-h-[240px] cursor-zoom-in">
+                <Image
+                  src={property.imageUrl}
+                  alt={property.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover/media:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:hidden pointer-events-none" />
+
+                {/* Inspect Zoom Pill Overlay */}
+                <div className="absolute bottom-3.5 right-3.5 z-10 hidden sm:flex items-center gap-1 px-2 py-0.5 rounded-control bg-black/65 hover:bg-brand-gold hover:text-brand-charcoal text-white text-[10px] font-mono border border-white/20 backdrop-blur-xs transition-colors pointer-events-none">
+                  <Maximize2 className="h-3 w-3" />
+                  <span>Inspect</span>
+                </div>
+              </div>
+            </ImageViewerItem>
+          </ImageViewerProvider>
 
           {/* Badges Overlay */}
-          <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5 z-10">
+          <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5 z-10 pointer-events-none">
             <Badge variant={statusInfo.variant}>{statusInfo.label}</Badge>
             {property.tag && (
               <span className="rounded-full bg-black/60 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-semibold text-white">
@@ -102,7 +118,7 @@ export function PropertyCard({
             onClick={toggleFavorite}
             aria-label={isFav ? "Remove from saved" : "Save property"}
             className={cn(
-              "absolute top-3.5 right-3.5 z-10 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-md transition-all duration-200 active:scale-90",
+              "absolute top-3.5 right-3.5 z-10 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-md transition-all duration-200 active:scale-90 cursor-pointer",
               isFav
                 ? "bg-surface text-error shadow-sm"
                 : "bg-black/40 text-white hover:bg-black/60"
@@ -208,19 +224,34 @@ export function PropertyCard({
       className={cn("group flex flex-col h-full bg-surface border border-border", className)}
       onClick={() => onViewDetails?.(property.id)}
     >
-      {/* Top Image Hero */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
-        <Image
-          src={property.imageUrl}
-          alt={property.title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+      {/* Top Image Hero with Interactive ImageViewer */}
+      <div
+        className="relative aspect-[16/10] w-full overflow-hidden bg-muted group/media"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <ImageViewerProvider>
+          <ImageViewerItem src={property.imageUrl}>
+            <div className="relative h-full w-full cursor-zoom-in">
+              <Image
+                src={property.imageUrl}
+                alt={property.title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 ease-out group-hover/media:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
+              {/* Inspect Zoom Pill Overlay */}
+              <div className="absolute top-3.5 right-14 z-10 hidden sm:flex items-center gap-1 px-2 py-0.5 rounded-control bg-black/65 hover:bg-brand-gold hover:text-brand-charcoal text-white text-[10px] font-mono border border-white/20 backdrop-blur-xs transition-colors pointer-events-none">
+                <Maximize2 className="h-3 w-3" />
+                <span>Inspect</span>
+              </div>
+            </div>
+          </ImageViewerItem>
+        </ImageViewerProvider>
 
         {/* Status Badge */}
-        <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5 z-10">
+        <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5 z-10 pointer-events-none">
           <Badge variant={statusInfo.variant}>{statusInfo.label}</Badge>
           {property.tag && (
             <span className="rounded-full bg-black/60 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-semibold text-white">
@@ -235,7 +266,7 @@ export function PropertyCard({
           onClick={toggleFavorite}
           aria-label={isFav ? "Remove from saved" : "Save property"}
           className={cn(
-            "absolute top-3.5 right-3.5 z-10 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-md transition-all duration-200 active:scale-90",
+            "absolute top-3.5 right-3.5 z-10 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-md transition-all duration-200 active:scale-90 cursor-pointer",
             isFav
               ? "bg-surface text-error shadow-sm"
               : "bg-black/40 text-white hover:bg-black/60"
@@ -247,7 +278,7 @@ export function PropertyCard({
         </button>
 
         {/* Bottom Image Overlay: Price Tag */}
-        <div className="absolute bottom-3 left-3.5 right-3.5 flex items-baseline justify-between z-10 text-white">
+        <div className="absolute bottom-3 left-3.5 right-3.5 flex items-baseline justify-between z-10 text-white pointer-events-none">
           <div className="flex items-baseline gap-1">
             <span className="font-heading text-2xl font-bold tracking-tight drop-shadow-sm">
               {formatPrice(property.price)}

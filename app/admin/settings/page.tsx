@@ -2,12 +2,9 @@
 
 import * as React from "react";
 import {
-  Settings,
   Shield,
-  Lock,
   User,
   Bell,
-  Key,
   Save,
   CheckCircle2,
 } from "lucide-react";

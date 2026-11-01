@@ -15,3 +15,4 @@ export default function AdminLayout({
 }) {
   return <AdminShell>{children}</AdminShell>;
 }
+

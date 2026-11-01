@@ -8,6 +8,7 @@ import {
   ArrowRight,
   Palette,
   Sparkles,
+  Maximize2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +24,7 @@ const iconMap = {
   ListFilter,
   CheckSquare,
   CreditCard,
+  Maximize2,
 };
 
 export default function ComponentsOverviewPage() {

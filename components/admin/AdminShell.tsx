@@ -24,7 +24,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       <div
         className={cn(
           "flex-1 flex flex-col transition-all duration-300",
-          sidebarCollapsed ? "md:ml-18" : "md:ml-64"
+          sidebarCollapsed ? "md:ml-20" : "md:ml-[270px]"
         )}
       >
         <AdminHeader />
@@ -35,3 +35,4 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+

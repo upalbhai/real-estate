@@ -67,7 +67,7 @@ export default function AdminNewPropertyPage() {
     },
   });
 
-  const onSubmit = async (_values: AdminPropertyFormValues) => {
+  const onSubmit = async () => {
     setIsSubmitting(true);
     // Simulate ledger commit
     await new Promise((resolve) => setTimeout(resolve, 900));

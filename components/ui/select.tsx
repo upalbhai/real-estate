@@ -44,6 +44,8 @@ export interface SelectProps {
   options?: SelectOption[];
   disabled?: boolean;
   className?: string;
+  triggerClassName?: string;
+  contentClassName?: string;
   children?: React.ReactNode;
 }
 
@@ -58,6 +60,8 @@ export function Select({
   options,
   disabled = false,
   className,
+  triggerClassName,
+  contentClassName,
   children,
 }: SelectProps) {
   const [uncontrolledValue, setUncontrolledValue] = React.useState(defaultValue || "");
@@ -127,7 +131,7 @@ export function Select({
         disabled,
       }}
     >
-      <div ref={containerRef} className={cn("relative w-full space-y-1.5", className)}>
+      <div ref={containerRef} className={cn("relative w-full space-y-1.5", open && "z-50", className)}>
         {label && (
           <label
             htmlFor={selectId}
@@ -159,7 +163,8 @@ export function Select({
                 error
                   ? "border-error focus-visible:ring-error"
                   : "border-border hover:border-brand-olive/50 hover:bg-surface-secondary/40",
-                !value && "text-muted-foreground"
+                !value && "text-muted-foreground",
+                triggerClassName
               )}
             >
               <div className="flex items-center gap-2 truncate">
@@ -183,9 +188,10 @@ export function Select({
                 id={listboxId}
                 role="listbox"
                 className={cn(
-                  "absolute left-0 z-50 mt-1.5 w-full rounded-card border border-border bg-surface p-1.5 shadow-lg",
+                  "absolute left-0 z-[100] mt-1.5 w-full rounded-card border border-border bg-surface p-1.5 shadow-2xl opacity-100",
                   "max-h-60 overflow-y-auto space-y-0.5",
-                  "origin-top animate-fadeIn transition-all duration-150"
+                  "origin-top animate-fadeIn transition-all duration-150",
+                  contentClassName
                 )}
               >
                 {options.map((opt) => {

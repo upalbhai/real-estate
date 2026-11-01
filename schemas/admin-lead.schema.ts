@@ -16,3 +16,4 @@ export const adminLeadUpdateSchema = z.object({
 });
 
 export type AdminLeadUpdateFormValues = z.infer<typeof adminLeadUpdateSchema>;
+

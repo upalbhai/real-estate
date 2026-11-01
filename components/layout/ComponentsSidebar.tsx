@@ -15,6 +15,7 @@ import {
   Building2,
   Layers,
   Shield,
+  Maximize2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
@@ -28,6 +29,7 @@ const navIconMap = {
   CheckSquare,
   CreditCard,
   Shield,
+  Maximize2,
 };
 
 export function ComponentsSidebar() {

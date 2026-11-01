@@ -14,4 +14,8 @@ export * from "./data-table";
 export * from "./async-select";
 export * from "./popover";
 export * from "./skeleton";
+export * from "./tooltip";
+export * from "./dialog";
+export * from "./image-viewer";
+export * from "./motion";
 

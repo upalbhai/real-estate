@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Oswald, Bebas_Neue, Orbitron } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { NavigationLoadingBar } from "@/components/navigation/NavigationLoadingBar";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -59,7 +60,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-200">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <NavigationLoadingBar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

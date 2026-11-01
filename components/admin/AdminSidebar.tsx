@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { Tooltip } from "@/components/ui/tooltip";
 import { adminNavSections } from "@/data";
 import { useAdminStore } from "@/store/useAdminStore";
 
@@ -50,45 +51,79 @@ export function AdminSidebar() {
   };
 
   const navContent = (
-    <div className="flex h-full flex-col justify-between p-4 bg-surface border-r border-border">
+    <div
+      className={cn(
+        "flex h-full flex-col justify-between bg-surface border-r border-border transition-all duration-300",
+        sidebarCollapsed ? "p-3" : "p-4"
+      )}
+    >
       {/* Branding Header */}
       <div className="space-y-6">
-        <div className="flex items-center justify-between pb-4 border-b border-border">
-          <Link
-            href="/admin"
-            className="flex items-center gap-3 overflow-hidden"
-            onClick={() => setMobileSidebarOpen(false)}
-          >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-primary text-primary-foreground shadow-xs">
-              <Building className="h-5 w-5 text-brand-gold" />
-            </div>
-            {!sidebarCollapsed && (
+        {sidebarCollapsed ? (
+          /* Collapsed Top Header: Stacked & Perfectly Centered with Tooltips */
+          <div className="flex flex-col items-center gap-2.5 pb-4 border-b border-border">
+            <Tooltip
+              content="Aura Portal"
+              subtitle="Asset Operations"
+              side="right"
+              disabled={!sidebarCollapsed}
+            >
+              <Link
+                href="/admin"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-primary text-primary-foreground shadow-xs border border-brand-gold/30 hover:border-brand-gold transition-colors"
+              >
+                <Building className="h-5 w-5 text-brand-gold" />
+              </Link>
+            </Tooltip>
+
+            <Tooltip
+              content="Expand Sidebar"
+              subtitle="Navigation Menu"
+              side="right"
+              disabled={!sidebarCollapsed}
+            >
+              <button
+                type="button"
+                onClick={toggleSidebar}
+                className="h-7 w-7 flex shrink-0 items-center justify-center rounded-control border border-border/80 bg-surface-secondary/60 text-muted-foreground hover:text-brand-gold hover:border-brand-gold/40 hover:bg-brand-gold/10 transition-all shadow-2xs cursor-pointer"
+                aria-label="Expand sidebar"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </Tooltip>
+          </div>
+        ) : (
+          /* Expanded Top Header: Horizontal Flow */
+          <div className="flex items-center justify-between pb-4 border-b border-border">
+            <Link
+              href="/admin"
+              className="flex items-center gap-2.5 overflow-hidden group"
+              onClick={() => setMobileSidebarOpen(false)}
+            >
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-primary text-primary-foreground shadow-xs border border-brand-gold/30 group-hover:border-brand-gold transition-colors">
+                <Building className="h-5 w-5 text-brand-gold" />
+              </div>
               <div className="flex flex-col truncate">
-                <span className="font-heading text-lg font-bold tracking-tight text-foreground">
+                <span className="font-heading text-lg font-bold tracking-tight text-foreground leading-none">
                   AURA PORTAL
                 </span>
-                <span className="text-[10px] font-special font-semibold uppercase tracking-widest text-brand-gold">
+                <span className="text-[9px] font-special font-semibold uppercase tracking-[0.2em] text-brand-gold mt-1 leading-none">
                   Asset Operations
                 </span>
               </div>
-            )}
-          </Link>
+            </Link>
 
-          {/* Desktop collapse toggle */}
-          <button
-            type="button"
-            onClick={toggleSidebar}
-            className="hidden md:flex h-7 w-7 items-center justify-center rounded-control border border-border bg-surface-secondary/60 text-muted-foreground hover:text-foreground transition-colors"
-            title={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-            aria-label="Toggle sidebar expansion"
-          >
-            {sidebarCollapsed ? (
-              <ChevronRight className="h-4 w-4" />
-            ) : (
+            <button
+              type="button"
+              onClick={toggleSidebar}
+              className="hidden md:flex h-7 w-7 shrink-0 items-center justify-center rounded-control border border-border/80 bg-surface-secondary/50 text-muted-foreground hover:text-brand-gold hover:border-brand-gold/40 hover:bg-brand-gold/10 transition-all shadow-2xs cursor-pointer"
+              title="Collapse sidebar"
+              aria-label="Collapse sidebar"
+            >
               <ChevronLeft className="h-4 w-4" />
-            )}
-          </button>
-        </div>
+            </button>
+          </div>
+        )}
 
         {/* Navigation Sections */}
         <nav className="space-y-6">
@@ -108,39 +143,70 @@ export function AdminSidebar() {
                     (item.href !== "/admin" && pathname.startsWith(item.href));
 
                   return (
-                    <Link
+                    <Tooltip
                       key={item.href}
-                      href={item.href}
-                      onClick={() => setMobileSidebarOpen(false)}
-                      title={sidebarCollapsed ? item.name : undefined}
-                      className={cn(
-                        "group flex items-center justify-between rounded-control px-3 py-2 text-sm font-medium transition-all duration-150",
-                        isActive
-                          ? "bg-primary text-primary-foreground shadow-xs"
-                          : "text-muted-foreground hover:bg-surface-secondary hover:text-foreground"
-                      )}
+                      content={item.name}
+                      subtitle={section.section}
+                      badge={
+                        item.badge ? (
+                          <span className="rounded-full bg-brand-gold/20 text-brand-gold border border-brand-gold/40 px-1.5 py-0.2 text-[10px] font-mono font-bold">
+                            {item.badge}
+                          </span>
+                        ) : undefined
+                      }
+                      side="right"
+                      disabled={!sidebarCollapsed}
+                      wrapperClassName={sidebarCollapsed ? "w-full justify-center" : "w-full block"}
                     >
-                      <div className="flex items-center gap-3">
-                        <Icon
+                      <Link
+                        href={item.href}
+                        onClick={() => setMobileSidebarOpen(false)}
+                        className={cn(
+                          "group flex items-center rounded-control transition-all duration-150",
+                          sidebarCollapsed
+                            ? "justify-center h-10 w-10 mx-auto p-0"
+                            : "justify-between px-3 py-2 text-sm",
+                          isActive
+                            ? "bg-primary text-primary-foreground shadow-xs font-semibold"
+                            : "text-muted-foreground hover:bg-surface-secondary hover:text-foreground"
+                        )}
+                      >
+                        <div
                           className={cn(
-                            "h-4 w-4 shrink-0 transition-colors",
-                            isActive
-                              ? "text-primary-foreground"
-                              : "text-muted-foreground group-hover:text-foreground"
+                            "flex items-center min-w-0",
+                            sidebarCollapsed ? "justify-center" : "gap-3 flex-1"
                           )}
-                        />
-                        {!sidebarCollapsed && <span>{item.name}</span>}
-                      </div>
-
-                      {!sidebarCollapsed && item.badge && (
-                        <Badge
-                          variant={item.badgeVariant ?? "default"}
-                          size="sm"
                         >
-                          {item.badge}
-                        </Badge>
-                      )}
-                    </Link>
+                          <Icon
+                            className={cn(
+                              "h-4 w-4 shrink-0 transition-colors",
+                              isActive
+                                ? "text-primary-foreground"
+                                : "text-muted-foreground group-hover:text-foreground"
+                            )}
+                          />
+                          {!sidebarCollapsed && (
+                            <span className="truncate whitespace-nowrap font-medium">
+                              {item.name}
+                            </span>
+                          )}
+                        </div>
+
+                        {!sidebarCollapsed && item.badge && (
+                          <Badge
+                            variant={isActive ? "default" : item.badgeVariant ?? "default"}
+                            size="sm"
+                            className={cn(
+                              "ml-2 shrink-0 whitespace-nowrap font-mono text-[10px]",
+                              isActive &&
+                                "bg-primary-foreground/20 text-primary-foreground border-transparent"
+                            )}
+                          >
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </Link>
+                    </Tooltip>
                   );
                 })}
               </div>
@@ -151,22 +217,53 @@ export function AdminSidebar() {
 
       {/* User Session Footer */}
       <div className="pt-4 border-t border-border space-y-3">
-        <div
-          className={cn(
-            "flex items-center gap-3 rounded-control p-2 bg-surface-secondary/40 border border-border",
-            sidebarCollapsed ? "justify-center p-1.5" : "justify-between"
-          )}
-        >
-          <div className="flex items-center gap-2.5 overflow-hidden">
-            <div
-              className={cn(
-                "h-8 w-8 shrink-0 rounded-full flex items-center justify-center text-xs font-bold font-special",
-                user?.avatarBg ?? "bg-brand-gold text-brand-charcoal"
-              )}
+        {sidebarCollapsed ? (
+          /* Collapsed User Footer: Cleanly Centered Avatar & Logout with Tooltips */
+          <div className="flex flex-col items-center gap-2">
+            <Tooltip
+              content={user?.name ?? "Alexander Vance"}
+              subtitle={`${user?.role ?? "Managing Principal"} • Tier 5`}
+              side="right"
+              disabled={!sidebarCollapsed}
             >
-              {user?.initials ?? "AD"}
-            </div>
-            {!sidebarCollapsed && (
+              <div
+                className={cn(
+                  "h-9 w-9 shrink-0 rounded-full flex items-center justify-center text-xs font-bold font-special shadow-xs border border-brand-gold/40 cursor-pointer",
+                  user?.avatarBg ?? "bg-brand-gold text-brand-charcoal"
+                )}
+              >
+                {user?.initials ?? "AV"}
+              </div>
+            </Tooltip>
+
+            <Tooltip
+              content="Sign Out"
+              subtitle="Terminate Terminal Session"
+              side="right"
+              disabled={!sidebarCollapsed}
+            >
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="p-1.5 rounded-control text-muted-foreground hover:text-error hover:bg-error/10 transition-colors cursor-pointer"
+                aria-label="Sign out of admin portal"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
+            </Tooltip>
+          </div>
+        ) : (
+          /* Expanded User Footer: Full Card */
+          <div className="flex items-center justify-between gap-3 rounded-control p-2 bg-surface-secondary/40 border border-border">
+            <div className="flex items-center gap-2.5 overflow-hidden">
+              <div
+                className={cn(
+                  "h-8 w-8 shrink-0 rounded-full flex items-center justify-center text-xs font-bold font-special",
+                  user?.avatarBg ?? "bg-brand-gold text-brand-charcoal"
+                )}
+              >
+                {user?.initials ?? "AV"}
+              </div>
               <div className="flex flex-col truncate">
                 <span className="text-xs font-semibold text-foreground truncate">
                   {user?.name ?? "Administrator"}
@@ -175,21 +272,19 @@ export function AdminSidebar() {
                   {user?.role ?? "Managing Principal"}
                 </span>
               </div>
-            )}
-          </div>
+            </div>
 
-          {!sidebarCollapsed && (
             <button
               type="button"
               onClick={handleLogout}
-              className="p-1.5 rounded-control text-muted-foreground hover:text-error hover:bg-error/10 transition-colors"
-              title="Sign Out"
+              className="p-1.5 rounded-control text-muted-foreground hover:text-error hover:bg-error/10 transition-colors cursor-pointer"
+              title="Sign Out of Terminal"
               aria-label="Sign out of admin portal"
             >
               <LogOut className="h-4 w-4" />
             </button>
-          )}
-        </div>
+          </div>
+        )}
 
         {!sidebarCollapsed && (
           <div className="flex items-center justify-between px-1 text-[11px] text-muted-foreground">
@@ -210,7 +305,7 @@ export function AdminSidebar() {
       <aside
         className={cn(
           "hidden md:block fixed top-0 bottom-0 left-0 z-40 transition-all duration-300",
-          sidebarCollapsed ? "w-18" : "w-64"
+          sidebarCollapsed ? "w-20" : "w-[270px]"
         )}
       >
         {navContent}

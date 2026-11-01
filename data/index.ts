@@ -5,3 +5,5 @@ export * from "./mock-cards-data";
 export * from "./mock-button-data";
 export * from "./mock-design-system";
 export * from "./mock-admin-data";
+export * from "./mock-home-data";
+
