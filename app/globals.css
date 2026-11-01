@@ -1,26 +1,212 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
+  /* Brand */
+  --color-brand-charcoal: #252820;
+  --color-brand-olive: #858B70;
+  --color-brand-gold: #C5A878;
+  --color-brand-ivory: #F5F2EB;
+  --color-brand-beige: #E6E0D5;
+
+  /* Theme colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Actions */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Semantic */
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
+
+  /* Fonts */
+  --font-body: var(--font-space-grotesk);
+  --font-heading: var(--font-oswald);
+  --font-display: var(--font-bebas-neue);
+  --font-special: var(--font-orbitron);
+
+  /* Radius */
+  --radius-card: 1rem;
+  --radius-control: 0.625rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Light theme */
+:root {
+  color-scheme: light;
+
+  --background: #F5F2EB;
+  --foreground: #252820;
+
+  --surface: #FFFFFF;
+  --surface-secondary: #EEEAE1;
+  --surface-elevated: #FFFFFF;
+
+  --muted: #E6E0D5;
+  --muted-foreground: #68685F;
+
+  --border: #E2DED4;
+  --input: #FFFFFF;
+  --ring: #858B70;
+
+  --primary: #252820;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #858B70;
+  --secondary-foreground: #FFFFFF;
+
+  --accent: #C5A878;
+  --accent-foreground: #252820;
+
+  --success: #347653;
+  --warning: #A16D24;
+  --error: #B54740;
+  --info: #426E91;
+}
+
+/* Dark theme */
+.dark {
+  color-scheme: dark;
+
+  --background: #171A16;
+  --foreground: #F5F2EB;
+
+  --surface: #20241E;
+  --surface-secondary: #282D25;
+  --surface-elevated: #30352C;
+
+  --muted: #30352C;
+  --muted-foreground: #C5C5B9;
+
+  --border: #3A4036;
+  --input: #20241E;
+  --ring: #A4AC91;
+
+  --primary: #858B70;
+  --primary-foreground: #171A16;
+
+  --secondary: #A4AC91;
+  --secondary-foreground: #171A16;
+
+  --accent: #D2B783;
+  --accent-foreground: #252820;
+
+  --success: #82C99B;
+  --warning: #E4BC75;
+  --error: #F18C83;
+  --info: #8EB9D8;
+}
+
+/* Base */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-space-grotesk), sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-oswald), sans-serif;
+  }
+
+  button, input, textarea, select {
+    font: inherit;
+  }
+
+  ::selection {
+    background: #858B70;
+    color: #FFFFFF;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Reusable components */
+@layer components {
+  .section-container {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .card-base {
+    @apply rounded-card border border-border bg-surface;
+  }
+
+  .input-base {
+    @apply w-full rounded-control border border-border
+      bg-input px-4 py-3 text-foreground outline-none
+      transition-colors placeholder:text-muted-foreground
+      focus-visible:ring-2 focus-visible:ring-ring
+      focus-visible:ring-offset-2
+      focus-visible:ring-offset-background;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+      rounded-control bg-primary px-6 py-3
+      font-medium text-primary-foreground
+      transition-colors hover:opacity-90
+      focus-visible:outline-none focus-visible:ring-2
+      focus-visible:ring-ring focus-visible:ring-offset-2
+      disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+      rounded-control border border-border bg-surface
+      px-6 py-3 font-medium text-foreground
+      transition-colors hover:bg-surface-secondary
+      focus-visible:outline-none focus-visible:ring-2
+      focus-visible:ring-ring;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2
+      rounded-control bg-accent px-6 py-3
+      font-medium text-accent-foreground
+      transition-colors hover:opacity-90;
+  }
+
+  .badge-featured {
+    @apply inline-flex items-center rounded-full
+      bg-accent px-3 py-1 text-xs font-semibold
+      text-accent-foreground;
+  }
+
+  .badge-available {
+    @apply inline-flex items-center rounded-full
+      bg-success/10 px-3 py-1 text-xs font-medium
+      text-success;
+  }
+}
+
+/* Typography utilities */
+.space-grotesk {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+}
+
+.oswald {
+  font-family: var(--font-oswald), "Oswald", sans-serif;
+}
+
+.bebas-neue {
+  font-family: var(--font-bebas-neue), "Bebas Neue", sans-serif;
+}
+
+.orbitron {
+  font-family: var(--font-orbitron), "Orbitron", sans-serif;
 }
