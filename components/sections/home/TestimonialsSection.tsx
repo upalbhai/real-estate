@@ -19,16 +19,15 @@ export function TestimonialsSection() {
         <MotionFadeIn>
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <div className="inline-flex items-center gap-2">
-              <Badge variant="gold">Confidential Records</Badge>
+              <Badge variant="gold">Testimonials</Badge>
             </div>
 
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-              Client &amp; Family Office Advisory
+              What Our Clients Say
             </h2>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              What sovereign principals, family offices, and institutional investors observe regarding
-              our fiduciary conduct and transaction discretion.
+              Reflections from clients who trusted Aura Estates with finding or selling their architectural residences.
             </p>
           </div>
         </MotionFadeIn>

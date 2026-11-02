@@ -26,7 +26,7 @@ export function NeighborhoodCollectionsSection() {
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section id="collections" className="scroll-mt-24">
+    <section id="locations" className="scroll-mt-24">
       {/* Desktop & Tablet: Pinned Horizontal Scroll Experience */}
       <div ref={containerRef} className="hidden md:block relative h-[250vh]">
         <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
@@ -36,18 +36,18 @@ export function NeighborhoodCollectionsSection() {
               <div className="flex items-end justify-between gap-4 pb-4 border-b border-border">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <Badge variant="gold">Global Territories</Badge>
+                    <Badge variant="gold">Locations</Badge>
                     <span className="text-xs text-muted-foreground font-mono">
-                      PINNED HORIZONTAL SCROLL DOSSIER
+                      PREMIER DESTINATIONS
                     </span>
                   </div>
 
                   <h2 className="font-heading text-3xl lg:text-5xl font-bold tracking-tight text-foreground">
-                    Curated Regional Collections
+                    Explore Properties by Location
                   </h2>
 
                   <p className="text-sm text-muted-foreground max-w-xl">
-                    Dominance in world-renowned luxury territories where architectural scarcity meets sovereign capital preservation.
+                    Discover homes in premier destinations known for exceptional architecture and lifestyle.
                   </p>
                 </div>
 
@@ -55,7 +55,7 @@ export function NeighborhoodCollectionsSection() {
                   href="/properties"
                   className="text-xs font-semibold text-brand-gold hover:underline flex items-center gap-1 self-end"
                 >
-                  <span>Explore All Territories</span>
+                  <span>View All Locations</span>
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -84,7 +84,7 @@ export function NeighborhoodCollectionsSection() {
                     {/* Top Badges */}
                     <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
                       <span className="rounded-full bg-black/60 backdrop-blur-xs px-2.5 py-1 text-[10px] font-mono font-bold text-brand-gold border border-brand-gold/30">
-                        {col.activeListingsCount} Active Dossiers
+                        {col.activeListingsCount} Properties
                       </span>
                       <span className="text-xs font-mono font-bold text-white/60">
                         0{index + 1}
@@ -107,7 +107,7 @@ export function NeighborhoodCollectionsSection() {
                       </p>
 
                       <div className="pt-2 border-t border-white/20 flex items-center justify-between text-xs font-mono">
-                        <span className="text-white/70">Avg. Valuation:</span>
+                        <span className="text-white/70">Avg. Price:</span>
                         <span className="text-brand-gold font-bold">{col.averagePrice}</span>
                       </div>
                     </div>
@@ -120,9 +120,9 @@ export function NeighborhoodCollectionsSection() {
           {/* Bottom Progress Bar Strip */}
           <div className="section-container pt-3 flex items-center justify-between text-xs font-mono text-muted-foreground">
             <div className="flex items-center gap-2">
-              <span className="text-brand-gold font-bold text-[11px]">SCROLL TO EXPLORE TERRITORIES</span>
+              <span className="text-brand-gold font-bold text-[11px]">SCROLL TO EXPLORE LOCATIONS</span>
               <span>•</span>
-              <span className="text-[11px]">01 / 04 DOSSIERS</span>
+              <span className="text-[11px]">01 / 04 LOCATIONS</span>
             </div>
             <div className="w-48 h-1 rounded-full bg-border overflow-hidden">
               <motion.div
@@ -139,13 +139,13 @@ export function NeighborhoodCollectionsSection() {
         <MotionFadeIn>
           <div className="space-y-2 pb-4 border-b border-border">
             <div className="flex items-center gap-2">
-              <Badge variant="gold">Global Territories</Badge>
+              <Badge variant="gold">Locations</Badge>
             </div>
             <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground">
-              Curated Regional Collections
+              Explore Properties by Location
             </h2>
             <p className="text-sm text-muted-foreground">
-              Dominance in world-renowned luxury territories where architectural scarcity meets sovereign capital preservation.
+              Discover homes in premier destinations known for exceptional architecture and lifestyle.
             </p>
           </div>
         </MotionFadeIn>
@@ -167,7 +167,7 @@ export function NeighborhoodCollectionsSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
                   <span className="rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-mono font-bold text-brand-gold border border-brand-gold/30">
-                    {col.activeListingsCount} Active Dossiers
+                    {col.activeListingsCount} Properties
                   </span>
                   <div className="h-7 w-7 rounded-full bg-black/60 flex items-center justify-center text-white">
                     <ArrowUpRight className="h-3.5 w-3.5" />
@@ -181,7 +181,7 @@ export function NeighborhoodCollectionsSection() {
                     {col.city}
                   </h3>
                   <div className="pt-1.5 border-t border-white/20 flex items-center justify-between text-xs font-mono">
-                    <span className="text-white/70">Avg. Valuation:</span>
+                    <span className="text-white/70">Avg. Price:</span>
                     <span className="text-brand-gold font-bold">{col.averagePrice}</span>
                   </div>
                 </div>

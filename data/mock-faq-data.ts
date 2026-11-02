@@ -14,28 +14,28 @@ export interface FaqCategory {
 export const faqCategories: FaqCategory[] = [
   {
     id: "all",
-    label: "All Inquiries",
-    description: "Complete overview of fiduciary advisory standards and acquisition protocols.",
+    label: "All Questions",
+    description: "General overview of buying, selling, and working with Aura Estates.",
   },
   {
     id: "acquisition",
-    label: "Acquisition & Escrow",
-    description: "Purchase procedures, deposit requirements, and private off-market transfers.",
+    label: "Buying & Selling",
+    description: "Purchase procedures, deposit expectations, and closing processes.",
   },
   {
     id: "fiduciary",
-    label: "Fiduciary & NDAs",
-    description: "Institutional bilateral confidentiality, foreign AML compliance, and legal clearance.",
+    label: "Privacy & Representation",
+    description: "Client confidentiality, representation standards, and advisory practices.",
   },
   {
     id: "valuation",
-    label: "Valuation & Mandates",
-    description: "Off-market pricing models, private family office mandates, and asset benchmarking.",
+    label: "Valuation & Advisory",
+    description: "Market pricing analysis, comparative assessments, and property evaluation.",
   },
   {
     id: "inspections",
-    label: "Viewings & Blueprints",
-    description: "Architectural provenance studies, physical inspection logistics, and technical vaults.",
+    label: "Viewings & Documentation",
+    description: "Private showings, floor plans, inspections, and property documentation.",
   },
 ];
 
@@ -43,72 +43,64 @@ export const mockFaqItems: FaqItem[] = [
   {
     id: "faq-1",
     category: "acquisition",
-    question: "How does Aura Estates ensure absolute discretion during off-market acquisitions?",
+    question: "How does Aura Estates handle private property transactions?",
     answer:
-      "All off-market acquisitions are governed by institutional bilateral non-disclosure agreements executed digitally prior to releasing property identities or addresses. Our private vault transactions utilize shielded entity holding structures, discrete escrow title protocols, and restricted access marketing to protect the anonymity of both acquiring principals and selling families.",
+      "We prioritize our clients' privacy throughout every transaction. For properties requiring confidentiality, we coordinate private showings, ensure all inquiries are pre-qualified, and protect sensitive personal and financial details throughout negotiations and escrow.",
   },
   {
     id: "faq-2",
     category: "acquisition",
-    question: "What are the standard earnest money and escrow deposit parameters for trophy assets?",
+    question: "What is the typical deposit and escrow timeline for luxury homes?",
     answer:
-      "For acquisitions between $10M and $50M+, standard practice involves an initial 3% to 5% fiduciary deposit deposited into escrow within two business days of mutual contract execution. Our closing desk coordinates with institutional title companies specializing in complex sovereign capital, wire clearance, and multi-jurisdictional tax structuring.",
+      "Standard practice generally involves an initial earnest money deposit of 3% to 5% placed into an independent escrow account upon mutual contract acceptance. Closing timelines typically range between 30 and 45 days, depending on financing and inspection contingencies.",
   },
   {
     id: "faq-3",
     category: "acquisition",
-    question: "Can an acquisition be transacted entirely through a corporate trust or family office entity?",
+    question: "Can an acquisition be completed through an LLC, trust, or entity?",
     answer:
-      "Yes. Over 85% of our transactions are executed via single-purpose LLCs, revocable family trusts, or foreign fiduciary entities. Our legal partners coordinate directly with your corporate counsel to streamline FinCEN beneficial ownership compliance while preserving private principal confidentiality.",
+      "Yes. Many clients choose to acquire residential properties through LLCs, family trusts, or other legal entities. Our advisors work closely with your legal and financial representatives to ensure a smooth, compliant closing.",
   },
   {
     id: "faq-4",
     category: "fiduciary",
-    question: "What is the Bilateral NDA protocol, and when is it required?",
+    question: "Do you offer confidential agreements before sharing detailed plans?",
     answer:
-      "The Bilateral Non-Disclosure Agreement (NDA) is executed before unlisted blueprints, owner financial metrics, security system schematics, or unlisted interior photo galleries are released. It legally binds both parties to absolute confidentiality and protects architectural intellectual property.",
+      "Yes. Upon request by the homeowner or prospective buyer, we can execute a mutual confidentiality agreement before sharing detailed architectural blueprints, interior photo galleries, or proprietary property records.",
   },
   {
     id: "faq-5",
     category: "fiduciary",
-    question: "How does Aura Estates manage international capital and anti-money laundering (AML) clearance?",
+    question: "How does Aura Estates represent buyers and sellers?",
     answer:
-      "We operate under strict global AML protocols in partnership with top-tier escrow officers and institutional title underwriters. We verify source-of-wealth documentation and beneficial ownership structures early in the due diligence window to ensure zero transaction friction at closing.",
+      "We believe in clear, dedicated representation. Our advisors are committed to acting in your best interest, providing transparent guidance, strong negotiation support, and continuous communication throughout the transaction.",
   },
   {
     id: "faq-6",
-    category: "fiduciary",
-    question: "Does Aura Estates operate under dual agency or dedicated fiduciary representation?",
+    category: "valuation",
+    question: "How do you evaluate and price unique architectural properties?",
     answer:
-      "Our firm strictly prioritizes dedicated single-party fiduciary representation to eliminate conflicts of interest. In rare off-market transactions where both buyer and seller seek our facilitation, full dual-fiduciary disclosure and written consent from both principals' legal counsel is required prior to contract exchange.",
+      "Unique homes require careful analysis beyond standard square-foot averages. We assess architectural design, construction quality, irreplaceable lot location and views, recent sales of comparable properties, and current market demand in each neighborhood.",
   },
   {
     id: "faq-7",
     category: "valuation",
-    question: "How are valuations determined for rare architectural masterworks?",
+    question: "Can buyers engage Aura Estates for a tailored property search?",
     answer:
-      "Trophy modernist architecture cannot be valued solely through standard price-per-square-foot metrics. Our proprietary appraisal methodology factors in architectural provenance, irreplaceable lot promontories, replacement construction costs of museum-grade materials, and current global capital flows across luxury benchmark cities.",
+      "Yes. If you have specific architectural or neighborhood criteria, our advisors can initiate a dedicated search, leveraging our direct relationships and local knowledge to uncover opportunities matching your preferences.",
   },
   {
     id: "faq-8",
-    category: "valuation",
-    question: "Can family offices engage Aura Estates for bespoke acquisition mandates?",
+    category: "inspections",
+    question: "How do I schedule a private viewing?",
     answer:
-      "Yes. We frequently manage confidential buy-side search mandates for single and multi-family offices, sourcing unlisted estates that are never placed on public MLS systems. Our partners personally canvass target geographic corridors through private equity and ownership networks.",
+      "You can request a private viewing directly through any property listing page or by contacting our team by phone or email. We will coordinate a convenient appointment time with the listing agent.",
   },
   {
     id: "faq-9",
     category: "inspections",
-    question: "What technical documentation is included in an architectural listing dossier?",
+    question: "Can my representative or architect conduct the viewing on my behalf?",
     answer:
-      "Each complete dossier includes stamped architectural blueprints, ALTA boundary and geological surveys, mechanical and electrical infrastructure diagrams, climate control specs, finish schedules, and indicative carrying cost spreadsheets.",
-  },
-  {
-    id: "faq-10",
-    category: "inspections",
-    question: "Can a private viewing be conducted by an authorized wealth advisor or family office representative?",
-    answer:
-      "Yes. Principals may authorize wealth managers, architectural consultants, or legal representatives to conduct preliminary physical viewings. We require authorization on entity letterhead along with executed bilateral NDAs prior to scheduling site visits.",
+      "Yes. Authorized representatives, architects, or advisors may attend viewings on your behalf. Simply notify our advisor in advance when scheduling the appointment.",
   },
 ];
-

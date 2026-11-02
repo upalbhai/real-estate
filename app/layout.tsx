@@ -3,7 +3,6 @@ import { Space_Grotesk, Oswald, Bebas_Neue, Orbitron } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { NavigationLoadingBar } from "@/components/navigation/NavigationLoadingBar";
-import { PublicPortalsFloatingDock } from "@/components/navigation/PublicPortalsFloatingDock";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -70,7 +69,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ThemeProvider>
           <NavigationLoadingBar />
           {children}
-          <PublicPortalsFloatingDock />
         </ThemeProvider>
       </body>
     </html>

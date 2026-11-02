@@ -49,7 +49,7 @@ export function FaqContent() {
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
-          { label: "Private Client FAQ", isCurrent: true },
+          { label: "FAQ", isCurrent: true },
         ]}
         separator="chevron"
         variant="gold"
@@ -66,7 +66,7 @@ export function FaqContent() {
         </h1>
 
         <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-body">
-          Authoritative guidance regarding our bilateral non-disclosure standards, private off-market vault access, international capital settlement, and architectural representation protocols.
+          Helpful answers to common questions about buying, selling, property viewings, and working with Aura Estates.
         </p>
       </div>
 
@@ -74,7 +74,7 @@ export function FaqContent() {
       <div className="max-w-2xl mx-auto space-y-4">
         <Input
           type="search"
-          placeholder="Search questions or keywords (e.g., NDA, escrow, title, vault)..."
+          placeholder="Search questions or keywords (e.g. viewings, offers, locations)..."
           leftIcon={<Search className="h-4 w-4" />}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}

@@ -36,25 +36,23 @@ export const portalNavLinks: PortalNavLink[] = [
 ];
 
 export const headerNavLinks: HeaderNavLink[] = [
-  { label: "Portfolio", href: "/properties" },
-  { label: "Curated Collections", href: "/#collections" },
-  { label: "Flagship Dossier", href: "/#flagship" },
-  { label: "Private Advisors", href: "/#advisors" },
-  { label: "About", href: "/about" },
+  { label: "Featured Properties", href: "/properties" },
+  { label: "Locations", href: "/#locations" },
+  { label: "About Us", href: "/about" },
+  { label: "Meet Our Team", href: "/#team" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact Us", href: "/contact" },
 ];
 
 export const luxuryMarqueeItems: string[] = [
   "Beverly Hills & Bel Air",
-  "Tribeca & SoHo Penthouse Sanctuaries",
-  "$4.8B+ Private Transacted Assets",
-  "Star Island Waterfront Compounds",
-  "Cantilevered Modernist Masterworks",
-  "100% Off-Market Bilateral NDA Protocol",
-  "Red Mountain Alpine Estates",
-  "Institutional Title & Escrow Clearance",
-  "Mayfair & Côte d'Azur Private Representation",
+  "Tribeca & SoHo Penthouses",
+  "Star Island Waterfront Estates",
+  "Contemporary Architectural Homes",
+  "Aspen Alpine Residences",
+  "Distinctive Modern Architecture",
+  "Prime Coastal Properties",
+  "Miami Beach Waterfront",
 ];
 
 export interface HeroMetric {
@@ -65,24 +63,24 @@ export interface HeroMetric {
 
 export const heroMetrics: HeroMetric[] = [
   {
-    value: "$4.8B+",
-    label: "Private Assets Transacted",
-    sublabel: "Across prime global markets",
+    value: "Prime Markets",
+    label: "Key Destinations",
+    sublabel: "Beverly Hills, New York, Miami & Aspen",
   },
   {
-    value: "18",
-    label: "Off-Market Dossiers",
-    sublabel: "Strictly confidential inventory",
+    value: "Architectural Focus",
+    label: "Curated Estates",
+    sublabel: "Modernist, contemporary & historic homes",
   },
   {
-    value: "100%",
-    label: "Escrow & Title Clearance",
-    sublabel: "Institutional fiduciary standard",
+    value: "Personalized Service",
+    label: "Dedicated Advisors",
+    sublabel: "Direct senior advisor guidance throughout",
   },
   {
-    value: "4 Hubs",
-    label: "Global Atelier Presence",
-    sublabel: "LA • NY • London • Dubai",
+    value: "Global Network",
+    label: "International Reach",
+    sublabel: "Connecting qualified buyers and sellers worldwide",
   },
 ];
 
@@ -92,43 +90,43 @@ export interface SelectOption {
 }
 
 export const heroFilterLocations: SelectOption[] = [
-  { value: "all", label: "All Prime Territories" },
+  { value: "all", label: "All Locations" },
   { value: "beverly-hills", label: "Beverly Hills & Bel Air, CA" },
   { value: "tribeca", label: "Tribeca & SoHo, New York, NY" },
   { value: "miami", label: "Star Island & Biscayne, Miami, FL" },
-  { value: "aspen", label: "Red Mountain, Aspen, CO" },
-  { value: "austin", label: "Lake Austin Hill Country, TX" },
+  { value: "aspen", label: "Aspen, CO" },
+  { value: "austin", label: "Austin, TX" },
 ];
 
 export const heroFilterPropertyTypes: SelectOption[] = [
-  { value: "all", label: "All Architectural Types" },
-  { value: "villa", label: "Ultra-Modern Villas" },
-  { value: "penthouse", label: "Duplex & Triplex Penthouses" },
-  { value: "compound", label: "Waterfront Compounds" },
-  { value: "modernist", label: "Architectural Sculptures" },
+  { value: "all", label: "All Property Types" },
+  { value: "villa", label: "Modern Villas" },
+  { value: "penthouse", label: "Luxury Penthouses" },
+  { value: "compound", label: "Waterfront Estates" },
+  { value: "modernist", label: "Architectural Residences" },
 ];
 
 export const heroFilterPriceRanges: SelectOption[] = [
-  { value: "all", label: "Any Valuation Tier" },
+  { value: "all", label: "Any Price Range" },
   { value: "5-10m", label: "$5,000,000 – $10,000,000" },
   { value: "10-20m", label: "$10,000,000 – $20,000,000" },
   { value: "20-50m", label: "$20,000,000 – $50,000,000" },
-  { value: "50m+", label: "$50,000,000+ Trophy Assets" },
+  { value: "50m+", label: "$50,000,000+" },
 ];
 
 export const portfolioFilterTabs: { id: string; label: string }[] = [
-  { id: "all", label: "All Acquisitions" },
+  { id: "all", label: "All Properties" },
   { id: "beverly-hills", label: "Beverly Hills" },
-  { id: "tribeca", label: "Tribeca & NY" },
+  { id: "tribeca", label: "New York" },
   { id: "miami", label: "Miami Beach" },
   { id: "austin", label: "Austin" },
 ];
 
 export const propertySortOptions: SelectOption[] = [
-  { value: "featured", label: "Curated / Featured First" },
-  { value: "price-desc", label: "Valuation: High to Low" },
-  { value: "price-asc", label: "Valuation: Low to High" },
-  { value: "area-desc", label: "Interior Area: Largest First" },
+  { value: "featured", label: "Featured First" },
+  { value: "price-desc", label: "Price: High to Low" },
+  { value: "price-asc", label: "Price: Low to High" },
+  { value: "area-desc", label: "Area: Largest First" },
 ];
 
 export const bedroomFilterOptions: SelectOption[] = [
@@ -140,21 +138,18 @@ export const bedroomFilterOptions: SelectOption[] = [
 ];
 
 export const contactPrincipalTypes: SelectOption[] = [
-  { value: "individual", label: "Private Individual / Principal" },
-  { value: "family_office", label: "Single / Multi-Family Office" },
-  { value: "investment_fund", label: "Private Equity / Investment Fund" },
-  { value: "fiduciary_advisor", label: "Legal / Fiduciary Representative" },
+  { value: "buyer", label: "Prospective Buyer" },
+  { value: "seller", label: "Property Owner / Seller" },
+  { value: "representative", label: "Advisor / Representative" },
+  { value: "other", label: "General Inquiry" },
 ];
 
 export const contactInquiryTypes: SelectOption[] = [
-  { value: "acquisition", label: "Confidential Estate Acquisition" },
-  { value: "disposition", label: "Off-Market Estate Disposition / Sale" },
-  { value: "viewing", label: "Private Architectural Viewing Appointment" },
-  { value: "vault_access", label: "Request Access to Off-Market Vault" },
+  { value: "acquisition", label: "Buying a Property" },
+  { value: "disposition", label: "Selling a Property" },
+  { value: "viewing", label: "Schedule a Private Viewing" },
+  { value: "consultation", label: "General Real Estate Advisory" },
 ];
-
-
-
 
 export interface NeighborhoodCollection {
   id: string;
@@ -177,7 +172,7 @@ export const neighborhoodCollections: NeighborhoodCollection[] = [
     averagePrice: "$22.4M",
     imageUrl:
       "https://images.unsplash.com/photo-1580655653885-65763b2597d0?auto=format&fit=crop&w=1200&q=80",
-    tagline: "Cantilevered Modernism & Secluded Hillside Enclaves",
+    tagline: "Modernist architecture and secluded hillside residences.",
   },
   {
     id: "tribeca",
@@ -188,7 +183,7 @@ export const neighborhoodCollections: NeighborhoodCollection[] = [
     averagePrice: "$16.8M",
     imageUrl:
       "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1200&q=80",
-    tagline: "Historic Cast-Iron Facades & Triplex Sky Sanctuaries",
+    tagline: "Historic cast-iron architecture and skyline penthouses.",
   },
   {
     id: "miami",
@@ -199,7 +194,7 @@ export const neighborhoodCollections: NeighborhoodCollection[] = [
     averagePrice: "$28.5M",
     imageUrl:
       "https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=1200&q=80",
-    tagline: "Private Deepwater Docks & Ultra-Contemporary Villas",
+    tagline: "Private deepwater dockage and waterfront estates.",
   },
   {
     id: "aspen",
@@ -210,7 +205,7 @@ export const neighborhoodCollections: NeighborhoodCollection[] = [
     averagePrice: "$34.2M",
     imageUrl:
       "https://images.unsplash.com/photo-1548777123-e216912df7d8?auto=format&fit=crop&w=1200&q=80",
-    tagline: "Ski-In/Ski-Out Alpine Compounds with Panoramic Peaks",
+    tagline: "Alpine chalets with direct ski access and mountain panoramas.",
   },
 ];
 
@@ -226,34 +221,34 @@ export const atelierValueProps: AtelierValueProp[] = [
   {
     id: "discretion",
     number: "01",
-    title: "Off-Market Discretion",
+    title: "Complete Discretion",
     description:
-      "Over 40% of our ultra-prime transactions conclude without public syndication, safeguarding institutional privacy and principal anonymity.",
+      "We respect our clients' privacy, ensuring confidential representation and secure communication at every stage of the transaction.",
     badge: "Confidentiality",
   },
   {
     id: "architectural",
     number: "02",
-    title: "Architectural Pedigree",
+    title: "Architectural Focus",
     description:
-      "Every property undergoes an exhaustive curatorial review evaluating structural provenance, materials authenticity, and long-term capital resilience.",
-    badge: "Curated Standards",
+      "Every property in our portfolio is evaluated for exceptional architectural design, quality craftsmanship, and enduring value.",
+    badge: "Curated Design",
   },
   {
-    id: "fiduciary",
+    id: "expertise",
     number: "03",
-    title: "Institutional Escrow Governance",
+    title: "Deep Market Knowledge",
     description:
-      "Our fiduciary desk liaises directly with global family offices, private wealth banks, and sovereign advisors to streamline cross-border closings.",
-    badge: "Fiduciary Security",
+      "Our advisors offer genuine insight across prime destinations, helping clients navigate the luxury market with confidence.",
+    badge: "Market Insight",
   },
   {
-    id: "global",
+    id: "advisory",
     number: "04",
-    title: "Private Global Concierge",
+    title: "Personalized Advisory",
     description:
-      "Direct personal representation by senior equity partners across Los Angeles, New York, London, Zurich, and Dubai.",
-    badge: "Bespoke Advisory",
+      "Direct, attentive guidance tailored to your specific goals, from property search and viewings to negotiations and closing.",
+    badge: "Client Service",
   },
 ];
 
@@ -269,25 +264,25 @@ export const clientTestimonials: ClientTestimonial[] = [
   {
     id: "t1",
     quote:
-      "Aura secured our Trousdale architectural off-market within twelve days. Their discretion and fiduciary rigor match that of top-tier private investment banks.",
-    principalTitle: "Managing Principal • Global Technology Fund",
-    transactionContext: "$24.5M Bel Air Acquisition",
+      "Aura Estates helped us find an extraordinary home in Bel Air. Their patience, deep knowledge of architecture, and attention to detail made the entire search effortless.",
+    principalTitle: "Homeowner",
+    transactionContext: "Bel Air Residence",
     year: "2026",
   },
   {
     id: "t2",
     quote:
-      "The architectural dossier provided by Aura was peerless. Every mechanical detail, historical permit, and acoustic specification was verified prior to escrow.",
-    principalTitle: "CIO • Geneva Single Family Office",
-    transactionContext: "$18.2M Tribeca Penthouse Conveyance",
+      "The team provided thoughtful, discreet guidance during our search in Tribeca. They understood exactly what we were looking for from our first conversation.",
+    principalTitle: "Private Client",
+    transactionContext: "Tribeca Penthouse",
     year: "2026",
   },
   {
     id: "t3",
     quote:
-      "In luxury real estate, true discretion is rare. Aura handled our oceanfront estate sale completely off public records with absolute integrity.",
-    principalTitle: "Founder & Chairman • Venture Group",
-    transactionContext: "$31.0M Biscayne Bay Compound",
+      "Outstanding professionalism and discretion. From the initial private showing through to closing, every detail was handled with genuine care and integrity.",
+    principalTitle: "Estate Owner",
+    transactionContext: "Miami Beach Waterfront",
     year: "2025",
   },
 ];
@@ -299,43 +294,42 @@ export interface FooterNavColumn {
 
 export const footerNavSections: FooterNavColumn[] = [
   {
-    title: "Curated Portfolios",
+    title: "Properties",
     links: [
-      { label: "Trophy Architectural Villas", href: "/properties?type=villa" },
-      { label: "Duplex & Triplex Penthouses", href: "/properties?type=penthouse" },
-      { label: "Deepwater Waterfront Estates", href: "/properties?type=waterfront" },
-      { label: "Alpine Ski Compounds", href: "/properties?type=alpine" },
-      { label: "Private Off-Market Vault", href: "/contact" },
+      { label: "Modern Villas", href: "/properties?type=villa" },
+      { label: "Luxury Penthouses", href: "/properties?type=penthouse" },
+      { label: "Waterfront Estates", href: "/properties?type=compound" },
+      { label: "All Properties", href: "/properties" },
+      { label: "Saved Properties", href: "/properties?filter=saved" },
     ],
   },
   {
-    title: "Territories",
+    title: "Locations",
     links: [
       { label: "Beverly Hills & Bel Air", href: "/properties?location=beverly-hills" },
       { label: "Tribeca & SoHo, New York", href: "/properties?location=tribeca" },
       { label: "Star Island & Biscayne, Miami", href: "/properties?location=miami" },
-      { label: "Red Mountain, Aspen", href: "/properties?location=aspen" },
-      { label: "Mayfair & Knightsbridge, London", href: "/properties?location=london" },
+      { label: "Aspen, Colorado", href: "/properties?location=aspen" },
+      { label: "Austin, Texas", href: "/properties?location=austin" },
     ],
   },
   {
-    title: "The Atelier",
+    title: "About Us",
     links: [
-      { label: "Atelier Heritage & Philosophy", href: "/about" },
-      { label: "Senior Listing Partners", href: "/#advisors" },
-      { label: "Component Design System", href: "/components" },
-      { label: "Executive Terminal (Admin)", href: "/admin" },
-      { label: "Private Client Desk", href: "/contact" },
+      { label: "Our Story & Philosophy", href: "/about" },
+      { label: "Meet Our Team", href: "/#team" },
+      { label: "Frequently Asked Questions", href: "/faq" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Schedule a Consultation", href: "/contact" },
     ],
   },
   {
-    title: "Governance & Escrow",
+    title: "Legal & Privacy",
     links: [
-      { label: "Fiduciary Standards", href: "/about" },
-      { label: "Anti-Money Laundering Protocols", href: "/about" },
+      { label: "Privacy Policy", href: "/about" },
+      { label: "Terms of Service", href: "/about" },
       { label: "Equal Housing Opportunity", href: "/about" },
-      { label: "Confidentiality & NDA Policy", href: "/about" },
-      { label: "Terms of Representation", href: "/about" },
+      { label: "Accessibility Statement", href: "/about" },
     ],
   },
 ];
@@ -355,7 +349,7 @@ export const globalOffices: GlobalOfficeItem[] = [
     email: "beverlyhills@auraestates.com",
   },
   {
-    city: "New York (Tribeca)",
+    city: "New York",
     address: "68 Franklin Street, Penthouse Studio, New York, NY 10013",
     phone: "+1 (212) 940-7700",
     email: "newyork@auraestates.com",

@@ -12,22 +12,21 @@ import { atelierValueProps } from "@/data";
 
 export function AtelierValuePropsSection() {
   return (
-    <section className="border-t border-border bg-surface-secondary/20 py-20 sm:py-24">
+    <section id="about" className="border-t border-border bg-surface-secondary/20 py-20 sm:py-24 scroll-mt-24">
       <div className="section-container space-y-12">
         {/* Section Header */}
         <MotionFadeIn>
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <div className="inline-flex items-center gap-2">
-              <Badge variant="gold">Fiduciary Governance</Badge>
+              <Badge variant="gold">About Aura Estates</Badge>
             </div>
 
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-              The Aura Atelier Standard
+              Our Guiding Principles
             </h2>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              Operating at the nexus of private investment banking and architectural connoisseurship.
-              We treat high-value real estate as foundational capital assets.
+              Providing personalized advisory, trusted discretion, and architectural expertise to clients seeking exceptional properties.
             </p>
           </div>
         </MotionFadeIn>

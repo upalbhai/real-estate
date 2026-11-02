@@ -57,32 +57,31 @@ export function Footer() {
                 <span className="font-heading text-2xl font-bold tracking-tight text-foreground leading-none">
                   AURA ESTATES
                 </span>
-                <span className="text-[10px] font-special uppercase tracking-[0.24em] text-brand-gold mt-1.5 leading-none font-semibold">
-                  Atelier &amp; Private Advisory
+                <span className="text-[10px] font-special uppercase tracking-[0.2em] text-brand-gold mt-1.5 leading-none font-semibold">
+                  Luxury Real Estate &amp; Advisory
                 </span>
               </div>
             </Link>
 
             <p className="text-sm text-muted-foreground dark:text-[#A4AC9A] max-w-lg leading-relaxed font-body">
-              Aura Estates curates world-class modernist architecture, off-market trophy
-              residences, and landmark estates for ultra-high-net-worth individuals, family
-              offices, and discerning architectural collectors worldwide.
+              Aura Estates represents distinctive modernist architecture, contemporary residences,
+              and premier luxury estates across leading international destinations.
             </p>
 
             <div className="flex flex-wrap items-center gap-2.5 pt-2">
               <Badge variant="gold" size="sm" className="dark:bg-brand-gold/15 dark:border-brand-gold/40 dark:text-brand-gold font-semibold">
-                Fiduciary Escrow Certified
+                Licensed Brokerage
               </Badge>
               <Badge variant="default" size="sm" className="dark:bg-[#1A2017] dark:border-[#2C3426] dark:text-[#D5D2C9]">
-                Strict Non-Disclosure Protocols
+                Equal Housing Opportunity
               </Badge>
               <Badge variant="available" size="sm" className="dark:bg-emerald-950/40 dark:border-emerald-600/30 dark:text-emerald-400">
-                Global AML Cleared
+                Discreet Representation
               </Badge>
             </div>
           </div>
 
-          {/* Confidential Intelligence Dispatch Box */}
+          {/* Newsletter Subscription Box */}
           <div className="lg:col-span-6 relative p-6 sm:p-7 rounded-card border border-border dark:border-brand-gold/30 bg-surface-secondary/40 dark:bg-gradient-to-br dark:from-[#1C2119] dark:to-[#141811] space-y-4 shadow-md dark:shadow-[0_20px_45px_rgba(0,0,0,0.55)] overflow-hidden">
             {/* Top Gold Card Hairline */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold/80 to-transparent" />
@@ -90,12 +89,11 @@ export function Footer() {
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-special uppercase tracking-wider text-brand-gold bg-brand-gold/10 dark:bg-brand-gold/20 px-2.5 py-0.5 rounded-full border border-brand-gold/40 font-semibold">
-                  Quarterly Dossier
+                  Property Updates
                 </span>
               </div>
               <p className="text-xs text-muted-foreground dark:text-[#A4AC9A] leading-relaxed font-body">
-                Receive discrete quarterly dossiers covering newly released off-market acquisitions,
-                architectural provenance studies, and prime territory capital flows.
+                Subscribe to receive curated selections of newly listed residences, architectural spotlights, and prime real estate market insights.
               </p>
             </div>
 
@@ -103,14 +101,14 @@ export function Footer() {
               <div className="flex items-center gap-2.5 p-3.5 rounded-control bg-success/15 border border-success/30 text-success text-xs font-medium animate-fadeIn">
                 <CheckCircle2 className="h-4 w-4 shrink-0" />
                 <span>
-                  Thank you. Your address has been added to our confidential advisory registry.
+                  Thank you. You have been subscribed to our property updates.
                 </span>
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2.5">
                 <Input
                   type="email"
-                  placeholder="principal@familyoffice.com"
+                  placeholder="name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -123,29 +121,29 @@ export function Footer() {
                   rightIcon={<ArrowRight className="h-4 w-4" />}
                   className="shrink-0 font-bold shadow-[0_4px_16px_rgba(197,168,120,0.3)] hover:shadow-[0_6px_24px_rgba(197,168,120,0.5)]"
                 >
-                  Join Registry
+                  Subscribe
                 </Button>
               </form>
             )}
 
             <div className="flex items-center gap-2 text-[11px] text-muted-foreground dark:text-[#889180] font-mono">
               <ShieldCheck className="h-3.5 w-3.5 text-brand-gold shrink-0" />
-              <span>Zero spam. Absolute encryption. Unsubscribe anytime.</span>
+              <span>We respect your privacy. Unsubscribe at any time.</span>
             </div>
           </div>
         </div>
 
-        {/* Row 2: Global Atelier Hubs */}
+        {/* Row 2: Office Locations */}
         <div className="space-y-4 pt-4 border-t border-border dark:border-[#242A1F]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Globe2 className="h-4 w-4 text-brand-gold" />
               <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-muted-foreground dark:text-brand-gold/90">
-                Global Atelier Offices
+                Our Office Locations
               </h4>
             </div>
             <span className="text-[10px] font-mono text-muted-foreground dark:text-[#889180]">
-              4 Physical Hubs Worldwide
+              Key Global Markets
             </span>
           </div>
 
@@ -156,23 +154,23 @@ export function Footer() {
                 className="p-4 rounded-control border border-border dark:border-[#2A3125] bg-surface-secondary/30 dark:bg-gradient-to-b dark:from-[#191D16] dark:to-[#131611] space-y-2 hover:border-brand-gold/50 hover:dark:border-brand-gold/50 hover:bg-surface-secondary/70 transition-all duration-300 shadow-2xs dark:shadow-[0_6px_20px_rgba(0,0,0,0.35)] group hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-heading text-white font-bold text-foreground group-hover:text-brand-gold transition-colors">
+                  <span className="font-heading font-bold text-foreground group-hover:text-brand-gold transition-colors">
                     {office.city}
                   </span>
                   <span className="text-[10px] font-mono text-brand-gold uppercase tracking-wider border border-brand-gold/30 bg-brand-gold/10 px-2 py-0.5 rounded-full font-semibold">
-                    Office Hub
+                    Office Location
                   </span>
                 </div>
                 <p className="text-xs text-muted-foreground dark:text-[#A4AC9A] leading-relaxed font-body">
                   {office.address}
                 </p>
                 <div className="pt-1 flex flex-col text-[11px] text-muted-foreground dark:text-[#7F8877] font-mono space-y-0.5">
-                  <span className="hover:text-foreground dark:hover:text-[#F5F2EB] transition-colors cursor-pointer">
+                  <a href={`tel:${office.phone}`} className="hover:text-foreground dark:hover:text-[#F5F2EB] transition-colors">
                     {office.phone}
-                  </span>
-                  <span className="text-brand-gold hover:underline cursor-pointer">
+                  </a>
+                  <a href={`mailto:${office.email}`} className="text-brand-gold hover:underline">
                     {office.email}
-                  </span>
+                  </a>
                 </div>
               </div>
             ))}
@@ -205,25 +203,19 @@ export function Footer() {
         {/* Row 4: Regulatory Disclaimers & Copyright */}
         <div className="pt-8 border-t border-border dark:border-[#242A1F] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground dark:text-[#7F8877]">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-            <span>© {CURRENT_YEAR} Aura Estates Atelier Inc. All rights reserved.</span>
+            <span>© {CURRENT_YEAR} Aura Estates Inc. All rights reserved.</span>
             <span className="hidden sm:inline-block text-border dark:text-[#32392D]">•</span>
             <span>Equal Housing Opportunity</span>
             <span className="hidden sm:inline-block text-border dark:text-[#32392D]">•</span>
-            <span>Licensed Real Estate Fiduciary</span>
+            <span>Licensed Real Estate Brokerage</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 sm:gap-4 font-mono text-[11px]">
             <Link href="/about" className="hover:text-foreground dark:hover:text-[#F5F2EB] transition-colors">
-              Privacy Notice
+              Privacy Policy
             </Link>
             <Link href="/about" className="hover:text-foreground dark:hover:text-[#F5F2EB] transition-colors">
-              Terms of Representation
-            </Link>
-            <Link href="/components" className="text-muted-foreground hover:text-brand-gold font-medium transition-colors">
-              Theme Dash →
-            </Link>
-            <Link href="/admin" className="text-brand-gold hover:text-amber-300 font-semibold transition-colors">
-              Executive Portal →
+              Terms of Service
             </Link>
           </div>
         </div>

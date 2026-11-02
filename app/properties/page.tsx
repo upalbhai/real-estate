@@ -155,8 +155,8 @@ function PropertiesCatalogContent() {
         <div className="space-y-3 pb-6 border-b border-border">
           <Breadcrumbs
             items={[
-              { label: "Aura Estates", href: "/" },
-              { label: "Portfolio Catalog", badge: `${filteredProperties.length} Assets`, isCurrent: true },
+              { label: "Home", href: "/" },
+              { label: "Properties", badge: `${filteredProperties.length} Properties`, isCurrent: true },
             ]}
             separator="slash"
             variant="gold"
@@ -166,11 +166,10 @@ function PropertiesCatalogContent() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
               <h1 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-                The Architectural Portfolio
+                Explore Properties
               </h1>
               <p className="text-sm sm:text-base text-muted-foreground max-w-xl mt-1">
-                Curated luxury properties across Beverly Hills, Tribeca, Miami Beach, Aspen, and Austin.
-                Each estate meets strict architectural scrutiny and title readiness.
+                Discover exceptional residences, architectural homes, and luxury penthouses across premier destinations.
               </p>
             </div>
 
@@ -195,7 +194,7 @@ function PropertiesCatalogContent() {
           <div className="flex items-center justify-between text-xs pb-3 border-b border-border">
             <div className="flex items-center gap-2 font-special font-semibold uppercase text-brand-gold">
               <SlidersHorizontal className="h-4 w-4" />
-              <span>Portfolio Search Filters</span>
+              <span>Filter Properties</span>
               {activeFiltersCount > 0 && (
                 <Badge variant="gold" size="sm">
                   {activeFiltersCount} Active
@@ -352,7 +351,7 @@ function PropertiesCatalogContent() {
               No Properties Match Current Criteria
             </h3>
             <p className="text-xs text-muted-foreground">
-              Adjust your location, classification, or valuation filters to browse other estates.
+              Adjust your location, property type, or price filters to browse available homes.
             </p>
           </div>
           <Button variant="gold" size="sm" onClick={handleResetFilters}>
@@ -372,7 +371,7 @@ export default function PropertiesPage() {
         <React.Suspense
           fallback={
             <div className="section-container py-24 text-center text-muted-foreground">
-              Loading Portfolio Catalog...
+              Loading Properties...
             </div>
           }
         >

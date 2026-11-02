@@ -37,25 +37,24 @@ export function FeaturedPropertiesSection() {
   }, [activeTab]);
 
   return (
-    <section id="portfolio" className="section-container py-20 sm:py-24 space-y-10 scroll-mt-24">
+    <section id="properties" className="section-container py-20 sm:py-24 space-y-10 scroll-mt-24">
       {/* Section Header with Category & Layout Controls */}
       <MotionFadeIn>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-4 border-b border-border">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <Badge variant="gold">Trophy Inventory</Badge>
+              <Badge variant="gold">Portfolio</Badge>
               <span className="text-xs text-muted-foreground font-mono">
-                CURATED RESIDENTIAL ASSETS
+                SELECTED RESIDENCES
               </span>
             </div>
 
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-              Featured Trophy Acquisitions
+              Featured Properties
             </h2>
 
             <p className="text-sm sm:text-base text-muted-foreground max-w-xl">
-              Each estate represents uncompromised architectural integrity, certified title provenance,
-              and immediate escrow availability.
+              Explore our handpicked selection of exceptional homes, architectural villas, and luxury residences.
             </p>
           </div>
 
@@ -92,7 +91,7 @@ export function FeaturedPropertiesSection() {
                 size="sm"
                 rightIcon={<ArrowRight className="h-3.5 w-3.5" />}
               >
-                Full Catalog
+                View All Properties
               </Button>
             </Link>
           </div>
@@ -150,16 +149,16 @@ export function FeaturedPropertiesSection() {
         <div className="p-6 rounded-card border border-border bg-surface-secondary/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
             <span className="font-heading text-lg font-bold text-foreground block">
-              Seeking an Unlisted Off-Market Dossier?
+              Looking for a Specific Architectural Property?
             </span>
             <span className="text-xs text-muted-foreground">
-              Our private acquisitions desk holds 18 undisclosed trophy residences protected by strict NDAs.
+              Connect with our advisory team for personalized guidance and private property showings.
             </span>
           </div>
 
           <Link href="/contact" className="shrink-0">
             <Button variant="gold" size="sm" rightIcon={<ArrowRight className="h-3.5 w-3.5" />}>
-              Request Private Dossier
+              Schedule a Consultation
             </Button>
           </Link>
         </div>

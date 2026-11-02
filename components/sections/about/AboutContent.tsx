@@ -30,15 +30,12 @@ export function AboutContent() {
       {/* Hero Section */}
       <MotionFadeIn>
         <div className="section-container space-y-6 max-w-4xl text-center mx-auto">
-
           <h1 className="font-heading text-4xl sm:text-6xl font-bold tracking-tight text-foreground leading-[1.08]">
-            Curators of Landmark Living &amp; Sovereign Capital.
+            Distinctive Architecture. Exceptional Living.
           </h1>
 
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-body">
-            Aura Estates was established to bridge the divide between world-class architectural
-            masterworks and institutional wealth governance. We advise ultra-high-net-worth
-            principals, family offices, and sovereign entities on trophy residential acquisitions worldwide.
+            Aura Estates was founded with a singular purpose: to provide refined, personalized real estate advisory for exceptional properties. We represent distinctive residential architecture across premier global destinations.
           </p>
         </div>
       </MotionFadeIn>
@@ -49,7 +46,7 @@ export function AboutContent() {
           <div className="relative h-72 sm:h-96 lg:h-[450px] w-full rounded-card overflow-hidden border border-border shadow-lg">
             <Image
               src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=2000&q=85"
-              alt="Aura Estates Atelier Heritage"
+              alt="Aura Estates Architecture"
               fill
               priority
               sizes="(max-width: 1200px) 100vw, 1200px"
@@ -59,14 +56,14 @@ export function AboutContent() {
             <div className="absolute bottom-6 left-6 right-6 text-white flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
                 <span className="text-[10px] font-special uppercase tracking-wider text-brand-gold font-semibold">
-                  Architectural Provenance
+                  Curated Architecture
                 </span>
                 <h3 className="font-heading text-2xl font-bold">
-                  The Curatorial Atelier Standard
+                  Exceptional Living Across Key Destinations
                 </h3>
               </div>
               <div className="font-mono text-xs text-white/80">
-                Beverly Hills • Tribeca • Miami • London
+                Beverly Hills • New York • Miami • London
               </div>
             </div>
           </div>
@@ -98,12 +95,12 @@ export function AboutContent() {
       <div className="section-container space-y-10">
         <MotionFadeIn>
           <div className="space-y-2 text-center max-w-2xl mx-auto">
-            <Badge variant="gold">Fiduciary Protocols</Badge>
+            <Badge variant="gold">Our Approach</Badge>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground">
-              Four Pillars of Private Representation
+              Four Principles of Our Advisory
             </h2>
             <p className="text-sm text-muted-foreground">
-              How our private advisory desk protects principal interests across every acquisition phase.
+              How our advisors ensure personalized guidance and complete discretion across every transaction.
             </p>
           </div>
         </MotionFadeIn>
@@ -132,19 +129,19 @@ export function AboutContent() {
         </MotionStaggerContainer>
       </div>
 
-      {/* Senior Managing Leadership */}
+      {/* Senior Leadership & Team */}
       <div className="section-container space-y-8">
         <MotionFadeIn>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-4 border-b border-border">
             <div>
-              <Badge variant="gold">Managing Partners</Badge>
+              <Badge variant="gold">Our Advisors</Badge>
               <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-1">
-                Senior Advisory Leadership
+                Leadership &amp; Advisors
               </h2>
             </div>
             <Link href="/contact">
               <Button variant="outline" size="sm" rightIcon={<ArrowRight className="h-3.5 w-3.5" />}>
-                Direct Inquiry
+                Contact Our Team
               </Button>
             </Link>
           </div>
@@ -159,16 +156,16 @@ export function AboutContent() {
         </MotionStaggerContainer>
       </div>
 
-      {/* Global Hubs */}
+      {/* Global Locations */}
       <div className="section-container space-y-8 pb-10">
         <MotionFadeIn>
           <div className="space-y-2 text-center max-w-xl mx-auto">
-            <Badge variant="gold">Global Footprint</Badge>
+            <Badge variant="gold">Locations</Badge>
             <h2 className="font-heading text-3xl font-bold text-foreground">
-              Atelier Office Locations
+              Our Office Locations
             </h2>
             <p className="text-xs text-muted-foreground">
-              Local market authority backed by global capital coordination.
+              Local market authority backed by global client connections.
             </p>
           </div>
         </MotionFadeIn>

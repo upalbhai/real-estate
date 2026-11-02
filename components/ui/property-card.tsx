@@ -32,10 +32,10 @@ const statusBadgeConfig: Record<
   PropertyCardData["status"],
   { label: string; variant: BadgeVariant }
 > = {
-  featured: { label: "Featured Trophy", variant: "featured" },
-  for_sale: { label: "For Acquisition", variant: "available" },
-  for_rent: { label: "Luxury Lease", variant: "default" },
-  exclusive: { label: "Private Dossier", variant: "gold" },
+  featured: { label: "Featured", variant: "featured" },
+  for_sale: { label: "For Sale", variant: "available" },
+  for_rent: { label: "For Rent", variant: "default" },
+  exclusive: { label: "Exclusive", variant: "gold" },
   under_contract: { label: "Under Contract", variant: "pending" },
 };
 
@@ -229,7 +229,7 @@ export function PropertyCard({
                 variant="outline"
                 rightIcon={<ArrowUpRight className="h-3.5 w-3.5" />}
               >
-                View Dossier
+                View Property
               </Button>
             </Link>
           </div>
@@ -377,7 +377,7 @@ export function PropertyCard({
               variant="secondary"
               rightIcon={<ArrowUpRight className="h-3 w-3" />}
             >
-              Explore
+              View Property
             </Button>
           </Link>
         </div>

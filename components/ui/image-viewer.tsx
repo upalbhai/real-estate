@@ -3,7 +3,6 @@
 import * as React from "react";
 import Image from "next/image";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import "react-photo-view/dist/react-photo-view.css";
 import { Maximize2, ZoomIn, Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 

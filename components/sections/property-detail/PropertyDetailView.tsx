@@ -203,19 +203,19 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
             <div className="flex flex-wrap items-center gap-2.5">
               <Badge variant="gold" size="sm">
                 {property.status === "featured"
-                  ? "Curated Trophy Asset"
+                  ? "Featured Property"
                   : property.status === "exclusive"
-                    ? "Private Dossier"
+                    ? "Exclusive Listing"
                     : property.status === "for_rent"
-                      ? "Prime Seasonal Lease"
-                      : "Available Acquisition"}
+                      ? "For Rent"
+                      : "For Sale"}
               </Badge>
               <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
                 {property.type}
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-2.5 py-0.5 text-[10px] font-mono text-muted-foreground">
                 <ShieldCheck className="h-3 w-3 text-brand-gold" />
-                Institutional Title Cleared
+                Verified Listing
               </span>
             </div>
 
@@ -238,7 +238,7 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
               {/* Price Callout */}
               <div className="flex flex-col sm:items-end p-4 rounded-card border border-border bg-surface-secondary/40 shrink-0">
                 <span className="text-[10px] font-special uppercase tracking-wider text-muted-foreground">
-                  Fiduciary Valuation
+                  Guide Price
                 </span>
                 <div className="flex items-baseline gap-1.5 pt-0.5">
                   <span className="font-heading text-3xl sm:text-4xl font-bold text-foreground">
@@ -251,7 +251,7 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                   )}
                 </div>
                 <span className="text-[11px] font-mono text-brand-gold mt-1">
-                  Verified Escrow Ready
+                  Available Now
                 </span>
               </div>
             </div>
@@ -404,15 +404,15 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                 </div>
               </div>
 
-              {/* Section 2: Curated Architectural Narrative */}
+              {/* Section 2: Property Overview */}
               <div className="space-y-4 p-6 sm:p-8 rounded-card border border-border bg-surface shadow-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-border">
                   <h3 className="font-heading text-xl font-bold uppercase tracking-wide text-foreground">
-                    Architectural Narrative &amp; Provenance
+                    Property Overview
                   </h3>
                   <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono">
                     <FileText className="h-3.5 w-3.5 text-brand-gold" />
-                    <span>Dossier #{property.code}</span>
+                    <span>Listing #{property.code}</span>
                   </div>
                 </div>
 
@@ -425,7 +425,7 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-border text-xs">
                   <div className="space-y-1">
                     <span className="text-[10px] font-special uppercase text-muted-foreground tracking-wider">
-                      Master Architect
+                      Architect
                     </span>
                     <div className="font-semibold text-foreground font-body text-sm">
                       {property.architect}
@@ -433,7 +433,7 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                   </div>
                   <div className="space-y-1">
                     <span className="text-[10px] font-special uppercase text-muted-foreground tracking-wider">
-                      Interior Architecture Atelier
+                      Interior Designer
                     </span>
                     <div className="font-semibold text-foreground font-body text-sm">
                       {property.interiorDesigner}
@@ -442,17 +442,17 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                 </div>
               </div>
 
-              {/* Section 3: Comprehensive Amenity Categories */}
+              {/* Section 3: Amenities & Features */}
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Award className="h-4 w-4 text-brand-gold" />
                     <h3 className="font-heading text-xl font-bold uppercase tracking-wide text-foreground">
-                      Specifications &amp; Curated Amenities
+                      Features &amp; Amenities
                     </h3>
                   </div>
                   <span className="text-xs text-muted-foreground font-mono">
-                    {property.amenities.reduce((acc, cat) => acc + cat.items.length, 0)} Distinct Items
+                    {property.amenities.reduce((acc, cat) => acc + cat.items.length, 0)} Features
                   </span>
                 </div>
 
@@ -487,11 +487,11 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                     <div className="flex items-center gap-2">
                       <Layers className="h-4 w-4 text-brand-gold" />
                       <h3 className="font-heading text-xl font-bold uppercase tracking-wide text-foreground">
-                        Architectural Floor Plan Blueprints
+                        Floor Plans
                       </h3>
                     </div>
                     <p className="text-xs text-muted-foreground font-body">
-                      Spatial layout schematics and level-by-level zoning breakdown.
+                      Spatial layouts and room configurations across all levels.
                     </p>
                   </div>
 
@@ -552,17 +552,17 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                 )}
               </div>
 
-              {/* Section 5: Fiduciary Financial Metrics */}
+              {/* Section 5: Estimated Carrying Costs */}
               <div className="p-6 sm:p-8 rounded-card border border-border bg-surface-secondary/30 space-y-5">
                 <div className="space-y-1 pb-3 border-b border-border">
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="h-4 w-4 text-brand-gold" />
                     <h3 className="font-heading text-xl font-bold uppercase tracking-wide text-foreground">
-                      Fiduciary Investment &amp; Carrying Costs
+                      Estimated Property Expenses
                     </h3>
                   </div>
                   <p className="text-xs text-muted-foreground font-body">
-                    Institutional estimates for annual holding and escrow allocation.
+                    Estimated annual holding costs, property taxes, and assessments.
                   </p>
                 </div>
 
@@ -583,13 +583,13 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                   </div>
 
                   <div className="p-3.5 rounded-control border border-border bg-surface space-y-1">
-                    <span className="text-muted-foreground text-[10px] uppercase font-special">Recommended Escrow Deposit</span>
+                    <span className="text-muted-foreground text-[10px] uppercase font-special">Recommended Escrow Reserve</span>
                     <div className="font-bold text-brand-gold text-sm">{property.financials.suggestedEscrowReserve}</div>
                   </div>
                 </div>
 
                 <p className="text-[11px] text-muted-foreground italic font-body">
-                  * All figures provided as indicative estimates for qualified principals and family offices. Formal tax opinions and escrow instructions provided following mutual bilateral NDA execution.
+                  * Figures are provided as indicative estimates for prospective buyers. Final tax calculations and escrow instructions are confirmed upon contract review.
                 </p>
               </div>
             </div>
@@ -600,15 +600,15 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
               <div className="relative rounded-card border border-border bg-surface p-6 sm:p-7 space-y-6 shadow-xl overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent" />
 
-                {/* Managing Advisor Summary */}
+                {/* Listing Advisor Summary */}
                 <div className="space-y-3 pb-4 border-b border-border">
                   <div className="flex items-center justify-between">
                     <span className="font-special text-[10px] uppercase tracking-widest text-brand-gold font-bold">
-                      Direct Listing Fiduciary
+                      Listing Advisor
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-gold/10 px-2 py-0.5 text-[10px] font-mono text-brand-gold border border-brand-gold/30">
                       <span className="h-1.5 w-1.5 rounded-full bg-brand-gold animate-pulse" />
-                      Active Advisor
+                      Advisor
                     </span>
                   </div>
 
@@ -629,9 +629,6 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                       <span className="text-xs text-muted-foreground font-body truncate">
                         {property.agent.role}
                       </span>
-                      <span className="text-[10px] font-mono text-brand-gold mt-0.5">
-                        {property.agent.license}
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -644,12 +641,12 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                     </div>
                     <div className="space-y-1">
                       <h4 className="font-heading text-xl font-bold text-foreground">
-                        Viewing Request Logged
+                        Viewing Request Sent
                       </h4>
                       <p className="text-xs text-muted-foreground leading-relaxed font-body">
-                        Your confidential viewing brief for{" "}
-                        <strong className="text-foreground">{property.title}</strong> has been transmitted
-                        to <strong className="text-foreground">{property.agent.name}</strong>.
+                        Your viewing request for{" "}
+                        <strong className="text-foreground">{property.title}</strong> has been received by{" "}
+                        <strong className="text-foreground">{property.agent.name}</strong>. We will get in touch shortly.
                       </p>
                     </div>
                     <Button variant="outline" size="sm" onClick={() => setInquirySubmitted(false)}>
@@ -660,30 +657,30 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                   <form onSubmit={handleSubmit(onInquirySubmit)} className="space-y-4">
                     <div className="space-y-1">
                       <h4 className="font-heading text-lg font-bold text-foreground">
-                        Schedule Private Viewing
+                        Schedule a Private Viewing
                       </h4>
                       <p className="text-xs text-muted-foreground font-body">
-                        Direct partner consultation under non-disclosure standards.
+                        Connect directly with our advisor to arrange a viewing.
                       </p>
                     </div>
 
                     <Input
-                      label="Principal / Entity Name"
+                      label="Your Name"
                       placeholder="e.g. Katherine Vance"
                       error={errors.fullName?.message}
                       {...register("fullName")}
                     />
 
                     <Input
-                      label="Direct Corporate Email"
+                      label="Email Address"
                       type="email"
-                      placeholder="k.vance@familyoffice.com"
+                      placeholder="k.vance@example.com"
                       error={errors.email?.message}
                       {...register("email")}
                     />
 
                     <Input
-                      label="Direct Telephone"
+                      label="Phone Number"
                       placeholder="+1 (310) 555-0199"
                       error={errors.phone?.message}
                       {...register("phone")}
@@ -697,8 +694,8 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                     />
 
                     <Textarea
-                      label="Confidential Notes / Acquisition Criteria"
-                      placeholder="Specify timing, representation, or escrow parameters..."
+                      label="Message / Inquiries"
+                      placeholder="Specify timing, questions, or specific preferences..."
                       rows={2}
                       {...register("notes")}
                     />
@@ -709,8 +706,8 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                         control={control}
                         render={({ field }) => (
                           <Checkbox
-                            label="Require Bilateral Non-Disclosure Agreement (NDA)"
-                            description="Execute mutual digital NDA prior to unlisted blueprint release."
+                            label="Request Confidential Treatment"
+                            description="All communications and inquiries are kept strictly confidential."
                             checked={field.value}
                             onCheckedChange={field.onChange}
                           />
@@ -726,7 +723,7 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                       rightIcon={<ArrowRight className="h-4 w-4" />}
                       className="w-full justify-center font-bold tracking-wider"
                     >
-                      {isSubmitting ? "Encrypting & Requesting..." : "Request Private Viewing"}
+                      {isSubmitting ? "Sending Request..." : "Request a Private Viewing"}
                     </Button>
                   </form>
                 )}

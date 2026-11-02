@@ -10,13 +10,11 @@ import {
   Heart,
   ArrowRight,
   ChevronRight,
-  Shield,
-  Layers,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
-import { headerNavLinks, portalNavLinks } from "@/data";
+import { headerNavLinks } from "@/data";
 import { useFavoriteStore } from "@/store/useFavoriteStore";
 
 export function Navbar() {
@@ -54,16 +52,11 @@ export function Navbar() {
               <Building2 className="h-5 w-5 text-brand-gold" />
             </div>
             <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-foreground leading-none">
-                  AURA ESTATES
-                </span>
-                <span className="rounded-full bg-brand-gold/20 text-brand-gold border border-brand-gold/40 px-1.5 py-0.2 text-[9px] font-special font-semibold uppercase tracking-wider hidden sm:inline-block">
-                  Atelier
-                </span>
-              </div>
-              <span className="text-[9px] font-special uppercase tracking-[0.22em] text-muted-foreground mt-0.5 leading-none">
-                Prime Global Living
+              <span className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-foreground leading-none">
+                AURA ESTATES
+              </span>
+              <span className="text-[10px] font-special uppercase tracking-[0.2em] text-muted-foreground mt-1 leading-none font-medium">
+                Luxury Real Estate
               </span>
             </div>
           </Link>
@@ -121,14 +114,14 @@ export function Navbar() {
               <ThemeToggle variant="icon" />
             </div>
 
-            {/* Private Viewing Luxury CTA */}
+            {/* Contact / Consultation CTA */}
             <Link href="/contact" className="hidden sm:inline-block">
               <Button
                 variant="gold"
                 size="sm"
                 rightIcon={<ArrowRight className="h-3.5 w-3.5" />}
               >
-                Inquire Privately
+                Schedule Consultation
               </Button>
             </Link>
 
@@ -207,45 +200,6 @@ export function Navbar() {
               );
             })}
           </nav>
-
-          {/* Portals & Dashboards for Mobile */}
-          <div className="pt-3 border-t border-border space-y-2">
-            <div className="flex items-center justify-between px-1">
-              <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-special font-semibold">
-                Portals &amp; Dashboards
-              </span>
-              <span className="text-[10px] font-mono text-brand-gold">Executive &amp; Dev</span>
-            </div>
-
-            <div className="grid grid-cols-1 gap-2">
-              {portalNavLinks.map((item) => {
-                const Icon = item.iconName === "Shield" ? Shield : Layers;
-                return (
-                  <Link
-                    key={item.id}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between p-2.5 rounded-control border border-border bg-surface-secondary/40 hover:bg-surface-secondary hover:border-brand-gold/50 transition-all group"
-                  >
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-control bg-primary text-primary-foreground border border-brand-gold/30">
-                        <Icon className="h-4 w-4 text-brand-gold" />
-                      </div>
-                      <div className="flex flex-col min-w-0">
-                        <span className="text-xs font-semibold text-foreground group-hover:text-brand-gold transition-colors truncate">
-                          {item.label}
-                        </span>
-                        <span className="text-[10px] text-muted-foreground truncate">
-                          {item.shortLabel} • {item.badge}
-                        </span>
-                      </div>
-                    </div>
-                    <ChevronRight className="h-4 w-4 text-muted-foreground/60 group-hover:text-brand-gold group-hover:translate-x-0.5 transition-all shrink-0" />
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
         </div>
 
         {/* Drawer Bottom Footer with Theme & Contact */}
@@ -261,12 +215,12 @@ export function Navbar() {
             className="block w-full"
           >
             <Button variant="gold" size="md" className="w-full justify-center">
-              Inquire Privately
+              Schedule Consultation
             </Button>
           </Link>
 
           <div className="text-[11px] text-muted-foreground text-center font-mono">
-            Aura Estates • Confidential Representation
+            Aura Estates • Exceptional Living
           </div>
         </div>
       </aside>

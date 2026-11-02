@@ -29,17 +29,16 @@ export function CtaBannerSection() {
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-gold/40 bg-black/60 px-3.5 py-1 text-xs font-semibold text-brand-gold backdrop-blur-xs">
               <Lock className="h-3.5 w-3.5" />
               <span className="font-special text-[11px] uppercase tracking-wider">
-                Strict Non-Disclosure Protocols
+                Personalized Advisory
               </span>
             </div>
 
             <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.05]">
-              Initiate a Confidential Portfolio Engagement.
+              Looking for an Exceptional Home?
             </h2>
 
             <p className="text-sm sm:text-base text-white/80 max-w-xl leading-relaxed font-body">
-              Whether securing a trophy residence, disposing of an unlisted architectural asset,
-              or conducting title escrow diligence, our managing partners provide discrete representation.
+              Whether you are looking to acquire a distinctive architectural residence or considering selling your property, our advisors provide personal, confidential guidance at every stage.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -49,7 +48,7 @@ export function CtaBannerSection() {
                   size="lg"
                   rightIcon={<ArrowRight className="h-4 w-4" />}
                 >
-                  Schedule Private Consultation
+                  Schedule a Consultation
                 </Button>
               </Link>
 
@@ -59,7 +58,7 @@ export function CtaBannerSection() {
                   size="lg"
                   className="bg-black/40 text-white border-white/30 hover:bg-black/60"
                 >
-                  Browse Current Portfolio
+                  Explore Properties
                 </Button>
               </Link>
             </div>
@@ -67,11 +66,11 @@ export function CtaBannerSection() {
             <div className="pt-4 border-t border-white/20 flex flex-wrap items-center gap-6 text-xs text-white/70 font-mono">
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="h-4 w-4 text-brand-gold" />
-                <span>Full Fiduciary Security</span>
+                <span>Confidential Guidance</span>
               </span>
               <span className="flex items-center gap-1.5">
                 <Phone className="h-4 w-4 text-brand-gold" />
-                <span>Direct Managing Desk: +1 (310) 880-9200</span>
+                <span>Direct Inquiries: +1 (310) 880-9200</span>
               </span>
             </div>
           </div>

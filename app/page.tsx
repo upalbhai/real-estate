@@ -4,7 +4,6 @@ import { BackToTopButton } from "@/components/navigation/BackToTopButton";
 import { ScrollProgressIndicator, ScrollVelocityMarquee } from "@/components/ui/motion";
 import { HeroSection } from "@/components/sections/home/HeroSection";
 import { FeaturedPropertiesSection } from "@/components/sections/home/FeaturedPropertiesSection";
-import { FlagshipDossierSection } from "@/components/sections/home/FlagshipDossierSection";
 import { NeighborhoodCollectionsSection } from "@/components/sections/home/NeighborhoodCollectionsSection";
 import { AtelierValuePropsSection } from "@/components/sections/home/AtelierValuePropsSection";
 import { AdvisorsSection } from "@/components/sections/home/AdvisorsSection";
@@ -13,9 +12,9 @@ import { CtaBannerSection } from "@/components/sections/home/CtaBannerSection";
 import { luxuryMarqueeItems } from "@/data";
 
 export const metadata = {
-  title: "Aura Estates | Curated Luxury Architecture & Off-Market Residences",
+  title: "Aura Estates | Luxury Real Estate & Architectural Residences",
   description:
-    "Curating the world's most significant modernist architecture, off-market compounds, and trophy penthouses across premier international capitals.",
+    "Discover exceptional luxury properties, modern architectural estates, and penthouses across premier destinations.",
 };
 
 export default function Home() {
@@ -29,7 +28,7 @@ export default function Home() {
 
       {/* Main Homepage Flow */}
       <main className="flex-1">
-        {/* 1. Hero Section with Interactive Portfolio Search & Parallax Depth */}
+        {/* 1. Hero Section with Interactive Property Search & Parallax Depth */}
         <HeroSection />
 
         {/* 2. Scroll-Linked Luxury Ticker Marquee */}
@@ -37,29 +36,26 @@ export default function Home() {
           <ScrollVelocityMarquee items={luxuryMarqueeItems} speed={32} />
         </div>
 
-        {/* 3. Featured Trophy Acquisitions (Grid / Horizontal) */}
+        {/* 3. Featured Properties */}
         <FeaturedPropertiesSection />
 
-        {/* 4. Flagship Architectural Dossier with Multi-Plate Lightbox */}
-        <FlagshipDossierSection />
-
-        {/* 5. Curated Regional Collections with Horizontal Scroll Experience */}
+        {/* 4. Explore Properties by Location */}
         <NeighborhoodCollectionsSection />
 
-        {/* 6. The Atelier Fiduciary Standard */}
+        {/* 5. About the Agency / Our Approach */}
         <AtelierValuePropsSection />
 
-        {/* 7. Senior Leadership & Private Advisors */}
+        {/* 6. Meet Our Team */}
         <AdvisorsSection />
 
-        {/* 8. Client & Family Office Testimonials */}
+        {/* 7. Client Testimonials */}
         <TestimonialsSection />
 
-        {/* 9. Confidential Consultation CTA Banner */}
+        {/* 8. Consultation CTA Banner */}
         <CtaBannerSection />
       </main>
 
-      {/* Public Architectural Footer */}
+      {/* Public Footer */}
       <Footer />
 
       {/* Floating Back to Top Button */}

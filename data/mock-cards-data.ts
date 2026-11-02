@@ -28,8 +28,8 @@ export const mockPropertyCards: PropertyCardData[] = [
   {
     id: "prop-1",
     slug: "the-glasshouse-sanctuary",
-    title: "The Glasshouse Sanctuary",
-    location: "Beverly Hills, Los Angeles, CA",
+    title: "Modern Glass Villa – Beverly Hills",
+    location: "Beverly Hills, CA",
     price: 18500000,
     type: "Modern Villa",
     status: "featured",
@@ -43,15 +43,15 @@ export const mockPropertyCards: PropertyCardData[] = [
       name: "Elena Rostova",
       avatarUrl:
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
-      title: "Senior Partner",
+      title: "Founding Partner",
     },
-    tag: "Architectural Trophy",
+    tag: "Infinity Pool",
     isFavorite: true,
   },
   {
     id: "prop-2",
     slug: "tribeca-sky-penthouse",
-    title: "Tribeca Sky Penthouse",
+    title: "Sky Penthouse – Tribeca",
     location: "Tribeca, New York, NY",
     price: 14200000,
     type: "Sky Penthouse",
@@ -74,7 +74,7 @@ export const mockPropertyCards: PropertyCardData[] = [
   {
     id: "prop-3",
     slug: "biscayne-bay-waterfront-villa",
-    title: "Biscayne Bay Waterfront Villa",
+    title: "Waterfront Estate – Star Island",
     location: "Star Island, Miami Beach, FL",
     price: 24500000,
     type: "Waterfront Estate",
@@ -89,7 +89,7 @@ export const mockPropertyCards: PropertyCardData[] = [
       name: "Sofia Sterling",
       avatarUrl:
         "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
-      title: "Private Client Advisor",
+      title: "Senior Client Advisor",
     },
     tag: "Private Deepwater Dock",
     isFavorite: false,
@@ -97,7 +97,7 @@ export const mockPropertyCards: PropertyCardData[] = [
   {
     id: "prop-4",
     slug: "red-mountain-alpine-chalet",
-    title: "Red Mountain Alpine Chalet",
+    title: "Alpine Chalet – Aspen",
     location: "Aspen, Pitkin County, CO",
     price: 65000,
     pricePeriod: "/ month",
@@ -121,10 +121,10 @@ export const mockPropertyCards: PropertyCardData[] = [
   {
     id: "prop-5",
     slug: "bel-air-horizon-mansion",
-    title: "Bel Air Horizon Mansion",
+    title: "Horizon Residence – Bel Air",
     location: "Bel Air, Los Angeles, CA",
     price: 28000000,
-    type: "Promontory Estate",
+    type: "Contemporary Estate",
     status: "featured",
     bedrooms: 8,
     bathrooms: 11,
@@ -136,15 +136,15 @@ export const mockPropertyCards: PropertyCardData[] = [
       name: "Elena Rostova",
       avatarUrl:
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
-      title: "Senior Partner",
+      title: "Founding Partner",
     },
-    tag: "300° Ocean Vistas",
+    tag: "Ocean & City Views",
     isFavorite: false,
   },
   {
     id: "prop-6",
     slug: "pacific-palisades-ocean-view",
-    title: "Pacific Palisades Ocean View",
+    title: "Coastal Villa – Pacific Palisades",
     location: "Pacific Palisades, CA",
     price: 9800000,
     type: "Coastal Modern",
@@ -159,9 +159,9 @@ export const mockPropertyCards: PropertyCardData[] = [
       name: "Elena Rostova",
       avatarUrl:
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
-      title: "Senior Partner",
+      title: "Founding Partner",
     },
-    tag: "Santa Monica Bay",
+    tag: "Panoramic Ocean Views",
     isFavorite: false,
   },
 ];
@@ -170,58 +170,46 @@ export interface AgentCardData {
   id: string;
   name: string;
   role: string;
-  license: string;
   avatarUrl: string;
-  activeListings: number;
-  salesVolume: string;
-  rating: number;
   phone: string;
   email: string;
   specialty: string;
+  territory: string;
 }
 
 export const mockAgentCards: AgentCardData[] = [
   {
     id: "agent-1",
     name: "Elena Rostova",
-    role: "Founding Partner & Luxury Director",
-    license: "CA DRE #02194821",
+    role: "Founding Partner",
     avatarUrl:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
-    activeListings: 18,
-    salesVolume: "$480M+",
-    rating: 4.98,
-    phone: "+1 (310) 555-0182",
+    phone: "+1 (310) 880-9200",
     email: "elena@auraestates.com",
-    specialty: "Bel Air & Beverly Hills Estates",
+    specialty: "Modernist & Architectural Estates",
+    territory: "Beverly Hills & Bel Air, CA",
   },
   {
     id: "agent-2",
     name: "Marcus Vance",
-    role: "Managing Director - Penthouses",
-    license: "NY RE #10401298",
+    role: "Managing Director",
     avatarUrl:
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
-    activeListings: 12,
-    salesVolume: "$340M+",
-    rating: 4.95,
-    phone: "+1 (212) 555-0199",
+    phone: "+1 (212) 940-7700",
     email: "marcus@auraestates.com",
-    specialty: "Manhattan & Aspen Chalets",
+    specialty: "Luxury Penthouses & Alpine Chalets",
+    territory: "New York & Aspen, CO",
   },
   {
     id: "agent-3",
     name: "Sofia Sterling",
-    role: "Private Client Wealth Advisor",
-    license: "FL BK #3398412",
+    role: "Senior Client Advisor",
     avatarUrl:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
-    activeListings: 15,
-    salesVolume: "$410M+",
-    rating: 4.99,
-    phone: "+1 (305) 555-0144",
+    phone: "+1 (305) 670-3400",
     email: "sofia@auraestates.com",
-    specialty: "Miami Coastal & Waterfront",
+    specialty: "Waterfront & Coastal Properties",
+    territory: "Miami Beach & Star Island, FL",
   },
 ];
 
@@ -316,14 +304,14 @@ export const cardPrimitiveVariants: CardPrimitiveVariantItem[] = [
   {
     id: "gold",
     variant: "gold",
-    title: "Gold VIP Dossier",
+    title: "Gold Accent Card",
     badge: {
-      text: "Trophy Asset",
+      text: "Featured Estate",
       variant: "gold",
     },
-    description: "Accented gold perimeter for private off-market estates.",
-    content: "Reserved for exclusive high-net-worth acquisitions and marquee announcements.",
-    actionText: "Request Private Access",
+    description: "Accented gold border for featured properties and highlights.",
+    content: "Reserved for featured architectural estates and key announcements.",
+    actionText: "View Featured Estate",
     actionVariant: "gold",
   },
 ];

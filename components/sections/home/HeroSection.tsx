@@ -88,35 +88,34 @@ export function HeroSection() {
         <MotionFadeIn delay={0.15}>
           <div className="space-y-4">
             <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl tracking-wider leading-[0.95] text-white drop-shadow-md">
-              ARCHITECTURAL PROWESS.
+              EXCEPTIONAL HOMES.
               <br />
-              <span className="text-brand-gold">UNCOMPROMISING</span> LUXURY.
+              <span className="text-brand-gold">EXTRAORDINARY</span> LIVING.
             </h1>
 
             <p className="font-body text-base sm:text-xl text-white/85 max-w-2xl leading-relaxed">
-              Representing the world&apos;s most significant residential masterworks,
-              off-market compounds, and trophy penthouses across premier international capitals.
+              Representing distinctive residences, architectural estates, and luxury penthouses across premier destinations.
             </p>
           </div>
         </MotionFadeIn>
 
-        {/* Floating Luxury Filter Bar with High-Opacity Glassmorphism */}
+        {/* Floating Property Search Bar */}
         <MotionFadeIn delay={0.25}>
           <div className="dark p-5 sm:p-6 rounded-card border border-white/20 bg-[#161914]/95 backdrop-blur-xl shadow-2xl space-y-4 relative z-30">
             <div className="flex items-center justify-between text-xs text-white/80 pb-2 border-b border-white/10">
               <span className="font-special text-[11px] uppercase tracking-wider text-brand-gold font-semibold flex items-center gap-1.5">
                 <Compass className="h-3.5 w-3.5" />
-                <span>Confidential Portfolio Search</span>
+                <span>Find Your Property</span>
               </span>
               <span className="font-mono text-[11px] text-white/60 hidden sm:inline-block">
-                18 Off-Market Dossiers Active
+                Curated Luxury Residences
               </span>
             </div>
 
             <form onSubmit={handleSearch} className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               <div>
                 <label className="text-[10px] uppercase tracking-wider text-white/70 font-special font-semibold mb-1 block">
-                  Prime Territory
+                  Location
                 </label>
                 <Select
                   value={selectedLocation}
@@ -130,7 +129,7 @@ export function HeroSection() {
 
               <div>
                 <label className="text-[10px] uppercase tracking-wider text-white/70 font-special font-semibold mb-1 block">
-                  Classification
+                  Property Type
                 </label>
                 <Select
                   value={selectedType}
@@ -144,7 +143,7 @@ export function HeroSection() {
 
               <div>
                 <label className="text-[10px] uppercase tracking-wider text-white/70 font-special font-semibold mb-1 block">
-                  Valuation Tier
+                  Price Range
                 </label>
                 <Select
                   value={selectedPrice}
@@ -164,7 +163,7 @@ export function HeroSection() {
                   leftIcon={<Search className="h-4 w-4" />}
                   className="w-full justify-center h-10 font-semibold"
                 >
-                  Explore Portfolio
+                  Search Properties
                 </Button>
               </div>
             </form>
@@ -183,7 +182,7 @@ export function HeroSection() {
             />
           </div>
           <span className="text-[10px] font-special uppercase tracking-widest text-brand-gold font-semibold">
-            Scroll to explore premier architecture
+            Scroll to explore properties
           </span>
         </motion.div>
       </motion.div>

@@ -99,7 +99,7 @@ export default function ContactPage() {
           <Breadcrumbs
             items={[
               { label: "Home", href: "/" },
-              { label: "Private Client Advisory", isCurrent: true },
+              { label: "Contact Us", isCurrent: true },
             ]}
             separator="chevron"
             variant="gold"
@@ -116,38 +116,34 @@ export default function ContactPage() {
             <div className="inline-flex items-center gap-2.5 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-1.5 text-xs font-semibold text-brand-gold backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-gold animate-pulse shadow-[0_0_8px_var(--color-brand-gold)]" />
               <span className="font-special text-[11px] uppercase tracking-wider">
-                Private Advisory Desk
-              </span>
-              <span className="text-muted-foreground font-mono text-[10px]">
-                {"// PROTOCOL CONF-2026"}
+                Get in Touch
               </span>
             </div>
 
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08]">
-              Confidential Client{" "}
+              Schedule a{" "}
               <span className="bg-gradient-to-r from-[#8E6A2F] via-[#B89255] to-[#7A5822] dark:from-brand-gold dark:via-[#F3E3C6] dark:to-brand-gold bg-clip-text text-transparent">
                 Consultation
               </span>
             </h1>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-body">
-              Every inquiry is reviewed directly by our senior equity partners under institutional
-              non-disclosure standards. Please indicate your acquisition or disposition parameters below.
+              Whether you are interested in acquiring an architectural property, listing an existing residence, or speaking with our advisors, we welcome your inquiry.
             </p>
 
-            {/* Fiduciary Assurance Trust Strip */}
+            {/* Trust Strip */}
             <div className="flex flex-wrap items-center gap-2.5 pt-2">
               <div className="inline-flex items-center gap-2 rounded-control border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground shadow-2xs">
                 <ShieldCheck className="h-3.5 w-3.5 text-brand-gold" />
-                <span>Bilateral NDA Standard</span>
+                <span>Confidential Guidance</span>
               </div>
               <div className="inline-flex items-center gap-2 rounded-control border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground shadow-2xs">
                 <Lock className="h-3.5 w-3.5 text-brand-gold" />
-                <span>256-Bit Encrypted Transmission</span>
+                <span>Direct Advisor Representation</span>
               </div>
               <div className="inline-flex items-center gap-2 rounded-control border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground shadow-2xs">
                 <Clock className="h-3.5 w-3.5 text-brand-gold" />
-                <span>Partner Response &lt; 4 Hours</span>
+                <span>Prompt Response</span>
               </div>
             </div>
           </motion.div>
@@ -172,22 +168,20 @@ export default function ContactPage() {
                     </div>
                     <div className="space-y-1">
                       <h3 className="font-heading text-2xl font-bold text-foreground">
-                        Inquiry Received &amp; Encrypted
+                        Inquiry Received
                       </h3>
                       <p className="text-xs sm:text-sm text-muted-foreground max-w-md mx-auto leading-relaxed font-body">
                         Thank you, <strong className="text-foreground">{submittedData.fullName}</strong>.
-                        Your confidential brief has been assigned to a senior managing partner.
-                        A secure communication will follow within four business hours.
+                        Your message has been received and our team will get in touch with you shortly.
                       </p>
                     </div>
 
                     <div className="p-3 rounded-control bg-surface border border-border text-xs font-mono text-muted-foreground max-w-sm mx-auto shadow-2xs">
-                      Reference ID: #{submittedData.refId} • NDA:{" "}
-                      {submittedData.ndaRequested ? "Active" : "Standard"}
+                      Reference #{submittedData.refId}
                     </div>
 
                     <Button variant="gold" size="sm" onClick={() => setSubmittedData(null)}>
-                      Submit Another Brief
+                      Send Another Message
                     </Button>
                   </div>
                 ) : (
@@ -195,27 +189,27 @@ export default function ContactPage() {
                     <div className="flex items-center justify-between pb-3 border-b border-border">
                       <div className="flex items-center gap-2 text-xs font-special uppercase text-brand-gold font-semibold tracking-wider">
                         <Lock className="h-4 w-4" />
-                        <span>Confidential Engagement Form</span>
+                        <span>Consultation Request Form</span>
                       </div>
                       <span className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground uppercase">
                         <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
-                        <span>Encrypted Channel</span>
+                        <span>Secure Submission</span>
                       </span>
                     </div>
 
                     {/* Name & Email Row */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <Input
-                        label="Principal / Entity Name"
+                        label="Your Full Name"
                         placeholder="e.g. Alexander Vance"
                         error={errors.fullName?.message}
                         {...register("fullName")}
                       />
 
                       <Input
-                        label="Direct Corporate / Private Email"
+                        label="Email Address"
                         type="email"
-                        placeholder="a.vance@familyoffice.com"
+                        placeholder="a.vance@example.com"
                         error={errors.email?.message}
                         {...register("email")}
                       />
@@ -224,7 +218,7 @@ export default function ContactPage() {
                     {/* Phone & Principal Type Row */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <Input
-                        label="Direct Telephone (with Country Code)"
+                        label="Phone Number"
                         placeholder="+1 (310) 555-0199"
                         error={errors.phone?.message}
                         {...register("phone")}
@@ -236,7 +230,7 @@ export default function ContactPage() {
                           control={control}
                           render={({ field }) => (
                             <Select
-                              label="Principal Classification"
+                              label="I am a"
                               value={field.value}
                               onValueChange={field.onChange}
                               options={contactPrincipalTypes}
@@ -255,7 +249,7 @@ export default function ContactPage() {
                           control={control}
                           render={({ field }) => (
                             <Select
-                              label="Engagement Category"
+                              label="Inquiry Type"
                               value={field.value}
                               onValueChange={field.onChange}
                               options={contactInquiryTypes}
@@ -271,7 +265,7 @@ export default function ContactPage() {
                           control={control}
                           render={({ field }) => (
                             <Select
-                              label="Target Market Territory"
+                              label="Preferred Location"
                               value={field.value ?? "beverly-hills"}
                               onValueChange={field.onChange}
                               options={heroFilterLocations}
@@ -288,7 +282,7 @@ export default function ContactPage() {
                         control={control}
                         render={({ field }) => (
                           <Select
-                            label="Target Valuation Tier"
+                            label="Price Range"
                             value={field.value ?? "10-20m"}
                             onValueChange={field.onChange}
                             options={heroFilterPriceRanges}
@@ -299,8 +293,8 @@ export default function ContactPage() {
 
                     {/* Message Details */}
                     <Textarea
-                      label="Confidential Brief & Architectural Specifications"
-                      placeholder="Outline specific property parameters, privacy criteria, off-market targets, or preferred closing timeline..."
+                      label="Message / Property Preferences"
+                      placeholder="Share any specific locations, requirements, or questions you have..."
                       rows={4}
                       error={errors.message?.message}
                       {...register("message")}
@@ -313,8 +307,8 @@ export default function ContactPage() {
                         control={control}
                         render={({ field }) => (
                           <Checkbox
-                            label="Require Bilateral Non-Disclosure Agreement (NDA) prior to detailed disclosures"
-                            description="Our legal desk will transmit our institutional mutual NDA for digital execution before releasing unlisted blueprints or financial metrics."
+                            label="Request confidential handling for this inquiry"
+                            description="All shared requirements and contact information will be kept strictly private."
                             checked={field.value}
                             onCheckedChange={field.onChange}
                           />
@@ -333,8 +327,8 @@ export default function ContactPage() {
                         className="w-full justify-center shadow-md hover:shadow-lg font-bold text-sm tracking-wider"
                       >
                         {isSubmitting
-                          ? "Encrypting & Transmitting Fiduciary Brief..."
-                          : "Transmit Confidential Brief"}
+                          ? "Sending Message..."
+                          : "Submit Request"}
                       </Button>
                     </div>
                   </form>
@@ -356,18 +350,18 @@ export default function ContactPage() {
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
                     <span className="font-special text-[10px] uppercase tracking-widest text-brand-gold font-bold">
-                      Executive Desk
+                      Direct Contact
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-gold/10 px-2 py-0.5 text-[10px] font-mono text-brand-gold border border-brand-gold/30">
                       <span className="h-1.5 w-1.5 rounded-full bg-brand-gold animate-pulse" />
-                      Direct Fiduciary
+                      Advisors Available
                     </span>
                   </div>
                   <h3 className="font-heading text-xl font-bold text-foreground">
-                    Immediate Fiduciary Hotline
+                    Direct Assistance
                   </h3>
                   <p className="text-xs text-muted-foreground leading-relaxed font-body">
-                    For urgent off-market acquisitions, time-sensitive escrows, or discreet architectural dispositions.
+                    Speak directly with an advisor regarding property acquisitions, private showings, or listing inquiries.
                   </p>
                 </div>
 
@@ -391,7 +385,7 @@ export default function ContactPage() {
                   </a>
 
                   <a
-                    href="mailto:desk@auraestates.com"
+                    href="mailto:contact@auraestates.com"
                     className="p-3.5 rounded-control border border-border bg-surface-secondary/40 flex items-center justify-between group hover:border-brand-gold/50 hover:bg-surface-secondary transition-all duration-200"
                   >
                     <div className="flex items-center gap-3">
@@ -399,9 +393,9 @@ export default function ContactPage() {
                         <Mail className="h-4 w-4" />
                       </div>
                       <div>
-                        <div className="text-[10px] font-special uppercase tracking-wider text-muted-foreground">Corporate Email</div>
+                        <div className="text-[10px] font-special uppercase tracking-wider text-muted-foreground">Email</div>
                         <div className="text-xs font-mono font-bold text-foreground group-hover:text-brand-gold transition-colors">
-                          desk@auraestates.com
+                          contact@auraestates.com
                         </div>
                       </div>
                     </div>
@@ -411,18 +405,18 @@ export default function ContactPage() {
 
                 <div className="flex items-center gap-2 pt-2 border-t border-border text-xs text-muted-foreground">
                   <Clock className="h-3.5 w-3.5 text-brand-gold shrink-0" />
-                  <span className="text-[11px] font-body">24/7 Monitoring for Institutional Clients &amp; Family Offices</span>
+                  <span className="text-[11px] font-body">Monday through Saturday, 9am - 7pm</span>
                 </div>
               </div>
 
-              {/* Global Office Cards as Architectural Embassy Passes */}
+              {/* Global Office Cards */}
               <div className="space-y-3 pt-2">
                 <div className="flex items-center justify-between">
                   <span className="font-special text-[11px] uppercase tracking-wider text-brand-gold font-bold">
-                    Global Physical Hubs
+                    Office Locations
                   </span>
                   <span className="text-[10px] font-mono text-muted-foreground">
-                    4 Embassies Worldwide
+                    4 Regional Offices
                   </span>
                 </div>
 
@@ -437,7 +431,7 @@ export default function ContactPage() {
                           {office.city}
                         </span>
                         <span className="text-[10px] font-mono text-brand-gold border border-brand-gold/30 bg-brand-gold/10 px-2 py-0.5 rounded-full uppercase tracking-wider">
-                          Office Hub
+                          Office Location
                         </span>
                       </div>
                       <p className="text-xs text-muted-foreground leading-relaxed font-body">

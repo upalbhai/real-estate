@@ -24,8 +24,8 @@ export const mockProperties: PropertyRecord[] = [
   {
     id: "1",
     code: "EST-801",
-    title: "The Glasshouse Sanctuary",
-    type: "Ultra-Modern Villa",
+    title: "Modern Glass Villa – Beverly Hills",
+    type: "Modern Villa",
     location: "Beverly Hills, CA",
     price: 18500000,
     bedrooms: 6,
@@ -38,8 +38,8 @@ export const mockProperties: PropertyRecord[] = [
   {
     id: "2",
     code: "EST-802",
-    title: "Tribeca Sky Penthouse",
-    type: "Duplex Penthouse",
+    title: "Sky Penthouse – Tribeca",
+    type: "Luxury Penthouse",
     location: "Tribeca, New York, NY",
     price: 14200000,
     bedrooms: 4,
@@ -52,13 +52,13 @@ export const mockProperties: PropertyRecord[] = [
   {
     id: "3",
     code: "EST-803",
-    title: "Biscayne Bay Waterfront Villa",
+    title: "Waterfront Estate – Star Island",
     type: "Waterfront Estate",
-    location: "Miami Beach, FL",
-    price: 22750000,
+    location: "Star Island, Miami Beach, FL",
+    price: 24500000,
     bedrooms: 7,
     bathrooms: 9,
-    areaSqft: 11200,
+    areaSqft: 11800,
     status: "available",
     agent: { name: "Sofia Sterling", avatarBg: "bg-brand-charcoal text-white" },
     listedDate: "2026-09-28",
@@ -66,13 +66,13 @@ export const mockProperties: PropertyRecord[] = [
   {
     id: "4",
     code: "EST-804",
-    title: "Aspen Alpine Chalet",
-    type: "Mountain Retreat",
+    title: "Alpine Chalet – Aspen",
+    type: "Ski-in Retreat",
     location: "Aspen, CO",
     price: 12900000,
     bedrooms: 5,
     bathrooms: 6,
-    areaSqft: 7500,
+    areaSqft: 7200,
     status: "pending",
     agent: { name: "Elena Rostova", avatarBg: "bg-brand-olive text-white" },
     listedDate: "2026-10-02",
@@ -80,7 +80,7 @@ export const mockProperties: PropertyRecord[] = [
   {
     id: "5",
     code: "EST-805",
-    title: "Bel Air Horizon Mansion",
+    title: "Horizon Residence – Bel Air",
     type: "Contemporary Estate",
     location: "Bel Air, Los Angeles, CA",
     price: 28000000,
@@ -94,8 +94,8 @@ export const mockProperties: PropertyRecord[] = [
   {
     id: "6",
     code: "EST-806",
-    title: "Pacific Palisades Ocean View",
-    type: "Coastal Residence",
+    title: "Coastal Villa – Pacific Palisades",
+    type: "Coastal Modern",
     location: "Pacific Palisades, CA",
     price: 9800000,
     bedrooms: 4,
@@ -177,10 +177,10 @@ export const defaultPropertyImage =
   "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80";
 
 export const propertyStatusSelectOptions: { value: PropertyStatus; label: string }[] = [
-  { value: "available", label: "Available for Acquisition" },
-  { value: "featured", label: "Trophy Asset (Featured)" },
-  { value: "pending", label: "Under Contract / In Escrow" },
-  { value: "sold", label: "Conveyed & Closed" },
+  { value: "available", label: "Available" },
+  { value: "featured", label: "Featured" },
+  { value: "pending", label: "Under Contract" },
+  { value: "sold", label: "Sold" },
 ];
 
 export const luxuryAmenitiesList: string[] = [

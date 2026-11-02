@@ -66,12 +66,9 @@ export interface DetailedProperty {
   agent: {
     name: string;
     role: string;
-    license: string;
     avatarUrl: string;
     phone: string;
     email: string;
-    salesVolume: string;
-    rating: number;
   };
   seo: {
     metaTitle: string;
@@ -150,12 +147,12 @@ export const detailedProperties: DetailedProperty[] = [
         ]
       },
       {
-        category: "Security & Fiduciary Infrastructure",
+        category: "Security & Grounds",
         items: [
-          "Perimeter infrared tripwires and AI surveillance cameras",
-          "Biometric fingerprint & iris recognition access controls",
-          "Commercial-grade backup generator with 72-hour autonomous fuel reserve",
-          "Fiduciary escrow ready with completed title and ALTA boundary survey"
+          "Gated private motor court with security monitoring",
+          "Automated keyless entry and exterior property lighting",
+          "Commercial-grade backup generator system",
+          "Title report and ALTA boundary survey completed"
         ]
       }
     ],
@@ -225,22 +222,19 @@ export const detailedProperties: DetailedProperty[] = [
       annualTaxes: "$222,000 / year (Est. Los Angeles County 1.2%)",
       monthlyHoa: "$0 (Private Fee-Simple Independent Parcel)",
       estimatedMortgage: "$94,200 / month (Assuming 20% down, 6.25% Jumbo 30Y)",
-      suggestedEscrowReserve: "$925,000 (5% Fiduciary Escrow Deposit)",
+      suggestedEscrowReserve: "$925,000 (5% Initial Deposit)",
       transferTaxTier: "City of Los Angeles Measure ULA Applicable"
     },
     agent: {
       name: "Elena Rostova",
       role: "Founding Partner & Luxury Director",
-      license: "CA DRE #02194821",
       avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
       phone: "+1 (310) 880-9200",
       email: "elena@auraestates.com",
-      salesVolume: "$480M+ Transacted",
-      rating: 4.98
     },
     seo: {
-      metaTitle: "The Glasshouse Sanctuary | $18.5M Trophy Estate in Beverly Hills, CA",
-      metaDescription: "Explore The Glasshouse Sanctuary: a 9,400 sqft cantilevered architectural masterpiece in Beverly Hills featuring 6 beds, 8 baths, and zero-edge infinity pool.",
+      metaTitle: "The Glasshouse Sanctuary | $18.5M Modern Villa in Beverly Hills, CA",
+      metaDescription: "Explore The Glasshouse Sanctuary: a 9,400 sqft cantilevered modernist home in Beverly Hills featuring 6 beds, 8 baths, and zero-edge infinity pool.",
       keywords: ["Beverly Hills luxury real estate", "The Glasshouse Sanctuary", "modern architectural villa", "Beverly Hills 90210 homes for sale", "luxury real estate Los Angeles"]
     }
   },
@@ -310,11 +304,11 @@ export const detailedProperties: DetailedProperty[] = [
         ]
       },
       {
-        category: "Governance & Fiduciary Status",
+        category: "Building Management & Amenities",
         items: [
-          "Condominium ownership with full closing dossier prepared",
-          "Investor friendly with flexible corporate ownership structure",
-          "Verified AML cleared title packet available upon NDA"
+          "Condominium ownership with full offering plan available",
+          "Flexible ownership structures permitted (trusts and LLCs)",
+          "Clear title report and board documentation available"
         ]
       }
     ],
@@ -372,18 +366,15 @@ export const detailedProperties: DetailedProperty[] = [
       annualTaxes: "$148,000 / year (NYC Real Property Tax)",
       monthlyHoa: "$5,850 / month (Common Charges & Building Staff)",
       estimatedMortgage: "$72,300 / month (Assuming 20% down, 6.25% Jumbo 30Y)",
-      suggestedEscrowReserve: "$710,000 (5% Fiduciary Escrow Deposit)",
+      suggestedEscrowReserve: "$710,000 (5% Initial Deposit)",
       transferTaxTier: "NYS & NYC Real Property Transfer Tax Applicable"
     },
     agent: {
       name: "Marcus Vance",
       role: "Managing Director - Penthouses",
-      license: "NY RE #10401298",
       avatarUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
-      phone: "+1 (212) 555-0199",
+      phone: "+1 (212) 940-7700",
       email: "marcus@auraestates.com",
-      salesVolume: "$340M+ Transacted",
-      rating: 4.95
     },
     seo: {
       metaTitle: "Tribeca Sky Penthouse | $14.2M Duplex Penthouse in Tribeca, NYC",
@@ -457,11 +448,11 @@ export const detailedProperties: DetailedProperty[] = [
         ]
       },
       {
-        category: "Security & Fiduciary Infrastructure",
+        category: "Security & Waterfront Access",
         items: [
-          "Star Island private 24/7 guardhouse and dedicated marine patrol",
-          "Full perimeter smart motion sensors and biometric access",
-          "Institutional fiduciary standard with clean title report"
+          "Star Island private 24/7 guardhouse and security monitoring",
+          "Private deepwater dockage with 120ft vessel slip",
+          "Clean title report and environmental survey completed"
         ]
       }
     ],
@@ -519,18 +510,15 @@ export const detailedProperties: DetailedProperty[] = [
       annualTaxes: "$294,000 / year (Miami-Dade County)",
       monthlyHoa: "$1,250 / month (Star Island Homeowners Security Association)",
       estimatedMortgage: "$124,500 / month (Assuming 20% down, 6.25% Jumbo 30Y)",
-      suggestedEscrowReserve: "$1,225,000 (5% Fiduciary Escrow Deposit)",
+      suggestedEscrowReserve: "$1,225,000 (5% Initial Deposit)",
       transferTaxTier: "Florida Documentary Stamp Tax on Deeds Applicable"
     },
     agent: {
       name: "Sofia Sterling",
       role: "Private Client Wealth Advisor",
-      license: "FL BK #3398412",
       avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
-      phone: "+1 (305) 555-0144",
+      phone: "+1 (305) 670-3400",
       email: "sofia@auraestates.com",
-      salesVolume: "$410M+ Transacted",
-      rating: 4.99
     },
     seo: {
       metaTitle: "Biscayne Bay Waterfront Villa | $24.5M Star Island Estate in Miami Beach",
@@ -605,11 +593,11 @@ export const detailedProperties: DetailedProperty[] = [
         ]
       },
       {
-        category: "Security & Fiduciary Protocols",
+        category: "Security & Estate Access",
         items: [
           "Private gated mountain road with heated sensor entry",
-          "Institutional lease contract with seasonal extension terms",
-          "Discreet private landlord representation under NDA"
+          "Executive lease agreement with seasonal renewal options",
+          "Professional owner representation and local property management"
         ]
       }
     ],
@@ -667,18 +655,15 @@ export const detailedProperties: DetailedProperty[] = [
       annualTaxes: "Included in Lease Valuation",
       monthlyHoa: "None / Private Mountain Road Maintenance Included",
       estimatedMortgage: "N/A - Prime Luxury Rental Offering",
-      suggestedEscrowReserve: "$130,000 (Two Months Security Escrow Deposit)",
+      suggestedEscrowReserve: "$130,000 (Two Months Security Deposit)",
       transferTaxTier: "City of Aspen Short/Long-Term Lodging Registration Compliant"
     },
     agent: {
       name: "Marcus Vance",
       role: "Managing Director - Penthouses & Alpine",
-      license: "CO RE #10401298",
       avatarUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
-      phone: "+1 (212) 555-0199",
+      phone: "+1 (212) 940-7700",
       email: "marcus@auraestates.com",
-      salesVolume: "$340M+ Transacted",
-      rating: 4.95
     },
     seo: {
       metaTitle: "Red Mountain Alpine Chalet | $65,000/mo Luxury Ski Chalet in Aspen, CO",
@@ -814,22 +799,19 @@ export const detailedProperties: DetailedProperty[] = [
       annualTaxes: "$336,000 / year (Los Angeles County)",
       monthlyHoa: "$650 / month (Bel Air Association)",
       estimatedMortgage: "$142,500 / month (Assuming 20% down, 6.25% Jumbo 30Y)",
-      suggestedEscrowReserve: "$1,400,000 (5% Fiduciary Escrow Deposit)",
+      suggestedEscrowReserve: "$1,400,000 (5% Initial Deposit)",
       transferTaxTier: "City of Los Angeles Measure ULA Applicable"
     },
     agent: {
       name: "Elena Rostova",
       role: "Founding Partner & Luxury Director",
-      license: "CA DRE #02194821",
       avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
       phone: "+1 (310) 880-9200",
       email: "elena@auraestates.com",
-      salesVolume: "$480M+ Transacted",
-      rating: 4.98
     },
     seo: {
       metaTitle: "Bel Air Horizon Mansion | $28M Promontory Estate in Bel Air, CA",
-      metaDescription: "Tour Bel Air Horizon Mansion: 14,500 sqft Paul McClean architectural triumph with 8 beds, 11 baths, 90ft infinity pool, and 300-degree panoramic ocean views.",
+      metaDescription: "Tour Bel Air Horizon Mansion: 14,500 sqft Paul McClean contemporary estate with 8 beds, 11 baths, 90ft infinity pool, and 300-degree panoramic ocean views.",
       keywords: ["Bel Air mansion for sale", "Paul McClean architecture", "luxury real estate Bel Air", "Bel Air promontory estate", "ultra luxury homes Los Angeles"]
     }
   },
@@ -898,10 +880,10 @@ export const detailedProperties: DetailedProperty[] = [
         ]
       },
       {
-        category: "Security & Fiduciary Clearance",
+        category: "Security & Property Boundaries",
         items: [
-          "Private gated driveway with license plate recognition camera",
-          "Fiduciary escrow ready with completed geological slope study"
+          "Private gated driveway with security monitoring",
+          "Geological slope study and boundary survey completed"
         ]
       }
     ],
@@ -952,18 +934,15 @@ export const detailedProperties: DetailedProperty[] = [
       annualTaxes: "$118,000 / year (Los Angeles County)",
       monthlyHoa: "$0 (Private Parcel)",
       estimatedMortgage: "$49,800 / month (Assuming 20% down, 6.25% Jumbo 30Y)",
-      suggestedEscrowReserve: "$490,000 (5% Fiduciary Escrow Deposit)",
+      suggestedEscrowReserve: "$490,000 (5% Initial Deposit)",
       transferTaxTier: "City of Los Angeles Measure ULA Applicable"
     },
     agent: {
       name: "Elena Rostova",
       role: "Founding Partner & Luxury Director",
-      license: "CA DRE #02194821",
       avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
       phone: "+1 (310) 880-9200",
       email: "elena@auraestates.com",
-      salesVolume: "$480M+ Transacted",
-      rating: 4.98
     },
     seo: {
       metaTitle: "Pacific Palisades Ocean View | $9.8M Coastal Modern Residence",
