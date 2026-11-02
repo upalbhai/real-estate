@@ -15,8 +15,13 @@ import {
   Layers,
   Shield,
   Maximize2,
+  AlertTriangle,
+  Tag,
+  Compass,
+  Command as CommandIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { sidebarNavSections } from "@/data";
 
@@ -29,6 +34,10 @@ const navIconMap = {
   CreditCard,
   Shield,
   Maximize2,
+  AlertTriangle,
+  Tag,
+  Compass,
+  Command: CommandIcon,
 };
 
 export function ComponentsSidebar() {
@@ -62,13 +71,16 @@ export function ComponentsSidebar() {
               </p>
             </div>
           </Link>
-          <button
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon-sm"
             onClick={() => setMobileOpen(false)}
-            className="md:hidden rounded-control p-1.5 text-muted-foreground hover:bg-surface-secondary"
+            className="md:hidden"
             aria-label="Close menu"
           >
             <X className="h-5 w-5" />
-          </button>
+          </Button>
         </div>
 
         {/* Navigation Groups */}
@@ -147,13 +159,15 @@ export function ComponentsSidebar() {
       {/* Mobile Top Bar */}
       <header className="sticky top-0 z-30 flex h-14 w-full items-center justify-between border-b border-border bg-surface px-4 md:hidden">
         <div className="flex items-center gap-2">
-          <button
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon-sm"
             onClick={() => setMobileOpen(true)}
-            className="rounded-control p-2 text-foreground hover:bg-surface-secondary focus-visible:ring-2 focus-visible:ring-ring"
             aria-label="Open sidebar"
           >
             <Menu className="h-5 w-5" />
-          </button>
+          </Button>
           <div className="flex items-center gap-2">
             <Building2 className="h-5 w-5 text-brand-gold" />
             <span className="font-heading font-bold text-foreground">

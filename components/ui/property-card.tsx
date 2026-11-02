@@ -125,21 +125,23 @@ export function PropertyCard({
           </div>
 
           {/* Favorite Button */}
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="icon-sm"
             onClick={toggleFavorite}
             aria-label={isFav ? "Remove from saved" : "Save property"}
             className={cn(
-              "absolute top-3.5 right-3.5 z-10 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-md transition-all duration-200 active:scale-90 cursor-pointer",
+              "absolute top-3.5 right-3.5 z-10 h-9 w-9 rounded-full backdrop-blur-md transition-all duration-200 active:scale-90 p-0",
               isFav
-                ? "bg-surface text-error shadow-sm"
+                ? "bg-surface text-error shadow-sm hover:bg-surface/90"
                 : "bg-black/40 text-white hover:bg-black/60"
             )}
           >
             <Heart
               className={cn("h-4 w-4 transition-transform", isFav && "fill-current scale-110")}
             />
-          </button>
+          </Button>
         </div>
 
         {/* Content Column */}
@@ -280,21 +282,23 @@ export function PropertyCard({
         </div>
 
         {/* Favorite Button */}
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon-sm"
           onClick={toggleFavorite}
           aria-label={isFav ? "Remove from saved" : "Save property"}
           className={cn(
-            "absolute top-3.5 right-3.5 z-10 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-md transition-all duration-200 active:scale-90 cursor-pointer",
+            "absolute top-3.5 right-3.5 z-10 h-9 w-9 rounded-full backdrop-blur-md transition-all duration-200 active:scale-90 p-0",
             isFav
-              ? "bg-surface text-error shadow-sm"
+              ? "bg-surface text-error shadow-sm hover:bg-surface/90"
               : "bg-black/40 text-white hover:bg-black/60"
           )}
         >
           <Heart
             className={cn("h-4 w-4 transition-transform", isFav && "fill-current scale-110")}
           />
-        </button>
+        </Button>
 
         {/* Bottom Image Overlay: Price Tag */}
         <div className="absolute bottom-3 left-3.5 right-3.5 flex items-baseline justify-between z-10 text-white pointer-events-none">

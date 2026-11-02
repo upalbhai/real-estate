@@ -21,6 +21,7 @@ import { AgentCard } from "@/components/ui/agent-card";
 import { StatCard } from "@/components/ui/stat-card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import {
   mockPropertyCards,
   mockAgentCards,
@@ -85,30 +86,36 @@ export default function CardsShowcasePage() {
 
           {/* Layout Toggle Buttons */}
           <div className="flex items-center gap-1.5 rounded-control border border-border bg-surface-secondary p-1 self-start sm:self-auto">
-            <button
+            <Button
               type="button"
+              variant={propertyLayout === "grid" ? "secondary" : "ghost"}
+              size="xs"
               onClick={() => setPropertyLayout("grid")}
-              className={`flex items-center gap-1.5 rounded-[0.45rem] px-3 py-1.5 text-xs font-medium transition-all ${
+              leftIcon={<LayoutGrid className="h-3.5 w-3.5" />}
+              className={cn(
+                "rounded-[0.45rem] px-3 py-1.5 text-xs font-medium h-auto",
                 propertyLayout === "grid"
                   ? "bg-surface text-foreground shadow-xs font-semibold"
                   : "text-muted-foreground hover:text-foreground"
-              }`}
+              )}
             >
-              <LayoutGrid className="h-3.5 w-3.5" />
               <span>Grid View</span>
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant={propertyLayout === "horizontal" ? "secondary" : "ghost"}
+              size="xs"
               onClick={() => setPropertyLayout("horizontal")}
-              className={`flex items-center gap-1.5 rounded-[0.45rem] px-3 py-1.5 text-xs font-medium transition-all ${
+              leftIcon={<List className="h-3.5 w-3.5" />}
+              className={cn(
+                "rounded-[0.45rem] px-3 py-1.5 text-xs font-medium h-auto",
                 propertyLayout === "horizontal"
                   ? "bg-surface text-foreground shadow-xs font-semibold"
                   : "text-muted-foreground hover:text-foreground"
-              }`}
+              )}
             >
-              <List className="h-3.5 w-3.5" />
               <span>Horizontal List</span>
-            </button>
+            </Button>
           </div>
         </div>
 

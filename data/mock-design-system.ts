@@ -2,12 +2,30 @@ export interface OverviewComponentItem {
   title: string;
   description: string;
   href: string;
-  iconName: "SquareTerminal" | "TableProperties" | "ListFilter" | "CheckSquare" | "CreditCard" | "Maximize2";
+  iconName: "SquareTerminal" | "TableProperties" | "ListFilter" | "CheckSquare" | "CreditCard" | "Maximize2" | "AlertTriangle" | "Tag" | "Compass" | "Command";
   count: string;
   badge: string;
 }
 
 export const overviewComponentsList: OverviewComponentItem[] = [
+  {
+    title: "Command Palette",
+    description:
+      "Spotlight command menu with ⌘K keyboard navigation, fuzzy property search, operational quick actions, and embedded inline modes.",
+    href: "/components/command",
+    iconName: "Command",
+    count: "Keyboard ⌘K",
+    badge: "Spotlight",
+  },
+  {
+    title: "Breadcrumbs",
+    description:
+      "Hierarchical wayfinding trails, delimiter variants (chevron, slash, arrow, dot), responsive ellipsis collapsing, and photo hero glassmorphic badges.",
+    href: "/components/breadcrumbs",
+    iconName: "Compass",
+    count: "4 Delimiters",
+    badge: "Wayfinding",
+  },
   {
     title: "Buttons",
     description:
@@ -16,6 +34,24 @@ export const overviewComponentsList: OverviewComponentItem[] = [
     iconName: "SquareTerminal",
     count: "8 Variants",
     badge: "Core UI",
+  },
+  {
+    title: "Dialogs & Modals",
+    description:
+      "Delete confirmation dialogs with irreversible typed verification, bilateral NDA modals, and compound dialog primitives.",
+    href: "/components/dialogs",
+    iconName: "AlertTriangle",
+    count: "Confirmation UI",
+    badge: "Interactive",
+  },
+  {
+    title: "Badges & Tags",
+    description:
+      "Curated real estate status badges (Exclusive, Under Contract, Available, Sold) with live animated pulse dots and gold foil.",
+    href: "/components/badges",
+    iconName: "Tag",
+    count: "9 Variants",
+    badge: "Design Tokens",
   },
   {
     title: "Data Table",
@@ -155,7 +191,7 @@ export const homeFeatureHighlights: HomeFeatureHighlight[] = [
 export interface SidebarNavItem {
   name: string;
   href: string;
-  iconName: "Layers" | "SquareTerminal" | "TableProperties" | "ListFilter" | "CheckSquare" | "CreditCard" | "Shield" | "Maximize2";
+  iconName: "Layers" | "SquareTerminal" | "TableProperties" | "ListFilter" | "CheckSquare" | "CreditCard" | "Shield" | "Maximize2" | "AlertTriangle" | "Tag" | "Compass" | "Command";
   badge?: string;
   isNew?: boolean;
 }
@@ -191,6 +227,34 @@ export const sidebarNavSections: SidebarNavSection[] = [
   {
     section: "UI Components",
     items: [
+      {
+        name: "Command Palette",
+        href: "/components/command",
+        iconName: "Command",
+        badge: "Spotlight",
+        isNew: true,
+      },
+      {
+        name: "Breadcrumbs",
+        href: "/components/breadcrumbs",
+        iconName: "Compass",
+        badge: "Wayfinding",
+        isNew: true,
+      },
+      {
+        name: "Dialogs & Modals",
+        href: "/components/dialogs",
+        iconName: "AlertTriangle",
+        badge: "Interactive",
+        isNew: true,
+      },
+      {
+        name: "Badges & Tags",
+        href: "/components/badges",
+        iconName: "Tag",
+        badge: "Tokens",
+        isNew: true,
+      },
       {
         name: "Buttons",
         href: "/components/buttons",

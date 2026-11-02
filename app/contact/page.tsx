@@ -16,6 +16,7 @@ import {
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+import { Breadcrumbs } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select } from "@/components/ui/select";
@@ -94,6 +95,17 @@ export default function ContactPage() {
 
       <main className="relative z-10 flex-1 py-12 sm:py-16">
         <div className="section-container space-y-12">
+          {/* Top Breadcrumb */}
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Private Client Advisory", isCurrent: true },
+            ]}
+            separator="chevron"
+            variant="gold"
+            size="sm"
+          />
+
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -113,7 +125,7 @@ export default function ContactPage() {
 
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08]">
               Confidential Client{" "}
-              <span className="bg-gradient-to-r from-brand-gold via-amber-200 to-brand-gold bg-clip-text text-transparent dark:from-brand-gold dark:via-amber-100 dark:to-brand-gold">
+              <span className="bg-gradient-to-r from-[#8E6A2F] via-[#B89255] to-[#7A5822] dark:from-brand-gold dark:via-[#F3E3C6] dark:to-brand-gold bg-clip-text text-transparent">
                 Consultation
               </span>
             </h1>

@@ -8,4 +8,8 @@ export * from "./mock-admin-data";
 export * from "./mock-home-data";
 export * from "./mock-property-detail";
 export * from "./mock-faq-data";
+export * from "./mock-dialogs-data";
+export * from "./mock-badges-data";
+export * from "./mock-breadcrumbs-data";
+export * from "./mock-command-data";
 

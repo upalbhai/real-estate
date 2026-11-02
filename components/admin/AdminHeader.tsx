@@ -11,19 +11,22 @@ import {
   ExternalLink,
   ChevronDown,
   ChevronRight,
-  Shield,
   ShieldCheck,
   LogOut,
   Settings,
   Building2,
   Users,
   Compass,
-  Command,
-  X,
   Layers,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  CommandMenu,
+  CommandTrigger,
+  CommandGroupDefinition,
+} from "@/components/ui/command";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { useAdminStore } from "@/store/useAdminStore";
 import { adminNotificationList, mockProperties, adminRecentInquiries } from "@/data";
@@ -42,42 +45,91 @@ export function AdminHeader() {
   const [notificationOpen, setNotificationOpen] = React.useState(false);
   const [profileOpen, setProfileOpen] = React.useState(false);
   const [searchOpen, setSearchOpen] = React.useState(false);
-  const [searchQuery, setSearchQuery] = React.useState("");
 
-  // Handle keyboard shortcut ⌘K / Ctrl+K for search
-  React.useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        setSearchOpen((prev) => !prev);
-      } else if (e.key === "Escape") {
-        setSearchOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  // Filtered search results
-  const filteredProperties = React.useMemo(() => {
-    if (!searchQuery.trim()) return mockProperties.slice(0, 3);
-    return mockProperties.filter(
-      (p) =>
-        p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.location.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }, [searchQuery]);
-
-  const filteredInquiries = React.useMemo(() => {
-    if (!searchQuery.trim()) return adminRecentInquiries.slice(0, 2);
-    return adminRecentInquiries.filter(
-      (inq) =>
-        inq.clientName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        inq.propertyCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        inq.entityName.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }, [searchQuery]);
+  // Structured Command Palette Groups
+  const adminCommandGroups: CommandGroupDefinition[] = React.useMemo(() => {
+    return [
+      {
+        heading: "Trophy Architectural Estates",
+        items: mockProperties.map((prop) => ({
+          id: `prop-${prop.id}`,
+          label: prop.title,
+          description: `${prop.location} • ${prop.code} • ${prop.type}`,
+          badge: `$${(prop.price / 1000000).toFixed(1)}M`,
+          icon: Building2,
+          href: "/admin/properties",
+          onSelect: () => router.push("/admin/properties"),
+          keywords: [prop.title, prop.code, prop.location, prop.type, "property", "estate"],
+        })),
+      },
+      {
+        heading: "HNW Acquisition Inquiries",
+        items: adminRecentInquiries.map((inq) => ({
+          id: `inq-${inq.id}`,
+          label: inq.clientName,
+          description: `${inq.entityName} • Target: ${inq.propertyCode}`,
+          badge: inq.statusLabel,
+          icon: Users,
+          href: "/admin/leads",
+          onSelect: () => router.push("/admin/leads"),
+          keywords: [inq.clientName, inq.entityName, inq.propertyCode, "lead", "client"],
+        })),
+      },
+      {
+        heading: "Operations & Governance Routes",
+        items: [
+          {
+            id: "route-new-prop",
+            label: "Deploy New Listing Prospectus",
+            description: "Create and publish luxury property specifications",
+            icon: Building2,
+            badge: "Create",
+            shortcut: "⌘N",
+            onSelect: () => router.push("/admin/properties/new"),
+            keywords: ["create", "add", "new", "listing"],
+          },
+          {
+            id: "route-analytics",
+            label: "Market Intelligence & Analytics",
+            description: "Review transacted volume, yields, and DOM metrics",
+            icon: ShieldCheck,
+            badge: "Analytics",
+            onSelect: () => router.push("/admin/analytics"),
+            keywords: ["analytics", "market", "volume", "charts"],
+          },
+          {
+            id: "route-settings",
+            label: "Security & Fiduciary Governance",
+            description: "Hardware key authentication & bilateral NDA protocol",
+            icon: Settings,
+            badge: "Security",
+            onSelect: () => router.push("/admin/settings"),
+            keywords: ["settings", "security", "nda", "governance"],
+          },
+          {
+            id: "route-components",
+            label: "Design System Component Suite",
+            description: "Inspect component library and design tokens",
+            icon: Layers,
+            badge: "Tokens",
+            shortcut: "G C",
+            onSelect: () => router.push("/components"),
+            keywords: ["components", "design system", "tokens"],
+          },
+          {
+            id: "route-home",
+            label: "Public Portfolio Showcase",
+            description: "View client-facing catalog and editorial dossiers",
+            icon: ExternalLink,
+            badge: "Public Site",
+            shortcut: "G H",
+            onSelect: () => router.push("/"),
+            keywords: ["home", "public", "portfolio"],
+          },
+        ],
+      },
+    ];
+  }, [router]);
 
   // Generate breadcrumb path
   const pathSegments = pathname.split("/").filter(Boolean);
@@ -113,14 +165,16 @@ export function AdminHeader() {
 
         {/* Left: Mobile Toggle & Breadcrumbs */}
         <div className="flex items-center gap-3 min-w-0">
-          <button
+          <Button
             type="button"
+            variant="secondary"
+            size="icon-sm"
             onClick={() => setMobileSidebarOpen(true)}
-            className="md:hidden flex h-9 w-9 shrink-0 items-center justify-center rounded-control border border-border bg-surface-secondary text-foreground hover:bg-surface-secondary/80 transition-colors"
+            className="md:hidden shrink-0"
             aria-label="Open navigation sidebar"
           >
             <Menu className="h-5 w-5" />
-          </button>
+          </Button>
 
           {/* Breadcrumb Navigation */}
           <nav className="flex items-center gap-1.5 text-xs text-muted-foreground min-w-0">
@@ -154,20 +208,11 @@ export function AdminHeader() {
 
         {/* Center/Left: Sleek Command Search Trigger Bar */}
         <div className="hidden md:flex flex-1 max-w-sm mx-4">
-          <button
-            type="button"
+          <CommandTrigger
             onClick={() => setSearchOpen(true)}
-            className="w-full h-9 px-3 rounded-control border border-border/80 bg-surface-secondary/40 hover:bg-surface-secondary/80 hover:border-brand-gold/50 text-muted-foreground hover:text-foreground transition-all flex items-center justify-between text-xs group"
-          >
-            <div className="flex items-center gap-2 truncate">
-              <Search className="h-3.5 w-3.5 text-brand-gold/80 group-hover:text-brand-gold transition-colors" />
-              <span className="truncate">Search estates, investors, escrows...</span>
-            </div>
-            <div className="flex items-center gap-1 rounded bg-surface px-1.5 py-0.5 text-[10px] font-mono font-medium text-muted-foreground border border-border shadow-2xs">
-              <Command className="h-2.5 w-2.5" />
-              <span>K</span>
-            </div>
-          </button>
+            label="Search estates, investors, escrows..."
+            shortcut="⌘K"
+          />
         </div>
 
         {/* Right: Action Pills, Notifications, Theme, Profile */}
@@ -192,21 +237,25 @@ export function AdminHeader() {
           </div>
 
           {/* Search Trigger for Mobile/Tablet */}
-          <button
+          <Button
             type="button"
+            variant="secondary"
+            size="icon-sm"
             onClick={() => setSearchOpen(true)}
-            className="md:hidden flex h-9 w-9 items-center justify-center rounded-control border border-border bg-surface text-muted-foreground hover:text-foreground hover:bg-surface-secondary transition-colors"
+            className="md:hidden"
             aria-label="Open search"
           >
             <Search className="h-4 w-4" />
-          </button>
+          </Button>
 
           {/* Notification Bell with Concierge Popover */}
           <Popover open={notificationOpen} onOpenChange={setNotificationOpen}>
             <PopoverTrigger asChild>
-              <button
+              <Button
                 type="button"
-                className="relative flex h-9 w-9 items-center justify-center rounded-control border border-border/80 bg-surface text-muted-foreground hover:text-foreground hover:bg-surface-secondary transition-colors"
+                variant="secondary"
+                size="icon-sm"
+                className="relative"
                 aria-label="View notifications"
               >
                 <Bell className="h-4 w-4" />
@@ -215,7 +264,7 @@ export function AdminHeader() {
                     {unreadNotifications}
                   </span>
                 )}
-              </button>
+              </Button>
             </PopoverTrigger>
 
             <PopoverContent
@@ -233,14 +282,16 @@ export function AdminHeader() {
                 </div>
 
                 {unreadNotifications > 0 && (
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
+                    size="xs"
                     onClick={markNotificationsAsRead}
-                    className="flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground transition-colors font-medium"
+                    className="h-auto p-1 text-[11px] font-medium"
+                    leftIcon={<Check className="h-3 w-3" />}
                   >
-                    <Check className="h-3 w-3" />
-                    <span>Clear all</span>
-                  </button>
+                    Clear all
+                  </Button>
                 )}
               </div>
 
@@ -285,9 +336,11 @@ export function AdminHeader() {
           {/* Interactive Executive Profile Dropdown */}
           <Popover open={profileOpen} onOpenChange={setProfileOpen}>
             <PopoverTrigger asChild>
-              <button
+              <Button
                 type="button"
-                className="flex items-center gap-2 p-1 sm:px-2.5 sm:py-1.5 rounded-control  bg-surface hover:bg-surface-secondary hover:border-brand-gold/40 transition-all cursor-pointer group"
+                variant="ghost"
+                size="sm"
+                className="h-auto p-1 sm:px-2.5 sm:py-1.5 rounded-control hover:border-brand-gold/40"
                 aria-label="Executive account menu"
               >
                 {/* Avatar with Online Security Dot */}
@@ -301,9 +354,8 @@ export function AdminHeader() {
                   <span className="absolute bottom-0 right-0 h-2 w-2 rounded-full bg-success ring-2 ring-surface" />
                 </div>
 
-
                 <ChevronDown className="h-3.5 w-3.5 text-muted-foreground transition-transform group-hover:text-foreground hidden sm:block" />
-              </button>
+              </Button>
             </PopoverTrigger>
 
             <PopoverContent
@@ -379,142 +431,32 @@ export function AdminHeader() {
                   <span>SOC2 Type II</span>
                 </div>
 
-                <button
+                <Button
                   type="button"
+                  variant="destructive"
+                  size="sm"
+                  fullWidth
                   onClick={handleLogout}
-                  className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-control text-xs font-semibold text-error hover:bg-error/10 border border-error/20 transition-colors"
+                  leftIcon={<LogOut className="h-3.5 w-3.5" />}
+                  className="font-semibold"
                 >
-                  <LogOut className="h-3.5 w-3.5" />
-                  <span>Sign Out of Terminal</span>
-                </button>
+                  Sign Out of Terminal
+                </Button>
               </div>
             </PopoverContent>
           </Popover>
         </div>
       </header>
 
-      {/* Global Quick Command Search Modal Dialog (⌘K) */}
-      {searchOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-black/60 backdrop-blur-xs animate-fadeIn">
-          <div
-            className="w-full max-w-xl rounded-card border border-border bg-surface shadow-2xl overflow-hidden animate-scaleUp"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Search Input Box */}
-            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-border bg-surface-secondary/40">
-              <Search className="h-5 w-5 text-brand-gold shrink-0" />
-              <input
-                type="text"
-                autoFocus
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search estates, leads, contracts, or settings..."
-                className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
-              />
-              <button
-                type="button"
-                onClick={() => setSearchOpen(false)}
-                className="p-1 rounded-control text-muted-foreground hover:text-foreground hover:bg-surface-secondary transition-colors"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            {/* Results Body */}
-            <div className="max-h-96 overflow-y-auto p-3 space-y-4 text-xs divide-y divide-border">
-              {/* Properties Section */}
-              <div className="space-y-1.5">
-                <div className="px-2 text-[10px] font-special uppercase tracking-wider text-muted-foreground font-semibold">
-                  Trophy Estates ({filteredProperties.length})
-                </div>
-                {filteredProperties.map((prop) => (
-                  <Link
-                    key={prop.id}
-                    href="/admin/properties"
-                    onClick={() => setSearchOpen(false)}
-                    className="flex items-center justify-between p-2 rounded-control hover:bg-surface-secondary transition-colors group"
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <div className="flex h-7 w-7 items-center justify-center rounded bg-primary text-primary-foreground font-mono text-[10px]">
-                        {prop.code}
-                      </div>
-                      <div>
-                        <span className="font-semibold text-foreground group-hover:text-brand-gold transition-colors block">
-                          {prop.title}
-                        </span>
-                        <span className="text-[11px] text-muted-foreground">
-                          {prop.location} • {prop.type}
-                        </span>
-                      </div>
-                    </div>
-                    <span className="font-mono font-bold text-foreground">
-                      ${(prop.price / 1000000).toFixed(1)}M
-                    </span>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Inquiries Section */}
-              <div className="pt-3 space-y-1.5">
-                <div className="px-2 text-[10px] font-special uppercase tracking-wider text-muted-foreground font-semibold">
-                  HNW Acquisition Leads ({filteredInquiries.length})
-                </div>
-                {filteredInquiries.map((inq) => (
-                  <Link
-                    key={inq.id}
-                    href="/admin/leads"
-                    onClick={() => setSearchOpen(false)}
-                    className="flex items-center justify-between p-2 rounded-control hover:bg-surface-secondary transition-colors group"
-                  >
-                    <div>
-                      <span className="font-semibold text-foreground group-hover:text-brand-gold transition-colors block">
-                        {inq.clientName}
-                      </span>
-                      <span className="text-[11px] text-muted-foreground">
-                        {inq.entityName} • Target: {inq.propertyCode}
-                      </span>
-                    </div>
-                    <Badge variant={inq.statusVariant} size="sm">
-                      {inq.statusLabel}
-                    </Badge>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Quick Navigation Pages */}
-              <div className="pt-3 space-y-1.5">
-                <div className="px-2 text-[10px] font-special uppercase tracking-wider text-muted-foreground font-semibold">
-                  Operations Routes
-                </div>
-                <div className="grid grid-cols-2 gap-1.5">
-                  <Link
-                    href="/admin/properties/new"
-                    onClick={() => setSearchOpen(false)}
-                    className="p-2 rounded-control border border-border/80 bg-surface-secondary/30 hover:bg-surface-secondary hover:border-brand-gold/40 text-foreground transition-all flex items-center gap-2"
-                  >
-                    <Building2 className="h-3.5 w-3.5 text-brand-gold" />
-                    <span>Deploy New Listing</span>
-                  </Link>
-                  <Link
-                    href="/admin/analytics"
-                    onClick={() => setSearchOpen(false)}
-                    className="p-2 rounded-control border border-border/80 bg-surface-secondary/30 hover:bg-surface-secondary hover:border-brand-gold/40 text-foreground transition-all flex items-center gap-2"
-                  >
-                    <Shield className="h-3.5 w-3.5 text-brand-gold" />
-                    <span>Market Intelligence</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Footer */}
-            <div className="flex items-center justify-between px-4 py-2 border-t border-border bg-surface-secondary/40 text-[11px] text-muted-foreground">
-              <span>Press <kbd className="font-mono bg-surface px-1 py-0.5 rounded border border-border">ESC</kbd> to close</span>
-              <span className="font-mono text-brand-gold">AURA QUICK-SEARCH</span>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Global Command Palette Dialog for Admin (⌘K) */}
+      <CommandMenu
+        open={searchOpen}
+        onOpenChange={setSearchOpen}
+        groups={adminCommandGroups}
+        placeholder="Search estates, investors, operations, or routes..."
+        emptyText="No matching records or actions found."
+        footerNote="Aura Executive Portal • Press ESC to dismiss"
+      />
     </>
   );
 }

@@ -212,12 +212,15 @@ export function Footer() {
             <span>Licensed Real Estate Fiduciary</span>
           </div>
 
-          <div className="flex items-center gap-4 font-mono text-[11px]">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 font-mono text-[11px]">
             <Link href="/about" className="hover:text-foreground dark:hover:text-[#F5F2EB] transition-colors">
               Privacy Notice
             </Link>
             <Link href="/about" className="hover:text-foreground dark:hover:text-[#F5F2EB] transition-colors">
               Terms of Representation
+            </Link>
+            <Link href="/components" className="text-muted-foreground hover:text-brand-gold font-medium transition-colors">
+              Theme Dash →
             </Link>
             <Link href="/admin" className="text-brand-gold hover:text-amber-300 font-semibold transition-colors">
               Executive Portal →

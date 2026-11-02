@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/motion";
 import { mockPropertyCards, portfolioFilterTabs } from "@/data";
 import { useFavoriteStore } from "@/store/useFavoriteStore";
+import { cn } from "@/lib/utils";
 
 export function FeaturedPropertiesSection() {
   const [activeTab, setActiveTab] = React.useState("all");
@@ -61,32 +62,28 @@ export function FeaturedPropertiesSection() {
           {/* View Mode Controls (Grid vs Horizontal) */}
           <div className="flex items-center gap-2 self-start md:self-end">
             <div className="flex items-center gap-1 p-1 rounded-control bg-surface-secondary/70 border border-border">
-              <button
+              <Button
                 type="button"
+                variant={layoutMode === "grid" ? "primary" : "ghost"}
+                size="icon-sm"
                 onClick={() => setLayoutMode("grid")}
-                className={`p-1.5 rounded-control transition-all cursor-pointer ${
-                  layoutMode === "grid"
-                    ? "bg-primary text-primary-foreground shadow-2xs"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className="h-7 w-7 p-0"
                 title="Grid Layout"
                 aria-label="Grid layout"
               >
                 <LayoutGrid className="h-4 w-4" />
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                variant={layoutMode === "horizontal" ? "primary" : "ghost"}
+                size="icon-sm"
                 onClick={() => setLayoutMode("horizontal")}
-                className={`p-1.5 rounded-control transition-all cursor-pointer ${
-                  layoutMode === "horizontal"
-                    ? "bg-primary text-primary-foreground shadow-2xs"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className="h-7 w-7 p-0"
                 title="Horizontal Row Layout"
                 aria-label="Horizontal layout"
               >
                 <List className="h-4 w-4" />
-              </button>
+              </Button>
             </div>
 
             <Link href="/properties">
@@ -106,18 +103,21 @@ export function FeaturedPropertiesSection() {
       <MotionFadeIn delay={0.1}>
         <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
           {portfolioFilterTabs.map((tab) => (
-            <button
+            <Button
               key={tab.id}
               type="button"
+              variant={activeTab === tab.id ? "primary" : "secondary"}
+              size="sm"
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
+              className={cn(
+                "rounded-full text-xs font-medium uppercase tracking-wider whitespace-nowrap",
                 activeTab === tab.id
-                  ? "bg-primary text-primary-foreground font-bold shadow-xs border border-brand-gold/40"
-                  : "bg-surface-secondary/50 text-muted-foreground hover:text-foreground hover:bg-surface-secondary border border-border"
-              }`}
+                  ? "font-bold shadow-xs border-brand-gold/40"
+                  : "bg-surface-secondary/50 text-muted-foreground hover:text-foreground"
+              )}
             >
               {tab.label}
-            </button>
+            </Button>
           ))}
         </div>
       </MotionFadeIn>

@@ -8,6 +8,10 @@ import {
   ArrowRight,
   Palette,
   Maximize2,
+  AlertTriangle,
+  Tag,
+  Compass,
+  Command as CommandIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -24,6 +28,10 @@ const iconMap = {
   CheckSquare,
   CreditCard,
   Maximize2,
+  AlertTriangle,
+  Tag,
+  Compass,
+  Command: CommandIcon,
 };
 
 export default function ComponentsOverviewPage() {

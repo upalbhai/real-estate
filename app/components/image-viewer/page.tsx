@@ -8,7 +8,9 @@ import {
   Sliders,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import {
   ImageViewer,
   ImageGalleryViewer,
@@ -89,17 +91,21 @@ export default function ImageViewerShowcasePage() {
           {/* Aspect Ratio Switcher */}
           <div className="flex items-center gap-1.5 p-1 rounded-control bg-surface-secondary/60 border border-border">
             {(["wide", "video", "square"] as const).map((aspect) => (
-              <button
+              <Button
                 key={aspect}
                 type="button"
+                variant={selectedAspect === aspect ? "secondary" : "ghost"}
+                size="xs"
                 onClick={() => setSelectedAspect(aspect)}
-                className={`px-3 py-1 text-xs font-mono font-medium rounded-control transition-all capitalize ${selectedAspect === aspect
+                className={cn(
+                  "px-3 py-1 text-xs font-mono font-medium rounded-control capitalize h-auto",
+                  selectedAspect === aspect
                     ? "bg-primary text-primary-foreground shadow-2xs font-bold"
                     : "text-muted-foreground hover:text-foreground"
-                  }`}
+                )}
               >
                 {aspect}
-              </button>
+              </Button>
             ))}
           </div>
         </div>

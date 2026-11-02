@@ -553,18 +553,21 @@ export function DataTable<TData>({
                 const isActive = safePage === pageNumber;
 
                 return (
-                  <button
+                  <Button
                     key={pageNumber}
+                    type="button"
+                    variant={isActive ? "primary" : "ghost"}
+                    size="icon-sm"
                     onClick={() => setCurrentPage(pageNumber)}
                     className={cn(
-                      "h-7 w-7 rounded-[0.375rem] text-xs font-medium transition-colors",
+                      "h-7 w-7 text-xs font-medium",
                       isActive
-                        ? "bg-primary text-primary-foreground font-semibold"
+                        ? "font-semibold"
                         : "text-muted-foreground hover:bg-surface-secondary hover:text-foreground"
                     )}
                   >
                     {pageNumber}
-                  </button>
+                  </Button>
                 );
               })}
             </div>

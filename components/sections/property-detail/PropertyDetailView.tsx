@@ -23,7 +23,6 @@ import {
   Phone,
   Mail,
   ArrowRight,
-  ArrowLeft,
   Eye,
   Compass,
   Anchor,
@@ -37,6 +36,7 @@ import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Breadcrumbs } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -143,21 +143,16 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
         <div className="section-container space-y-10">
           {/* Top Breadcrumb & Action Bar */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border">
-            <div className="flex items-center gap-2 text-xs text-muted-foreground flex-wrap">
-              <Link
-                href="/properties"
-                className="hover:text-brand-gold transition-colors flex items-center gap-1 font-medium"
-              >
-                <ArrowLeft className="h-3.5 w-3.5" />
-                <span>All Acquisitions</span>
-              </Link>
-              <span>/</span>
-              <span className="text-foreground">{property.territory}</span>
-              <span>/</span>
-              <span className="text-brand-gold font-semibold font-special text-[11px] uppercase">
-                {property.code}
-              </span>
-            </div>
+            <Breadcrumbs
+              items={[
+                { label: "Portfolio", href: "/properties", icon: Building2 },
+                { label: property.territory, href: `/properties?territory=${encodeURIComponent(property.territory)}` },
+                { label: property.title, badge: property.code, isCurrent: true },
+              ]}
+              separator="chevron"
+              variant="gold"
+              size="sm"
+            />
 
             {/* Quick Action Tools */}
             <div className="flex items-center gap-2">
@@ -503,19 +498,21 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
                   {/* Level Switcher Tabs */}
                   <div className="flex items-center gap-1.5 bg-surface-secondary/50 p-1 rounded-control border border-border">
                     {property.floorPlans.map((fp, idx) => (
-                      <button
+                      <Button
                         key={fp.level}
                         type="button"
+                        variant={activeFloorPlanIndex === idx ? "primary" : "ghost"}
+                        size="xs"
                         onClick={() => setActiveFloorPlanIndex(idx)}
                         className={cn(
-                          "px-3 py-1 text-xs font-semibold rounded-control transition-all cursor-pointer select-none",
+                          "text-xs font-semibold rounded-control transition-all",
                           activeFloorPlanIndex === idx
-                            ? "bg-primary text-primary-foreground shadow-2xs"
+                            ? "shadow-2xs"
                             : "text-muted-foreground hover:text-foreground"
                         )}
                       >
                         {fp.level}
-                      </button>
+                      </Button>
                     ))}
                   </div>
                 </div>

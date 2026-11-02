@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
   Search,
@@ -16,9 +15,11 @@ import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Breadcrumbs } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { PropertyCard } from "@/components/ui/property-card";
+import { cn } from "@/lib/utils";
 import {
   MotionFadeIn,
   MotionStaggerContainer,
@@ -152,13 +153,15 @@ function PropertiesCatalogContent() {
       {/* Header & Breadcrumb */}
       <MotionFadeIn>
         <div className="space-y-3 pb-6 border-b border-border">
-          <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
-            <Link href="/" className="hover:text-foreground transition-colors">
-              Aura Estates
-            </Link>
-            <span>/</span>
-            <span className="text-brand-gold font-semibold">Active Portfolio Catalog</span>
-          </div>
+          <Breadcrumbs
+            items={[
+              { label: "Aura Estates", href: "/" },
+              { label: "Portfolio Catalog", badge: `${filteredProperties.length} Assets`, isCurrent: true },
+            ]}
+            separator="slash"
+            variant="gold"
+            size="sm"
+          />
 
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
@@ -172,18 +175,15 @@ function PropertiesCatalogContent() {
             </div>
 
             <div className="flex items-center gap-2 shrink-0">
-              <button
+              <Button
                 type="button"
+                variant={showSavedOnly ? "destructive" : "secondary"}
+                size="sm"
                 onClick={() => setShowSavedOnly((prev) => !prev)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-control text-xs font-medium border transition-all cursor-pointer ${
-                  showSavedOnly
-                    ? "bg-error/15 text-error border-error/40 font-bold"
-                    : "bg-surface-secondary/40 text-muted-foreground border-border hover:text-foreground"
-                }`}
+                leftIcon={<Heart className={cn("h-3.5 w-3.5", showSavedOnly && "fill-current")} />}
               >
-                <Heart className={`h-3.5 w-3.5 ${showSavedOnly ? "fill-current" : ""}`} />
-                <span>Saved Only ({favorites.length})</span>
-              </button>
+                Saved Only ({favorites.length})
+              </Button>
             </div>
           </div>
         </div>
@@ -204,14 +204,16 @@ function PropertiesCatalogContent() {
             </div>
 
             {activeFiltersCount > 0 && (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="xs"
                 onClick={handleResetFilters}
-                className="flex items-center gap-1 text-xs text-muted-foreground hover:text-error transition-colors cursor-pointer"
+                leftIcon={<RotateCcw className="h-3 w-3" />}
+                className="text-muted-foreground hover:text-error h-auto py-1 px-2"
               >
-                <RotateCcw className="h-3 w-3" />
-                <span>Reset Filters</span>
-              </button>
+                Reset Filters
+              </Button>
             )}
           </div>
 
@@ -290,32 +292,28 @@ function PropertiesCatalogContent() {
 
           {/* Layout Toggle */}
           <div className="flex items-center gap-1 p-1 rounded-control bg-surface-secondary/60 border border-border">
-            <button
+            <Button
               type="button"
+              variant={layoutMode === "grid" ? "primary" : "ghost"}
+              size="icon-sm"
               onClick={() => setLayoutMode("grid")}
-              className={`p-1.5 rounded-control transition-all cursor-pointer ${
-                layoutMode === "grid"
-                  ? "bg-primary text-primary-foreground shadow-2xs"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className="h-7 w-7 p-0"
               title="Grid View"
               aria-label="Grid layout"
             >
               <LayoutGrid className="h-4 w-4" />
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant={layoutMode === "horizontal" ? "primary" : "ghost"}
+              size="icon-sm"
               onClick={() => setLayoutMode("horizontal")}
-              className={`p-1.5 rounded-control transition-all cursor-pointer ${
-                layoutMode === "horizontal"
-                  ? "bg-primary text-primary-foreground shadow-2xs"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className="h-7 w-7 p-0"
               title="List View"
               aria-label="List layout"
             >
               <List className="h-4 w-4" />
-            </button>
+            </Button>
           </div>
         </div>
       </div>

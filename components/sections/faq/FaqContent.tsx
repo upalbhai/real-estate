@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Breadcrumbs } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
 import {
   faqCategories,
@@ -43,19 +44,23 @@ export function FaqContent() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <div className="section-container py-12 sm:py-16 space-y-12">
+    <div className="section-container py-12 sm:py-16 space-y-10">
+      {/* Top Breadcrumb */}
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Private Client FAQ", isCurrent: true },
+        ]}
+        separator="chevron"
+        variant="gold"
+        size="sm"
+      />
+
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 rounded-full border border-brand-gold/40 bg-brand-gold/10 px-4 py-1.5 text-xs font-semibold text-brand-gold">
-          <HelpCircle className="h-3.5 w-3.5" />
-          <span className="font-special text-[11px] uppercase tracking-wider">
-            Fiduciary Knowledge Base
-          </span>
-        </div>
-
         <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08]">
           Frequently Asked{" "}
-          <span className="bg-gradient-to-r from-brand-gold via-amber-200 to-brand-gold bg-clip-text text-transparent dark:from-brand-gold dark:via-amber-100 dark:to-brand-gold">
+          <span className="bg-gradient-to-r from-[#8E6A2F] via-[#B89255] to-[#7A5822] dark:from-brand-gold dark:via-[#F3E3C6] dark:to-brand-gold bg-clip-text text-transparent">
             Questions
           </span>
         </h1>
@@ -81,19 +86,21 @@ export function FaqContent() {
           {faqCategories.map((cat) => {
             const isSelected = selectedCategory === cat.id;
             return (
-              <button
+              <Button
                 key={cat.id}
                 type="button"
+                variant={isSelected ? "primary" : "secondary"}
+                size="xs"
                 onClick={() => setSelectedCategory(cat.id)}
                 className={cn(
-                  "px-3.5 py-1.5 rounded-full text-xs font-medium uppercase tracking-wider transition-all cursor-pointer select-none border",
+                  "rounded-full uppercase tracking-wider font-medium",
                   isSelected
-                    ? "bg-primary text-primary-foreground border-brand-gold/50 font-bold shadow-2xs"
-                    : "bg-surface text-muted-foreground border-border hover:border-brand-gold/40 hover:text-foreground"
+                    ? "border-brand-gold/50 font-bold shadow-2xs"
+                    : "hover:border-brand-gold/40"
                 )}
               >
                 {cat.label}
-              </button>
+              </Button>
             );
           })}
         </div>
@@ -114,10 +121,12 @@ export function FaqContent() {
                     : "border-border hover:border-brand-gold/40"
                 )}
               >
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
+                  fullWidth
                   onClick={() => toggleItem(faq.id)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer select-none"
+                  className="p-5 sm:p-6 h-auto text-left justify-between rounded-none hover:bg-transparent"
                   aria-expanded={isOpen}
                 >
                   <div className="space-y-1">
@@ -137,7 +146,7 @@ export function FaqContent() {
                   >
                     <ChevronDown className="h-4 w-4" />
                   </div>
-                </button>
+                </Button>
 
                 {isOpen && (
                   <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-muted-foreground leading-relaxed font-body border-t border-border/60 pt-4 animate-fadeIn">

@@ -6,7 +6,6 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Building2,
-  ArrowLeft,
   Save,
   CheckCircle2,
   Sparkles,
@@ -21,6 +20,7 @@ import { Switch } from "@/components/ui/switch";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Breadcrumbs } from "@/components/ui/breadcrumb";
 import AsyncSelect, { Option } from "@/components/ui/async-select";
 import {
   adminPropertySchema,
@@ -107,16 +107,21 @@ export default function AdminNewPropertyPage() {
 
   return (
     <div className="space-y-8 animate-fadeIn max-w-5xl mx-auto">
+      {/* Wayfinding Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { label: "Executive Desk", href: "/admin", icon: Shield },
+          { label: "Portfolio Registry", href: "/admin/properties" },
+          { label: "Deploy New Prospectus", badge: "Form", isCurrent: true },
+        ]}
+        separator="chevron"
+        variant="gold"
+        size="sm"
+      />
+
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-border">
         <div className="space-y-1">
-          <Link
-            href="/admin/properties"
-            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mb-1"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Back to Properties Portfolio</span>
-          </Link>
           <div className="flex items-center gap-2">
             <Badge variant="gold">Architectural Dossier</Badge>
             <span className="text-xs text-muted-foreground font-mono">

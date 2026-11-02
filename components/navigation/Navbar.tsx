@@ -10,11 +10,13 @@ import {
   Heart,
   ArrowRight,
   ChevronRight,
+  Shield,
+  Layers,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
-import { headerNavLinks } from "@/data";
+import { headerNavLinks, portalNavLinks } from "@/data";
 import { useFavoriteStore } from "@/store/useFavoriteStore";
 
 export function Navbar() {
@@ -66,18 +68,18 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Center: Desktop Navigation Links (Portfolio, About, FAQ, Contact Us) */}
-          <nav className="hidden lg:flex items-center gap-8">
+          {/* Center: Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
             {headerNavLinks.map((link) => {
               const isActive =
                 pathname === link.href ||
-                (link.href !== "/" && pathname.startsWith(link.href));
+                (link.href !== "/" && !link.href.startsWith("/#") && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.label}
                   href={link.href}
                   className={cn(
-                    "text-xs uppercase tracking-wider font-medium transition-colors relative py-1",
+                    "text-xs uppercase tracking-wider font-medium transition-colors relative py-1 whitespace-nowrap",
                     isActive
                       ? "text-brand-gold font-semibold"
                       : "text-muted-foreground hover:text-foreground"
@@ -131,14 +133,16 @@ export function Navbar() {
             </Link>
 
             {/* Mobile Hamburger Menu Button */}
-            <button
+            <Button
               type="button"
+              variant="secondary"
+              size="icon-sm"
               onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden flex h-9 w-9 items-center justify-center rounded-control border border-border bg-surface text-foreground hover:bg-surface-secondary transition-colors"
+              className="lg:hidden"
               aria-label="Open mobile navigation menu"
             >
               <Menu className="h-5 w-5" />
-            </button>
+            </Button>
           </div>
         </div>
       </header>
@@ -170,14 +174,15 @@ export function Navbar() {
               </span>
             </div>
 
-            <button
+            <Button
               type="button"
+              variant="ghost"
+              size="icon-sm"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex h-8 w-8 items-center justify-center rounded-control border border-border text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Close menu"
             >
               <X className="h-4 w-4" />
-            </button>
+            </Button>
           </div>
 
           {/* Navigation Links */}
@@ -202,6 +207,45 @@ export function Navbar() {
               );
             })}
           </nav>
+
+          {/* Portals & Dashboards for Mobile */}
+          <div className="pt-3 border-t border-border space-y-2">
+            <div className="flex items-center justify-between px-1">
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-special font-semibold">
+                Portals &amp; Dashboards
+              </span>
+              <span className="text-[10px] font-mono text-brand-gold">Executive &amp; Dev</span>
+            </div>
+
+            <div className="grid grid-cols-1 gap-2">
+              {portalNavLinks.map((item) => {
+                const Icon = item.iconName === "Shield" ? Shield : Layers;
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between p-2.5 rounded-control border border-border bg-surface-secondary/40 hover:bg-surface-secondary hover:border-brand-gold/50 transition-all group"
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-control bg-primary text-primary-foreground border border-brand-gold/30">
+                        <Icon className="h-4 w-4 text-brand-gold" />
+                      </div>
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-xs font-semibold text-foreground group-hover:text-brand-gold transition-colors truncate">
+                          {item.label}
+                        </span>
+                        <span className="text-[10px] text-muted-foreground truncate">
+                          {item.shortLabel} • {item.badge}
+                        </span>
+                      </div>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground/60 group-hover:text-brand-gold group-hover:translate-x-0.5 transition-all shrink-0" />
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* Drawer Bottom Footer with Theme & Contact */}

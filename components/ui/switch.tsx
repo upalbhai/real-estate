@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export interface SwitchProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> {
@@ -67,7 +68,7 @@ export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
 
     return (
       <div className={cn("flex items-start gap-3 select-none", className)}>
-        <button
+        <Button
           id={switchId}
           ref={ref}
           type="button"
@@ -75,15 +76,17 @@ export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
           aria-checked={isChecked}
           disabled={disabled}
           onClick={toggle}
+          variant="ghost"
+          size="xs"
           className={cn(
-            "relative inline-flex shrink-0 cursor-pointer rounded-full border-2 border-transparent",
+            "!relative !inline-flex !shrink-0 cursor-pointer !rounded-full !border-2 !border-transparent !p-0 !min-w-0 !gap-0 !shadow-none",
             "transition-colors duration-250 ease-out active:scale-95",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
             "disabled:cursor-not-allowed disabled:opacity-50 mt-0.5",
             cfg.track,
             isChecked
-              ? "bg-brand-gold border-brand-gold shadow-xs"
-              : "bg-surface-secondary border-border hover:border-brand-olive/50"
+              ? "!bg-brand-gold !border-brand-gold shadow-xs"
+              : "!bg-surface-secondary !border-border hover:!border-brand-olive/50"
           )}
           {...props}
         >
@@ -100,7 +103,7 @@ export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
               <span className="h-1.5 w-1.5 rounded-full bg-brand-gold animate-fadeIn" />
             )}
           </span>
-        </button>
+        </Button>
 
         {(label || description) && (
           <label

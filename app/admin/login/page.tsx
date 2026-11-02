@@ -178,10 +178,12 @@ export default function AdminLoginPage() {
                 placeholder="Enter authorized key"
                 leftIcon={<Lock className="h-4 w-4" />}
                 rightIcon={
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
+                    size="icon-sm"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="text-muted-foreground hover:text-foreground transition-colors p-1"
+                    className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground"
                     aria-label="Toggle password view"
                   >
                     {showPassword ? (
@@ -189,7 +191,7 @@ export default function AdminLoginPage() {
                     ) : (
                       <Eye className="h-4 w-4" />
                     )}
-                  </button>
+                  </Button>
                 }
                 error={errors.password?.message}
                 {...register("password")}
@@ -203,13 +205,15 @@ export default function AdminLoginPage() {
                 defaultChecked
                 onCheckedChange={(checked) => setValue("rememberMe", !!checked)}
               />
-              <button
+              <Button
                 type="button"
+                variant="link"
+                size="sm"
                 onClick={() => alert("Please contact corporate security to reset hardware keys.")}
-                className="text-xs text-brand-gold hover:underline font-medium"
+                className="text-xs text-brand-gold hover:underline font-medium p-0 h-auto"
               >
                 Reset hardware key?
-              </button>
+              </Button>
             </div>
 
             <Button
@@ -236,11 +240,13 @@ export default function AdminLoginPage() {
 
             <div className="grid grid-cols-1 gap-2">
               {adminDemoAccounts.map((account) => (
-                <button
+                <Button
                   key={account.id}
                   type="button"
+                  variant="secondary"
+                  fullWidth
                   onClick={() => handleFillDemo(account)}
-                  className="w-full text-left rounded-control border border-border bg-surface-secondary/40 p-3 hover:border-brand-gold/50 hover:bg-surface-secondary transition-all group flex items-center justify-between gap-3"
+                  className="h-auto rounded-control border border-border bg-surface-secondary/40 p-3 hover:border-brand-gold/50 hover:bg-surface-secondary transition-all group flex items-center justify-between gap-3 text-left font-normal"
                 >
                   <div className="space-y-0.5 truncate">
                     <div className="flex items-center gap-2">
@@ -255,7 +261,7 @@ export default function AdminLoginPage() {
                       {account.role} • {account.email}
                     </p>
                   </div>
-                </button>
+                </Button>
               ))}
             </div>
           </div>

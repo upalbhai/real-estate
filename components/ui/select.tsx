@@ -3,6 +3,7 @@
 import * as React from "react";
 import { ChevronDown, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export interface SelectOption {
   value: string;
@@ -144,10 +145,12 @@ export function Select({
         {/* If options array is provided, render out-of-the-box trigger & content */}
         {options ? (
           <>
-            <button
+            <Button
               id={selectId}
               ref={triggerRef}
               type="button"
+              variant="secondary"
+              fullWidth
               role="combobox"
               aria-expanded={open}
               aria-controls={open ? listboxId : undefined}
@@ -155,10 +158,8 @@ export function Select({
               disabled={disabled}
               onClick={() => !disabled && setOpen(!open)}
               className={cn(
-                "w-full h-10 px-4 py-2 flex items-center justify-between gap-2.5 rounded-control border bg-input text-sm text-foreground",
+                "h-10 px-4 py-2 justify-between gap-2.5 bg-input text-sm text-foreground font-normal",
                 "outline-none transition-all duration-200 cursor-pointer select-none",
-                "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                "disabled:cursor-not-allowed disabled:opacity-50",
                 open && "ring-2 ring-ring border-transparent",
                 error
                   ? "border-error focus-visible:ring-error"
@@ -181,7 +182,7 @@ export function Select({
                   open && "rotate-180 opacity-100 text-foreground"
                 )}
               />
-            </button>
+            </Button>
 
             {open && (
               <div
@@ -275,9 +276,11 @@ export function SelectTrigger({
   const { open, setOpen, value, triggerRef, listboxId, disabled } = useSelect();
 
   return (
-    <button
+    <Button
       ref={triggerRef}
       type="button"
+      variant="secondary"
+      fullWidth
       role="combobox"
       aria-expanded={open}
       aria-controls={open ? listboxId : undefined}
@@ -285,11 +288,9 @@ export function SelectTrigger({
       disabled={disabled}
       onClick={() => !disabled && setOpen(!open)}
       className={cn(
-        "w-full h-10 px-4 py-2 flex items-center justify-between gap-2.5 rounded-control border border-border bg-input text-sm text-foreground",
-        "outline-none transition-all duration-200 cursor-pointer select-none shadow-xs",
+        "h-10 px-4 py-2 justify-between gap-2.5 bg-input text-sm text-foreground font-normal shadow-xs",
+        "outline-none transition-all duration-200 cursor-pointer select-none",
         "hover:bg-surface-secondary/40 hover:border-brand-olive/50",
-        "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-        "disabled:cursor-not-allowed disabled:opacity-50",
         open && "ring-2 ring-ring border-transparent",
         !value && "text-muted-foreground",
         className
@@ -303,7 +304,7 @@ export function SelectTrigger({
           open && "rotate-180 opacity-100 text-foreground"
         )}
       />
-    </button>
+    </Button>
   );
 }
 

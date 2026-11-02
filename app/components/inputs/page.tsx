@@ -140,10 +140,12 @@ export default function InputsShowcasePage() {
             placeholder="Enter secure passcode"
             leftIcon={<Lock className="h-4 w-4" />}
             rightIcon={
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="icon-sm"
                 onClick={() => setShowPassword(!showPassword)}
-                className="text-muted-foreground hover:text-foreground transition-colors p-1"
+                className="h-6 w-6 p-0 text-muted-foreground hover:text-foreground"
                 aria-label="Toggle password visibility"
               >
                 {showPassword ? (
@@ -151,7 +153,7 @@ export default function InputsShowcasePage() {
                 ) : (
                   <Eye className="h-4 w-4" />
                 )}
-              </button>
+              </Button>
             }
           />
 

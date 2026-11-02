@@ -3,6 +3,7 @@
 import * as React from "react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 interface DialogContextType {
   open: boolean;
@@ -67,9 +68,9 @@ export function DialogTrigger({
   }
 
   return (
-    <button type="button" onClick={() => setOpen(true)} {...props}>
+    <Button type="button" onClick={() => setOpen(true)} {...props}>
       {children}
-    </button>
+    </Button>
   );
 }
 
@@ -137,14 +138,16 @@ export function DialogContent({
         {...props}
       >
         {showClose && (
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="icon-sm"
             onClick={() => setOpen(false)}
-            className="absolute top-4 right-4 z-20 rounded-control p-1.5 text-white/90 hover:text-white bg-black/40 hover:bg-black/70 border border-white/20 backdrop-blur-xs transition-colors cursor-pointer"
+            className="absolute top-4 right-4 z-20 h-8 w-8 rounded-control p-1 text-white/90 hover:text-white bg-black/40 hover:bg-black/70 border border-white/20 backdrop-blur-xs"
             aria-label="Close dialog"
           >
             <X className="h-4 w-4" />
-          </button>
+          </Button>
         )}
         {children}
       </div>
@@ -223,9 +226,9 @@ export function DialogClose({
   }
 
   return (
-    <button type="button" onClick={() => setOpen(false)} {...props}>
+    <Button type="button" onClick={() => setOpen(false)} {...props}>
       {children}
-    </button>
+    </Button>
   );
 }
 

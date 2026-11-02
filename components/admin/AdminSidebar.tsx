@@ -17,6 +17,7 @@ import {
   Building,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip } from "@/components/ui/tooltip";
 import { adminNavSections } from "@/data";
@@ -81,14 +82,16 @@ export function AdminSidebar() {
               side="right"
               disabled={!sidebarCollapsed}
             >
-              <button
+              <Button
                 type="button"
+                variant="secondary"
+                size="icon-sm"
                 onClick={toggleSidebar}
-                className="h-7 w-7 flex shrink-0 items-center justify-center rounded-control border border-border/80 bg-surface-secondary/60 text-muted-foreground hover:text-brand-gold hover:border-brand-gold/40 hover:bg-brand-gold/10 transition-all shadow-2xs cursor-pointer"
+                className="h-7 w-7 p-0 shrink-0 hover:text-brand-gold hover:border-brand-gold/40"
                 aria-label="Expand sidebar"
               >
                 <ChevronRight className="h-4 w-4" />
-              </button>
+              </Button>
             </Tooltip>
           </div>
         ) : (
@@ -112,15 +115,17 @@ export function AdminSidebar() {
               </div>
             </Link>
 
-            <button
+            <Button
               type="button"
+              variant="secondary"
+              size="icon-sm"
               onClick={toggleSidebar}
-              className="hidden md:flex h-7 w-7 shrink-0 items-center justify-center rounded-control border border-border/80 bg-surface-secondary/50 text-muted-foreground hover:text-brand-gold hover:border-brand-gold/40 hover:bg-brand-gold/10 transition-all shadow-2xs cursor-pointer"
+              className="hidden md:flex h-7 w-7 p-0 shrink-0 hover:text-brand-gold hover:border-brand-gold/40"
               title="Collapse sidebar"
               aria-label="Collapse sidebar"
             >
               <ChevronLeft className="h-4 w-4" />
-            </button>
+            </Button>
           </div>
         )}
 
@@ -241,14 +246,16 @@ export function AdminSidebar() {
               side="right"
               disabled={!sidebarCollapsed}
             >
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="icon-sm"
                 onClick={handleLogout}
-                className="p-1.5 rounded-control text-muted-foreground hover:text-error hover:bg-error/10 transition-colors cursor-pointer"
+                className="h-7 w-7 p-0 text-muted-foreground hover:text-error hover:bg-error/10"
                 aria-label="Sign out of admin portal"
               >
                 <LogOut className="h-4 w-4" />
-              </button>
+              </Button>
             </Tooltip>
           </div>
         ) : (
@@ -273,15 +280,17 @@ export function AdminSidebar() {
               </div>
             </div>
 
-            <button
+            <Button
               type="button"
+              variant="ghost"
+              size="icon-sm"
               onClick={handleLogout}
-              className="p-1.5 rounded-control text-muted-foreground hover:text-error hover:bg-error/10 transition-colors cursor-pointer"
+              className="h-7 w-7 p-0 text-muted-foreground hover:text-error hover:bg-error/10"
               title="Sign Out of Terminal"
               aria-label="Sign out of admin portal"
             >
               <LogOut className="h-4 w-4" />
-            </button>
+            </Button>
           </div>
         )}
 

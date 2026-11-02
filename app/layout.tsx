@@ -3,6 +3,7 @@ import { Space_Grotesk, Oswald, Bebas_Neue, Orbitron } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { NavigationLoadingBar } from "@/components/navigation/NavigationLoadingBar";
+import { PublicPortalsFloatingDock } from "@/components/navigation/PublicPortalsFloatingDock";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -47,7 +48,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             __html: `
               try {
                 const stored = localStorage.getItem('real-estate-theme');
-                const theme = stored ? JSON.parse(stored).state?.theme : 'system';
+                let theme = 'light';
+                if (stored) {
+                  const parsed = JSON.parse(stored);
+                  if (parsed && parsed.state && parsed.state.theme) {
+                    theme = parsed.state.theme;
+                  }
+                }
                 const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
                 if (isDark) {
                   document.documentElement.classList.add('dark');
@@ -63,6 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ThemeProvider>
           <NavigationLoadingBar />
           {children}
+          <PublicPortalsFloatingDock />
         </ThemeProvider>
       </body>
     </html>

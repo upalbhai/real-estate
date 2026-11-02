@@ -4,8 +4,42 @@ export interface HeaderNavLink {
   badge?: string;
 }
 
+export interface PortalNavLink {
+  id: string;
+  label: string;
+  shortLabel: string;
+  badge: string;
+  description: string;
+  href: string;
+  iconName: "Shield" | "Layers";
+}
+
+export const portalNavLinks: PortalNavLink[] = [
+  {
+    id: "admin",
+    label: "Admin Dashboard",
+    shortLabel: "Admin CRM",
+    badge: "Executive",
+    description: "Property CRM, listing inventory, leads & analytics",
+    href: "/admin",
+    iconName: "Shield",
+  },
+  {
+    id: "components",
+    label: "Theme & UI Library",
+    shortLabel: "Theme Dash",
+    badge: "Design System",
+    description: "Component library, design tokens & interactive widgets",
+    href: "/components",
+    iconName: "Layers",
+  },
+];
+
 export const headerNavLinks: HeaderNavLink[] = [
   { label: "Portfolio", href: "/properties" },
+  { label: "Curated Collections", href: "/#collections" },
+  { label: "Flagship Dossier", href: "/#flagship" },
+  { label: "Private Advisors", href: "/#advisors" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact Us", href: "/contact" },

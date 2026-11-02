@@ -16,6 +16,9 @@ export * from "./popover";
 export * from "./skeleton";
 export * from "./tooltip";
 export * from "./dialog";
+export * from "./delete-confirmation-dialog";
 export * from "./image-viewer";
 export * from "./motion";
+export * from "./breadcrumb";
+export * from "./command";
 

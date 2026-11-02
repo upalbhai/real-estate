@@ -15,6 +15,7 @@ import {
   X,
   Save,
   Maximize2,
+  Shield,
 } from "lucide-react";
 import {
   ImageViewerProvider,
@@ -23,8 +24,10 @@ import {
 import { DataTable, ColumnDef } from "@/components/ui/data-table";
 import { Button } from "@/components/ui/button";
 import { Badge, BadgeVariant } from "@/components/ui/badge";
+import { Breadcrumbs } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 import {
   Dialog,
   DialogContent,
@@ -306,15 +309,29 @@ export default function AdminPropertiesPage() {
             <CheckCircle2 className="h-4 w-4 shrink-0" />
             <span>{toastMessage}</span>
           </div>
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="icon-sm"
             onClick={() => setToastMessage(null)}
-            className="p-1 rounded hover:bg-success/20 transition-colors"
+            className="h-6 w-6 p-0 rounded hover:bg-success/20 text-success"
+            aria-label="Close notification"
           >
             <X className="h-3.5 w-3.5" />
-          </button>
+          </Button>
         </div>
       )}
+
+      {/* Wayfinding Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { label: "Executive Desk", href: "/admin", icon: Shield },
+          { label: "Portfolio Registry", badge: "Live CRM", isCurrent: true },
+        ]}
+        separator="chevron"
+        variant="gold"
+        size="sm"
+      />
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-border">
@@ -355,27 +372,31 @@ export default function AdminPropertiesPage() {
           { id: "pending", label: "In Escrow", count: propertiesList.filter((p) => p.status === "pending").length },
           { id: "sold", label: "Conveyed / Sold", count: propertiesList.filter((p) => p.status === "sold").length },
         ].map((tab) => (
-          <button
+          <Button
             key={tab.id}
             type="button"
+            variant={statusFilter === tab.id ? "primary" : "ghost"}
+            size="sm"
             onClick={() => setStatusFilter(tab.id)}
-            className={`flex items-center gap-2 rounded-control px-3.5 py-1.5 text-xs font-medium transition-all ${
+            className={cn(
+              "h-8 gap-2 px-3.5 text-xs font-medium rounded-control",
               statusFilter === tab.id
-                ? "bg-primary text-primary-foreground shadow-xs font-semibold"
+                ? "shadow-xs font-semibold"
                 : "text-muted-foreground hover:bg-surface-secondary hover:text-foreground"
-            }`}
+            )}
           >
             <span>{tab.label}</span>
             <span
-              className={`rounded-full px-1.5 py-0.2 text-[10px] font-mono ${
+              className={cn(
+                "rounded-full px-1.5 py-0.2 text-[10px] font-mono",
                 statusFilter === tab.id
                   ? "bg-primary-foreground/20 text-primary-foreground"
                   : "bg-surface-secondary text-muted-foreground"
-              }`}
+              )}
             >
               {tab.count}
             </span>
-          </button>
+          </Button>
         ))}
       </div>
 

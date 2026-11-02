@@ -1,16 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import * as React from "react";
 import { useThemeStore } from "@/store/useThemeStore";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const theme = useThemeStore((state) => state.theme);
   const setTheme = useThemeStore((state) => state.setTheme);
 
-  useEffect(() => {
-    // Initial sync
-    setTheme(theme);
-
+  React.useEffect(() => {
+    // Only listen for OS system preference changes if user selected "system" mode
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
       if (useThemeStore.getState().theme === "system") {
@@ -20,7 +17,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme, setTheme]);
+  }, [setTheme]);
 
   return <>{children}</>;
 }
