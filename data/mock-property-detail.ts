@@ -83,10 +83,10 @@ export const detailedProperties: DetailedProperty[] = [
     slug: "the-glasshouse-sanctuary",
     code: "EST-801",
     title: "The Glasshouse Sanctuary",
-    tagline: "Cantilevered Modernist Masterpiece with Unobstructed City-to-Ocean Panoramas",
+    tagline: "Cantilevered Modernist Villa with Panoramic Ocean & City Views",
     price: 18500000,
     priceFormatted: "$18,500,000",
-    type: "Ultra-Modern Architectural Villa",
+    type: "Modernist Architectural Villa",
     status: "featured",
     territory: "Beverly Hills & Bel Air",
     address: "1140 Loma Linda Drive",
@@ -102,17 +102,17 @@ export const detailedProperties: DetailedProperty[] = [
     architect: "Olson Kundig & Studio K Architecture",
     interiorDesigner: "Christian Liaigre Atelier",
     description: [
-      "Perched upon a private promontory in prime Beverly Hills, The Glasshouse Sanctuary represents the pinnacle of contemporary modernist architecture. Conceived by award-winning architects, the residence merges monumental structural steel engineering with seamless floor-to-ceiling Swiss-engineered glass apertures.",
-      "The main pavilion unfolds into dramatic 14-foot volume ceilings, French white oak parquetry, and book-matched Silver Travertine slabs sourced directly from Tivoli quarries. Automated motorized pocket doors retract entirely into hidden wall pockets, effortlessly creating 4,200 square feet of continuous indoor-outdoor entertainment loggias.",
-      "The primary sanctuary occupies an entire cantilevered wing, featuring dual bespoke dressing pavilions with custom walnut millwork, a private aromatherapy steam spa, and an outdoor rain courtyard overlooking the glistening lights of the Los Angeles basin."
+      "Located on a private hillside in Beverly Hills, this contemporary residence features cantilevered steel architecture and floor-to-ceiling glass walls that frame panoramic city views.",
+      "The main level offers 14-foot ceilings, French white oak flooring, and custom Silver Travertine slabs. Motorized pocket doors slide open to connect the interior living spaces with 4,200 square feet of covered terrace and outdoor entertaining areas.",
+      "The primary bedroom suite occupies a private cantilevered wing, featuring dual walk-in dressing rooms with custom walnut millwork, a spa-inspired bath with steam shower, and a private balcony overlooking the city."
     ],
     keyHighlights: [
       { label: "Architectural Style", value: "Cantilevered Steel Modernist", iconName: "Building2" },
       { label: "Panoramic Views", value: "Downtown LA to Pacific Ocean", iconName: "Eye" },
-      { label: "Outdoor Loggias", value: "4,200 sqft Covered Terraces", iconName: "Maximize2" },
-      { label: "Private Vault", value: "Temperature-Controlled 800-Bottle Cellar", iconName: "ShieldCheck" },
-      { label: "Water Feature", value: "75ft Zero-Edge Travertine Infinity Pool", iconName: "Sparkles" },
-      { label: "Security Protocol", value: "24/7 Monitored Biometric Gated Estate", iconName: "Lock" }
+      { label: "Outdoor Living", value: "4,200 sqft Covered Terraces", iconName: "Maximize2" },
+      { label: "Wine Cellar", value: "Temperature-Controlled 800-Bottle Cellar", iconName: "ShieldCheck" },
+      { label: "Pool & Spa", value: "75ft Zero-Edge Travertine Infinity Pool", iconName: "Sparkles" },
+      { label: "Security", value: "24/7 Gated Property with Monitored Access", iconName: "Lock" }
     ],
     amenities: [
       {
@@ -191,7 +191,7 @@ export const detailedProperties: DetailedProperty[] = [
       {
         url: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1600&q=85",
         alt: "Spa Bathroom with Free-Standing Tub and Calacatta Marble",
-        title: "Primary En-Suite Wellness Sanctuary",
+        title: "Primary En-Suite Spa Bathroom",
         tag: "Spa Bathroom"
       }
     ],
@@ -205,7 +205,7 @@ export const detailedProperties: DetailedProperty[] = [
       },
       {
         level: "Level 2",
-        name: "Private Primary Sanctuary & Guest Suites",
+        name: "Primary Suite & Guest Bedrooms",
         area: "3,200 sqft",
         highlights: ["Cantilevered Primary Suite", "Dual Dressing Rooms", "3 En-Suite Bedrooms", "Sky Lounge"],
         description: "Occupies the upper architectural cantilever, providing maximum acoustic separation, panoramic vistas, and private terrace access for all bedroom suites."
@@ -335,7 +335,7 @@ export const detailedProperties: DetailedProperty[] = [
       {
         url: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1600&q=85",
         alt: "Primary Bedroom Suite with Manhattan Views",
-        title: "Primary Penthouse Sanctuary",
+        title: "Primary Penthouse Bedroom Suite",
         tag: "Primary Suite"
       }
     ],
@@ -349,10 +349,10 @@ export const detailedProperties: DetailedProperty[] = [
       },
       {
         level: "Level 19",
-        name: "Primary Wing & Private Suites",
+        name: "Primary Wing & Guest Suites",
         area: "2,700 sqft",
-        highlights: ["Primary En-Suite Sanctuary", "3 Secondary Suites", "Sky Library", "Elevator Foyer"],
-        description: "Quiet residential sanctuary level featuring the primary suite with private dressing rooms, soaking bath, and library gallery."
+        highlights: ["Primary Bedroom Suite", "3 Guest Suites", "Sky Library", "Elevator Foyer"],
+        description: "Upper level featuring the primary bedroom suite with private dressing rooms, soaking bath, and library gallery."
       },
       {
         level: "Rooftop",
@@ -531,7 +531,7 @@ export const detailedProperties: DetailedProperty[] = [
     slug: "red-mountain-alpine-chalet",
     code: "EST-804",
     title: "Red Mountain Alpine Chalet",
-    tagline: "Direct Ski-in / Ski-out Masterwork with Panoramic Views of Aspen Mountain",
+    tagline: "Direct Ski-in / Ski-out Alpine Chalet with Panoramic Views of Aspen Mountain",
     price: 65000,
     priceFormatted: "$65,000",
     pricePeriod: "/ month",
@@ -551,7 +551,7 @@ export const detailedProperties: DetailedProperty[] = [
     architect: "Charles Cunniffe Architects",
     interiorDesigner: "Rowland+Broughton Studio",
     description: [
-      "Nestled on the prestigious flanks of Aspen's Red Mountain, this newly constructed alpine masterpiece redefines mountain living with direct private ski access and unobstructed panoramic vistas of Aspen Mountain and Independence Pass.",
+      "Located on Aspen's Red Mountain, this alpine home offers direct ski-in/ski-out access and unobstructed panoramic views of Aspen Mountain and Independence Pass.",
       "Hand-hewn timber beams, blackened steel framing, and local Colorado fieldstone blend effortlessly with Scandinavian minimalism. The great room centers around a monumental two-story stone hearth with floor-to-ceiling glass walls capturing alpine sunrises.",
       "The lower level features an equipped ski lounge with heated boot dryers, direct mountain trail access, a cedar barrel sauna, and a heated outdoor stone hydrotherapy spa under the Colorado stars."
     ],
@@ -637,11 +637,11 @@ export const detailedProperties: DetailedProperty[] = [
         description: "Heart of the alpine chalet featuring the two-story stone hearth and dramatic mountain panorama windows."
       },
       {
-        level: "Upper Sanctuary",
+        level: "Upper Level",
         name: "Primary Suite & Guest Wings",
         area: "2,200 sqft",
         highlights: ["Primary Fireplace", "Private Balcony", "Steam Spa", "2 Guest En-Suites"],
-        description: "Secluded top floor primary sanctuary with private fireplace and balcony looking out across Aspen Valley."
+        description: "Top floor primary suite with private fireplace and balcony looking out across Aspen Valley."
       },
       {
         level: "Ski Level",
@@ -737,11 +737,11 @@ export const detailedProperties: DetailedProperty[] = [
         ]
       },
       {
-        category: "Security & Sovereign Governance",
+        category: "Security & Association Services",
         items: [
-          "Bel Air Association 24/7 armed patrol security area",
-          "Reinforced private safe room with independent HVAC and telecom",
-          "Institutional title package fully prepared for rapid escrow closing"
+          "Bel Air Association 24/7 patrol area and neighborhood security",
+          "Comprehensive security system with independent backup power",
+          "Complete title report and property documentation prepared"
         ]
       }
     ],
@@ -792,7 +792,7 @@ export const detailedProperties: DetailedProperty[] = [
         name: "Wellness Spa, Cinema & Auto Gallery",
         area: "3,200 sqft",
         highlights: ["20-Seat Theater", "8-Car Showroom", "Dual Plunges", "Gym"],
-        description: "World-class recreation level featuring the private cinema, collector vehicle viewing gallery, and spa complex."
+        description: "Recreation and entertainment level featuring the private cinema, collector vehicle gallery, and fitness spa."
       }
     ],
     financials: {
@@ -820,7 +820,7 @@ export const detailedProperties: DetailedProperty[] = [
     slug: "pacific-palisades-ocean-view",
     code: "EST-806",
     title: "Pacific Palisades Ocean View",
-    tagline: "Warm Modernist Cliffside Sanctuary Overlooking Santa Monica Bay",
+    tagline: "Warm Modernist Bluffside Residence Overlooking Santa Monica Bay",
     price: 9800000,
     priceFormatted: "$9,800,000",
     type: "Coastal Modern Residence",
@@ -839,7 +839,7 @@ export const detailedProperties: DetailedProperty[] = [
     architect: "Marmol Radziner",
     interiorDesigner: "Amber Interiors Studio",
     description: [
-      "Nestled along the bluffs of Pacific Palisades, this warm modern sanctuary by Marmol Radziner harmonizes rich cedar siding, charcoal board-formed concrete, and native coastal flora.",
+      "Positioned along the bluffs of Pacific Palisades, this warm modern home by Marmol Radziner pairs cedar siding with charcoal board-formed concrete and native coastal landscaping.",
       "Every room is oriented to frame the tranquil rhythm of the Pacific ocean breakers below. The light-filled open plan offers custom oak millwork, quartzite slab counters, and seamless glass corners that open to lush ocean-view lawns and an outdoor coastal fire lounge.",
       "The primary suite captures morning sea breezes and sunset colors over Point Dume, complete with a private oceanfront soaking balcony."
     ],

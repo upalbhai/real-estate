@@ -4,9 +4,9 @@ import { Footer } from "@/components/layout/Footer";
 import { AboutContent } from "@/components/sections/about/AboutContent";
 
 export const metadata = {
-  title: "Atelier Heritage & Philosophy | Aura Estates",
+  title: "About Us | Aura Estates",
   description:
-    "Operating at the nexus of private investment banking and architectural connoisseurship. Learn about Aura Estates' heritage and fiduciary standard.",
+    "Learn about Aura Estates, our approach to luxury real estate advisory, and our team representing distinctive architectural properties across premier global destinations.",
 };
 
 export default function AboutPage() {

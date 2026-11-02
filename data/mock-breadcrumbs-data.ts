@@ -4,7 +4,6 @@ import {
   MapPin,
   Shield,
   Layers,
-  Sparkles,
   Compass,
   Key,
 } from "lucide-react";
@@ -25,39 +24,39 @@ export interface BreadcrumbPreset {
 
 export const breadcrumbShowcasePresets: BreadcrumbPreset[] = [
   {
-    id: "property-dossier",
-    name: "Luxury Estate Dossier",
+    id: "property-listing",
+    name: "Luxury Estate Listing",
     description: "Standard hierarchical trail for luxury residential listings",
     category: "Property Listing",
     items: [
-      { label: "Atelier", href: "/", icon: Home },
-      { label: "Portfolio", href: "/properties", icon: Building2 },
+      { label: "Home", href: "/", icon: Home },
+      { label: "Properties", href: "/properties", icon: Building2 },
       { label: "Beverly Hills", href: "/properties?location=beverly-hills", icon: MapPin },
       { label: "The Bellagio Promontory", badge: "Exclusive", isCurrent: true },
     ],
   },
   {
     id: "admin-registry",
-    name: "Executive CRM Registry",
-    description: "Multi-tier administrative navigation inside the asset manager",
+    name: "Property Management Registry",
+    description: "Multi-tier administrative navigation inside the property manager",
     category: "Executive Admin",
     items: [
-      { label: "Executive Desk", href: "/admin", icon: Shield },
-      { label: "Asset Registry", href: "/admin/properties", icon: Layers },
-      { label: "Trophy Penthouses", href: "/admin/properties?filter=trophy" },
-      { label: "Dossier #AE-9021", badge: "Live Review", isCurrent: true },
+      { label: "Dashboard", href: "/admin", icon: Shield },
+      { label: "Properties", href: "/admin/properties", icon: Layers },
+      { label: "Featured Penthouses", href: "/admin/properties?filter=featured" },
+      { label: "Property #AE-9021", badge: "Review", isCurrent: true },
     ],
   },
   {
     id: "curated-collections",
-    name: "Curated Coastal Sanctuary",
-    description: "Editorial neighborhood collection navigation trail",
+    name: "Coastal Waterfront Residence",
+    description: "Location-based property navigation trail",
     category: "Neighborhood Collections",
     items: [
-      { label: "Aura Home", href: "/", icon: Sparkles },
-      { label: "Collections", href: "/#collections", icon: Compass },
-      { label: "Ultra-Prime Coastal", href: "/properties?category=coastal" },
-      { label: "Star Island Compound", badge: "Off-Market", isCurrent: true },
+      { label: "Home", href: "/", icon: Home },
+      { label: "Locations", href: "/#locations", icon: Compass },
+      { label: "Coastal Properties", href: "/properties?category=coastal" },
+      { label: "Star Island Compound", badge: "Available", isCurrent: true },
     ],
   },
   {

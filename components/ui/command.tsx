@@ -603,7 +603,7 @@ export function CommandMenu({
   groups,
   placeholder = "Search estates, pages, commands...",
   emptyText = "No matching commands or properties found.",
-  footerNote = "Aura Atelier • Press ESC to dismiss",
+  footerNote = "Aura Estates • Press ESC to dismiss",
 }: CommandMenuProps) {
   return (
     <CommandDialog open={open} onOpenChange={onOpenChange}>

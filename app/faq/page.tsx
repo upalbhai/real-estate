@@ -4,15 +4,15 @@ import { Footer } from "@/components/layout/Footer";
 import { FaqContent } from "@/components/sections/faq/FaqContent";
 
 export const metadata: Metadata = {
-  title: "Fiduciary Protocols & FAQ | Aura Estates",
+  title: "Frequently Asked Questions | Aura Estates",
   description:
-    "Authoritative guidance regarding bilateral non-disclosure standards, private off-market vault access, international capital settlement, and architectural representation protocols.",
+    "Find answers to common questions about buying, selling, and scheduling private viewings for luxury homes and architectural estates with Aura Estates.",
   keywords: [
     "Aura Estates FAQ",
-    "luxury real estate NDA",
-    "off-market acquisitions protocol",
-    "fiduciary real estate standards",
-    "family office real estate advisory",
+    "luxury real estate questions",
+    "buying luxury homes",
+    "private property viewings",
+    "architectural estates advisory",
   ],
 };
 

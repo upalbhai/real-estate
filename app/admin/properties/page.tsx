@@ -95,9 +95,9 @@ export default function AdminPropertiesPage() {
 
   const statusBadgeMap: Record<PropertyStatus, { label: string; variant: BadgeVariant }> = {
     available: { label: "Available", variant: "available" },
-    featured: { label: "Trophy Asset", variant: "gold" },
-    pending: { label: "In Escrow", variant: "pending" },
-    sold: { label: "Conveyed / Sold", variant: "sold" },
+    featured: { label: "Featured", variant: "gold" },
+    pending: { label: "Under Contract", variant: "pending" },
+    sold: { label: "Sold", variant: "sold" },
   };
 
   const filteredProperties = React.useMemo(() => {
@@ -366,11 +366,11 @@ export default function AdminPropertiesPage() {
       {/* Filter Tabs */}
       <div className="flex flex-wrap items-center gap-2 border-b border-border pb-3">
         {[
-          { id: "all", label: "All Assets", count: propertiesList.length },
-          { id: "available", label: "Active Available", count: propertiesList.filter((p) => p.status === "available").length },
-          { id: "featured", label: "Trophy Assets", count: propertiesList.filter((p) => p.status === "featured").length },
-          { id: "pending", label: "In Escrow", count: propertiesList.filter((p) => p.status === "pending").length },
-          { id: "sold", label: "Conveyed / Sold", count: propertiesList.filter((p) => p.status === "sold").length },
+          { id: "all", label: "All Properties", count: propertiesList.length },
+          { id: "available", label: "Available", count: propertiesList.filter((p) => p.status === "available").length },
+          { id: "featured", label: "Featured", count: propertiesList.filter((p) => p.status === "featured").length },
+          { id: "pending", label: "Under Contract", count: propertiesList.filter((p) => p.status === "pending").length },
+          { id: "sold", label: "Sold", count: propertiesList.filter((p) => p.status === "sold").length },
         ].map((tab) => (
           <Button
             key={tab.id}

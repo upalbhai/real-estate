@@ -11,10 +11,10 @@ export const sampleDeletionItems: SampleDeletionItem[] = [
   {
     id: "prop-101",
     code: "AE-BH-90210",
-    title: "The Bel-Air Modernist Sanctuary",
+    title: "The Bel-Air Modern Residence",
     location: "Bel Air, Los Angeles, CA",
     price: "$48,500,000",
-    status: "Private Vault",
+    status: "Featured",
   },
   {
     id: "prop-102",
@@ -149,13 +149,13 @@ export function PropertyDeleteAction({ property }) {
         leftIcon={<Trash2 className="h-4 w-4" />}
         onClick={() => setOpen(true)}
       >
-        Delete Dossier
+        Delete Property
       </Button>
 
       <DeleteConfirmationDialog
         open={open}
         onOpenChange={setOpen}
-        title="Delete Property Dossier"
+        title="Delete Property Listing"
         itemName={property.title}
         itemIdentifier={property.code}
         onConfirm={handleDelete}

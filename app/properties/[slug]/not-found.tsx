@@ -17,20 +17,20 @@ export default function PropertyNotFound() {
 
           <div className="space-y-2">
             <span className="text-[10px] font-special uppercase tracking-widest text-brand-gold font-bold">
-              Archived or Private Dossier
+              Property Not Found
             </span>
             <h1 className="font-heading text-3xl sm:text-4xl font-bold text-foreground">
-              Estate Listing Not Found
+              Property Listing Not Found
             </h1>
             <p className="text-sm text-muted-foreground leading-relaxed font-body">
-              The architectural residence you are seeking has either been moved into confidential private escrow or the identifier has expired.
+              The property you are looking for is no longer available or the link may be outdated.
             </p>
           </div>
 
           <div className="pt-2 flex justify-center gap-3">
             <Link href="/properties">
               <Button variant="gold" size="md" leftIcon={<ArrowLeft className="h-4 w-4" />}>
-                Browse Current Portfolio
+                Explore Properties
               </Button>
             </Link>
           </div>

@@ -765,18 +765,18 @@ export function PropertyDetailView({ property }: PropertyDetailViewProps) {
             <div className="space-y-8 pt-12 border-t border-border">
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                 <div className="space-y-1.5">
-                  <Badge variant="gold">Comparable Portfolio</Badge>
+                  <Badge variant="gold">Similar Homes</Badge>
                   <h3 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-                    Curated Companion Acquisitions
+                    Similar Properties
                   </h3>
                   <p className="text-xs sm:text-sm text-muted-foreground font-body">
-                    Additional architectural masterworks currently available within our global vault.
+                    Explore other exceptional residences currently available.
                   </p>
                 </div>
 
                 <Link href="/properties">
                   <Button variant="outline" size="sm" rightIcon={<ArrowRight className="h-3.5 w-3.5" />}>
-                    View All Portfolio
+                    View All Properties
                   </Button>
                 </Link>
               </div>

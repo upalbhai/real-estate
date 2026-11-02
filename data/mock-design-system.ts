@@ -136,7 +136,7 @@ export const typographyShowcaseItems: TypographyShowcaseItem[] = [
     id: "oswald",
     name: "Oswald Section Headings",
     fontClass: "font-heading text-3xl font-bold text-foreground",
-    sampleText: "Curated Architectural Masterpieces",
+    sampleText: "Distinctive Architectural Residences",
   },
   {
     id: "space-grotesk",

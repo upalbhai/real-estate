@@ -237,11 +237,11 @@ export default function AdminNewPropertyPage() {
                     value={field.value}
                     onValueChange={field.onChange}
                     options={[
-                      { value: "available", label: "Available for Acquisition" },
-                      { value: "featured", label: "Featured Trophy Asset" },
-                      { value: "pending", label: "Under Contract / Escrow" },
-                      { value: "sold", label: "Conveyed & Closed" },
-                      { value: "exclusive", label: "Confidential Off-Market" },
+                      { value: "available", label: "Available" },
+                      { value: "featured", label: "Featured Property" },
+                      { value: "pending", label: "Under Contract" },
+                      { value: "sold", label: "Sold" },
+                      { value: "exclusive", label: "Exclusive Listing" },
                     ]}
                   />
                 )}
@@ -249,7 +249,7 @@ export default function AdminNewPropertyPage() {
 
               <div>
                 <Input
-                  label="Target Valuation"
+                  label="Listing Price"
                   type="number"
                   prefixText="$"
                   suffixText="USD"
@@ -431,7 +431,7 @@ export default function AdminNewPropertyPage() {
                   isLoading={isSubmitting}
                   leftIcon={<Save className="h-4 w-4" />}
                 >
-                  Publish Estate Dossier
+                  Publish Property Listing
                 </Button>
               </div>
             </div>

@@ -26,8 +26,8 @@ export interface DeleteConfirmationDialogProps {
 export function DeleteConfirmationDialog({
   open,
   onOpenChange,
-  title = "Confirm Irreversible Deletion",
-  description = "This action is permanent and cannot be undone. All associated confidential dossiers, historical comps, and listing asset media will be permanently scrubbed.",
+  title = "Confirm Deletion",
+  description = "This action is permanent and cannot be undone. All associated property records, photos, and listing data will be permanently removed.",
   itemName,
   itemIdentifier,
   requireConfirmationText = false,
@@ -215,10 +215,10 @@ export function DeleteConfirmationDialog({
             </div>
           )}
 
-          {/* Fiduciary Warning Box */}
+          {/* Warning Box */}
           <div className="flex items-center gap-2 rounded-control bg-amber-500/10 border border-amber-500/20 px-3 py-2 text-[11px] text-amber-700 dark:text-amber-400">
             <AlertTriangle className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
-            <span>This deletion triggers an immutable audit log entry.</span>
+            <span>This action cannot be undone once confirmed.</span>
           </div>
 
           {/* Footer Action Buttons */}
