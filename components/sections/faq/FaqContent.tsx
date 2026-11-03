@@ -60,9 +60,7 @@ export function FaqContent() {
       <div className="text-center max-w-3xl mx-auto space-y-4">
         <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08]">
           Frequently Asked{" "}
-          <span className="bg-gradient-to-r from-[#8E6A2F] via-[#B89255] to-[#7A5822] dark:from-brand-gold dark:via-[#F3E3C6] dark:to-brand-gold bg-clip-text text-transparent">
-            Questions
-          </span>
+          Questions
         </h1>
 
         <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-body">
@@ -126,25 +124,26 @@ export function FaqContent() {
                   variant="ghost"
                   fullWidth
                   onClick={() => toggleItem(faq.id)}
-                  className="p-5 sm:p-6 h-auto text-left justify-between rounded-none hover:bg-transparent"
+                  className="p-5 sm:p-6 h-auto text-left justify-between items-center rounded-none hover:bg-transparent whitespace-normal gap-4"
                   aria-expanded={isOpen}
+                  rightIcon={
+                    <div
+                      className={cn(
+                        "h-8 w-8 rounded-control border border-border bg-surface-secondary/40 flex items-center justify-center text-muted-foreground transition-transform duration-200 shrink-0",
+                        isOpen && "rotate-180 text-brand-gold border-brand-gold/40 bg-brand-gold/10"
+                      )}
+                    >
+                      <ChevronDown className="h-4 w-4" />
+                    </div>
+                  }
                 >
-                  <div className="space-y-1">
+                  <div className="space-y-1 text-left flex-1">
                     <span className="text-[10px] font-special uppercase tracking-wider text-brand-gold font-bold">
                       {faq.category}
                     </span>
                     <h3 className="font-heading text-base sm:text-lg font-bold text-foreground">
                       {faq.question}
                     </h3>
-                  </div>
-
-                  <div
-                    className={cn(
-                      "h-8 w-8 rounded-control border border-border bg-surface-secondary/40 flex items-center justify-center text-muted-foreground transition-transform duration-200 shrink-0",
-                      isOpen && "rotate-180 text-brand-gold border-brand-gold/40 bg-brand-gold/10"
-                    )}
-                  >
-                    <ChevronDown className="h-4 w-4" />
                   </div>
                 </Button>
 
