@@ -1,3 +1,4 @@
+import * as React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
@@ -5,6 +6,7 @@ import {
   getAllPropertySlugs,
 } from "@/data/mock-property-detail";
 import { PropertyDetailView } from "@/components/sections/property-detail/PropertyDetailView";
+import { PropertyDetailSkeleton } from "@/components/sections/property-detail/PropertyDetailSkeleton";
 
 interface PropertyDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -24,7 +26,7 @@ export async function generateMetadata({
   if (!property) {
     return {
       title: "Property Not Found | Aura Estates",
-      description: "The requested architectural listing could not be found or has been moved to private off-market escrow.",
+      description: "The requested property listing could not be found.",
     };
   }
 
@@ -58,7 +60,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function PropertyDetailPage({
+export default function PropertyDetailPage({
+  params,
+}: PropertyDetailPageProps) {
+  return (
+    <React.Suspense fallback={<PropertyDetailSkeleton />}>
+      <PropertyDetailContent params={params} />
+    </React.Suspense>
+  );
+}
+
+async function PropertyDetailContent({
   params,
 }: PropertyDetailPageProps) {
   const { slug } = await params;

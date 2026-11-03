@@ -43,7 +43,7 @@ export function Navbar() {
         )}
       >
         {/* Top Hairline Luxury Gold Gradient */}
-        <div className="h-[2px] w-full bg-gradient-to-r from-brand-charcoal via-brand-gold to-brand-olive dark:from-brand-gold/70 dark:via-brand-olive dark:to-brand-gold/40" />
+        {/* <div className="h-[2px] w-full bg-gradient-to-r from-brand-charcoal via-brand-gold to-brand-olive dark:from-brand-gold/70 dark:via-brand-olive dark:to-brand-gold/40" /> */}
 
         <div className="section-container flex h-18 items-center justify-between gap-4">
           {/* Left: Brand Emblem & Wordmark */}

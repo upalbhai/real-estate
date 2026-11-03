@@ -321,36 +321,55 @@ export default function InputsShowcasePage() {
             Switches &amp; Selects
           </h2>
           <p className="text-xs text-muted-foreground mt-1">
-            Toggle switches and styled native select dropdowns with custom chevron arrows.
+            Tactile toggle switches with micro-glow indicators and custom animated select dropdowns.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Switches Column */}
           <div className="space-y-5 rounded-control bg-surface-secondary/30 p-5 border border-border">
-            <h3 className="text-sm font-semibold text-foreground">
-              Filter Switches
-            </h3>
+            <div className="flex items-center justify-between pb-2 border-b border-border/60">
+              <h3 className="text-sm font-semibold text-foreground">
+                Filter Switches
+              </h3>
+              <span className="text-[10px] font-mono text-brand-gold uppercase tracking-wider font-semibold">
+                Interactive States
+              </span>
+            </div>
 
-            <Switch
-              label="Turnkey Furnished"
-              description="Include designer furniture and curated art collection"
-              checked={furnished}
-              onCheckedChange={setFurnished}
-            />
+            <div className="space-y-4">
+              <Switch
+                label="Turnkey Furnished"
+                description="Include designer furniture and curated art collection"
+                checked={furnished}
+                onCheckedChange={setFurnished}
+              />
 
-            <Switch
-              label="Verified Buyer Priority"
-              description="Only receive vetted bids with verified bank guarantee letters"
-              checked={verifiedBuyer}
-              onCheckedChange={setVerifiedBuyer}
-            />
+              <Switch
+                label="Verified Buyer Priority"
+                description="Only receive vetted bids with verified bank guarantee letters"
+                checked={verifiedBuyer}
+                onCheckedChange={setVerifiedBuyer}
+              />
 
-            <Switch
-              label="Direct Ocean Access"
-              description="Unrestricted private deepwater dockage"
-              disabled
-            />
+              <Switch
+                label="Direct Ocean Access"
+                description="Unrestricted private deepwater dockage"
+                disabled
+              />
+            </div>
+
+            {/* Size Scale Preview */}
+            <div className="pt-3 border-t border-border/60 space-y-3">
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground font-special">
+                Size Variants
+              </span>
+              <div className="flex flex-wrap items-center gap-6">
+                <Switch size="sm" checked={furnished} onCheckedChange={setFurnished} label="Small" />
+                <Switch size="md" checked={furnished} onCheckedChange={setFurnished} label="Medium" />
+                <Switch size="lg" checked={furnished} onCheckedChange={setFurnished} label="Large" />
+              </div>
+            </div>
           </div>
 
           {/* Selects Column */}

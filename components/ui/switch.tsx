@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 export interface SwitchProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> {
@@ -12,6 +11,7 @@ export interface SwitchProps
   label?: React.ReactNode;
   description?: React.ReactNode;
   size?: "sm" | "md" | "lg";
+  variant?: "default" | "card";
 }
 
 const sizeConfig = {
@@ -19,16 +19,19 @@ const sizeConfig = {
     track: "h-5 w-9",
     thumb: "h-4 w-4",
     translate: "translate-x-4",
+    dot: "h-1.5 w-1.5",
   },
   md: {
     track: "h-6 w-11",
     thumb: "h-5 w-5",
     translate: "translate-x-5",
+    dot: "h-2 w-2",
   },
   lg: {
     track: "h-7 w-14",
     thumb: "h-6 w-6",
     translate: "translate-x-7",
+    dot: "h-2.5 w-2.5",
   },
 };
 
@@ -42,6 +45,7 @@ export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       label,
       description,
       size = "md",
+      variant = "default",
       disabled = false,
       id,
       ...props
@@ -65,66 +69,113 @@ export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
     };
 
     const cfg = sizeConfig[size];
+    const isCard = variant === "card";
+
+    const switchButton = (
+      <button
+        id={switchId}
+        ref={ref}
+        type="button"
+        role="switch"
+        aria-checked={isChecked}
+        disabled={disabled}
+        onClick={(e) => {
+          if (isCard) e.stopPropagation();
+          toggle();
+        }}
+        className={cn(
+          "relative inline-flex shrink-0 cursor-pointer items-center rounded-full box-border p-0 border-2 leading-none select-none transition-colors duration-200 ease-in-out",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          "disabled:cursor-not-allowed disabled:opacity-50",
+          !isCard && "mt-0.5",
+          cfg.track,
+          isChecked
+            ? "bg-brand-gold border-brand-gold shadow-[0_0_10px_rgba(197,168,120,0.35)]"
+            : "bg-[#D8D2C6] dark:bg-[#252C21] border-[#D8D2C6] dark:border-[#252C21] hover:border-brand-gold/60"
+        )}
+        {...props}
+      >
+        <span
+          className={cn(
+            "pointer-events-none inline-flex items-center justify-center rounded-full transition-transform duration-200 ease-in-out shrink-0 shadow-sm",
+            cfg.thumb,
+            isChecked
+              ? cn(cfg.translate, "bg-[#181C15] text-brand-gold")
+              : "translate-x-0 bg-white dark:bg-[#EDE9E1] border border-black/5"
+          )}
+        >
+          {isChecked && (
+            <span
+              className={cn(
+                "rounded-full bg-brand-gold shrink-0 pointer-events-none",
+                cfg.dot
+              )}
+            />
+          )}
+        </span>
+      </button>
+    );
 
     return (
-      <div className={cn("flex items-start gap-3 select-none", className)}>
-        <Button
-          id={switchId}
-          ref={ref}
-          type="button"
-          role="switch"
-          aria-checked={isChecked}
-          disabled={disabled}
-          onClick={toggle}
-          variant="ghost"
-          size="xs"
-          className={cn(
-            "!relative !inline-flex !shrink-0 cursor-pointer !rounded-full !border-2 !border-transparent !p-0 !min-w-0 !gap-0 !shadow-none",
-            "transition-colors duration-250 ease-out active:scale-95",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-            "disabled:cursor-not-allowed disabled:opacity-50 mt-0.5",
-            cfg.track,
-            isChecked
-              ? "!bg-brand-gold !border-brand-gold shadow-xs"
-              : "!bg-surface-secondary !border-border hover:!border-brand-olive/50"
-          )}
-          {...props}
-        >
-          <span
-            className={cn(
-              "pointer-events-none flex items-center justify-center rounded-full transition-transform duration-250 ease-out shadow-sm",
-              cfg.thumb,
-              isChecked
-                ? cn(cfg.translate, "bg-brand-charcoal text-brand-gold")
-                : "translate-x-0 bg-surface border border-border/80"
+      <div
+        className={cn(
+          "flex select-none transition-all duration-200",
+          isCard
+            ? [
+                "rounded-control border p-4 items-center justify-between gap-4 cursor-pointer",
+                isChecked
+                  ? "border-brand-gold bg-brand-gold/10 shadow-xs"
+                  : "border-border bg-surface hover:bg-surface-secondary/50 hover:border-brand-olive/40",
+                disabled && "cursor-not-allowed opacity-50",
+              ]
+            : "items-start gap-3",
+          className
+        )}
+        onClick={isCard ? toggle : undefined}
+      >
+        {isCard ? (
+          <>
+            {(label || description) && (
+              <div className="flex flex-col gap-0.5 flex-1 pr-2">
+                {label && (
+                  <span className="text-sm font-semibold text-foreground leading-snug">
+                    {label}
+                  </span>
+                )}
+                {description && (
+                  <span className="text-xs text-muted-foreground leading-relaxed">
+                    {description}
+                  </span>
+                )}
+              </div>
             )}
-          >
-            {isChecked && (
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-gold animate-fadeIn" />
+            {switchButton}
+          </>
+        ) : (
+          <>
+            {switchButton}
+            {(label || description) && (
+              <label
+                htmlFor={switchId}
+                onClick={toggle}
+                className={cn(
+                  "flex flex-col gap-0.5",
+                  disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"
+                )}
+              >
+                {label && (
+                  <span className="text-sm font-medium text-foreground leading-snug">
+                    {label}
+                  </span>
+                )}
+                {description && (
+                  <span className="text-xs text-muted-foreground leading-relaxed">
+                    {description}
+                  </span>
+                )}
+              </label>
             )}
-          </span>
-        </Button>
-
-        {(label || description) && (
-          <label
-            htmlFor={switchId}
-            onClick={toggle}
-            className={cn(
-              "flex flex-col gap-0.5",
-              disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"
-            )}
-          >
-            {label && (
-              <span className="text-sm font-medium text-foreground leading-snug">
-                {label}
-              </span>
-            )}
-            {description && (
-              <span className="text-xs text-muted-foreground leading-relaxed">
-                {description}
-              </span>
-            )}
-          </label>
+          </>
         )}
       </div>
     );

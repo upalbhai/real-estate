@@ -10,7 +10,6 @@ import {
   Trash2,
   Download,
   MapPin,
-  AlertTriangle,
   CheckCircle2,
   X,
   Save,
@@ -27,6 +26,7 @@ import { Badge, BadgeVariant } from "@/components/ui/badge";
 import { Breadcrumbs } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
+import { DeleteConfirmationDialog } from "@/components/ui/delete-confirmation-dialog";
 import { cn } from "@/lib/utils";
 import {
   Dialog,
@@ -764,58 +764,18 @@ export default function AdminPropertiesPage() {
       {/* ========================================================
           3. DELETE / ARCHIVE CONFIRMATION DIALOG
          ======================================================== */}
-      <Dialog
+      <DeleteConfirmationDialog
         open={!!deleteProperty}
         onOpenChange={(open) => !open && setDeleteProperty(null)}
-      >
-        {deleteProperty && (
-          <DialogContent size="sm" className="space-y-4">
-            <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-error/15 text-error border border-error/30 mt-0.5">
-                <AlertTriangle className="h-5 w-5" />
-              </div>
-              <div className="space-y-1">
-                <DialogTitle className="text-lg">Archive Estate from Portfolio?</DialogTitle>
-                <DialogDescription>
-                  Are you sure you want to archive{" "}
-                  <strong className="text-foreground">{deleteProperty.title}</strong> (
-                  <span className="font-mono text-brand-gold">{deleteProperty.code}</span>)?
-                  This will immediately withdraw the prospectus from active investor circulation.
-                </DialogDescription>
-              </div>
-            </div>
-
-            {/* Estate Snapshot Card */}
-            <div className="p-3 rounded-control border border-border bg-surface-secondary/40 text-xs space-y-1">
-              <div className="flex justify-between font-semibold text-foreground">
-                <span>{deleteProperty.title}</span>
-                <span className="font-mono">{formatCurrency(deleteProperty.price)}</span>
-              </div>
-              <p className="text-muted-foreground text-[11px]">
-                {deleteProperty.location} • {deleteProperty.type}
-              </p>
-            </div>
-
-            <DialogFooter>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => setDeleteProperty(null)}
-              >
-                Keep Estate
-              </Button>
-              <Button
-                variant="destructive"
-                size="sm"
-                leftIcon={<Trash2 className="h-3.5 w-3.5" />}
-                onClick={handleConfirmDelete}
-              >
-                Archive Listing
-              </Button>
-            </DialogFooter>
-          </DialogContent>
-        )}
-      </Dialog>
+        title="Archive Listing from Portfolio?"
+        description="Are you sure you want to archive this property listing? This will withdraw the property from active public circulation."
+        itemName={deleteProperty?.title}
+        itemIdentifier={deleteProperty?.code}
+        confirmLabel="Archive Listing"
+        cancelLabel="Keep Listing"
+        variant="danger"
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 }

@@ -15,6 +15,9 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import { Input } from "./input";
+import { Checkbox } from "./checkbox";
+import { Select } from "./select";
+import { DeleteConfirmationDialog } from "./delete-confirmation-dialog";
 
 export interface ColumnDef<TData, TValue = unknown> {
   id: string;
@@ -41,6 +44,8 @@ export interface DataTableProps<TData> {
   title?: string;
   description?: string;
   batchActions?: (selectedRows: TData[], clearSelection: () => void) => React.ReactNode;
+  onDeleteRows?: (selectedRows: TData[]) => Promise<void> | void;
+  onExportRows?: (selectedRows: TData[]) => void;
   toolbarActions?: React.ReactNode;
   className?: string;
 }
@@ -59,6 +64,8 @@ export function DataTable<TData>({
   title,
   description,
   batchActions,
+  onDeleteRows,
+  onExportRows,
   toolbarActions,
   className,
 }: DataTableProps<TData>) {
@@ -72,6 +79,8 @@ export function DataTable<TData>({
     new Set(columns.map((c) => c.id))
   );
   const [showColumnToggle, setShowColumnToggle] = React.useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = React.useState(false);
+  const [isDeleting, setIsDeleting] = React.useState(false);
 
   // Filtered data
   const filteredData = React.useMemo(() => {
@@ -146,8 +155,8 @@ export function DataTable<TData>({
   };
 
   // Selection handlers
-  const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
+  const handleSelectAll = (checked: boolean) => {
+    if (checked) {
       const allPageIndices = new Set(
         paginatedData.map((_, idx) => (safePage - 1) * pageSize + idx)
       );
@@ -247,28 +256,36 @@ export function DataTable<TData>({
                     {columns.map((col) => {
                       const isChecked = visibleColumns.has(col.id);
                       return (
-                        <label
+                        <div
                           key={col.id}
-                          className="flex items-center gap-2 rounded px-2 py-1.5 text-xs text-foreground hover:bg-surface-secondary cursor-pointer select-none"
+                          className="flex items-center gap-2 rounded px-2 py-1 text-xs text-foreground hover:bg-surface-secondary cursor-pointer select-none"
+                          onClick={() => {
+                            const next = new Set(visibleColumns);
+                            if (isChecked) {
+                              if (next.size > 1) next.delete(col.id);
+                            } else {
+                              next.add(col.id);
+                            }
+                            setVisibleColumns(next);
+                          }}
                         >
-                          <input
-                            type="checkbox"
+                          <Checkbox
                             checked={isChecked}
-                            onChange={(e) => {
+                            onCheckedChange={(checked) => {
                               const next = new Set(visibleColumns);
-                              if (e.target.checked) {
+                              if (checked) {
                                 next.add(col.id);
                               } else {
                                 if (next.size > 1) next.delete(col.id);
                               }
                               setVisibleColumns(next);
                             }}
-                            className="rounded border-border text-brand-olive focus:ring-ring"
+                            className="pointer-events-none"
                           />
                           <span className="truncate">
                             {typeof col.header === "string" ? col.header : col.id}
                           </span>
-                        </label>
+                        </div>
                       );
                     })}
                   </div>
@@ -297,7 +314,11 @@ export function DataTable<TData>({
                   size="xs"
                   variant="outline"
                   leftIcon={<Download className="h-3 w-3" />}
-                  onClick={() => alert(`Exporting ${selectedIds.size} items`)}
+                  onClick={() => {
+                    if (onExportRows) {
+                      onExportRows(selectedRows);
+                    }
+                  }}
                 >
                   Export
                 </Button>
@@ -305,10 +326,7 @@ export function DataTable<TData>({
                   size="xs"
                   variant="destructive"
                   leftIcon={<Trash2 className="h-3 w-3" />}
-                  onClick={() => {
-                    alert(`Deleting ${selectedIds.size} items`);
-                    clearSelection();
-                  }}
+                  onClick={() => setIsDeleteDialogOpen(true)}
                 >
                   Delete
                 </Button>
@@ -329,16 +347,14 @@ export function DataTable<TData>({
               <tr className="border-b border-border bg-surface-secondary/60">
                 {enableRowSelection && (
                   <th className="w-12 px-4 py-3.5 text-center">
-                    <input
-                      type="checkbox"
-                      checked={isAllSelected}
-                      ref={(el) => {
-                        if (el) el.indeterminate = isSomeSelected;
-                      }}
-                      onChange={handleSelectAll}
-                      className="h-4 w-4 rounded border-border text-brand-olive focus:ring-ring cursor-pointer"
-                      aria-label="Select all rows"
-                    />
+                    <div className="flex items-center justify-center">
+                      <Checkbox
+                        checked={isAllSelected}
+                        indeterminate={isSomeSelected}
+                        onCheckedChange={handleSelectAll}
+                        aria-label="Select all rows"
+                      />
+                    </div>
                   </th>
                 )}
                 {activeColumns.map((col) => {
@@ -451,13 +467,13 @@ export function DataTable<TData>({
                           className="w-12 px-4 py-3.5 text-center"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <input
-                            type="checkbox"
-                            checked={isSelected}
-                            onChange={() => handleSelectRow(globalIdx)}
-                            className="h-4 w-4 rounded border-border text-brand-olive focus:ring-ring cursor-pointer"
-                            aria-label={`Select row ${globalIdx + 1}`}
-                          />
+                          <div className="flex items-center justify-center">
+                            <Checkbox
+                              checked={isSelected}
+                              onCheckedChange={() => handleSelectRow(globalIdx)}
+                              aria-label={`Select row ${globalIdx + 1}`}
+                            />
+                          </div>
                         </td>
                       )}
                       {activeColumns.map((col) => {
@@ -510,22 +526,22 @@ export function DataTable<TData>({
               entries
             </span>
 
-            <div className="flex items-center gap-1.5 ml-2">
+            <div className="flex items-center gap-2 ml-2">
               <span>Show</span>
-              <select
-                value={pageSize}
-                onChange={(e) => {
-                  setPageSize(Number(e.target.value));
-                  setCurrentPage(1);
-                }}
-                className="rounded border border-border bg-input px-2 py-1 text-xs text-foreground focus-visible:ring-1 focus-visible:ring-ring"
-              >
-                {pageSizeOptions.map((opt) => (
-                  <option key={opt} value={opt}>
-                    {opt}
-                  </option>
-                ))}
-              </select>
+              <div className="w-20">
+                <Select
+                  value={String(pageSize)}
+                  onValueChange={(val) => {
+                    setPageSize(Number(val));
+                    setCurrentPage(1);
+                  }}
+                  options={pageSizeOptions.map((opt) => ({
+                    value: String(opt),
+                    label: String(opt),
+                  }))}
+                  triggerClassName="h-7 text-xs px-2.5 py-1"
+                />
+              </div>
             </div>
           </div>
 
@@ -585,6 +601,30 @@ export function DataTable<TData>({
           </div>
         </div>
       </div>
+
+      {/* Delete Confirmation Dialog */}
+      <DeleteConfirmationDialog
+        open={isDeleteDialogOpen}
+        onOpenChange={setIsDeleteDialogOpen}
+        title={`Delete ${selectedIds.size} Selected ${selectedIds.size > 1 ? "Records" : "Record"}?`}
+        description={`Are you sure you want to permanently delete these ${selectedIds.size} selected items? This action cannot be undone.`}
+        confirmLabel="Delete Selected"
+        cancelLabel="Cancel"
+        variant="danger"
+        isLoading={isDeleting}
+        onConfirm={async () => {
+          setIsDeleting(true);
+          try {
+            if (onDeleteRows) {
+              await onDeleteRows(selectedRows);
+            }
+            clearSelection();
+          } finally {
+            setIsDeleting(false);
+            setIsDeleteDialogOpen(false);
+          }
+        }}
+      />
     </div>
   );
 }

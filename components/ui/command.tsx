@@ -14,7 +14,7 @@ interface CommandContextValue {
   setSearchQuery: (query: string) => void;
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
-  registerItem: (id: string, text: string) => () => void;
+  registerItem: (id: string, text: string, onSelect?: () => void) => () => void;
   items: Array<{ id: string; text: string }>;
   executeItem: (id: string) => void;
 }
@@ -56,15 +56,24 @@ export const Command = React.forwardRef<HTMLDivElement, CommandProps>(
     );
 
     const registerItem = React.useCallback(
-      (id: string, text: string) => {
+      (id: string, text: string, onSelect?: () => void) => {
+        if (onSelect) {
+          itemCallbacksRef.current.set(id, onSelect);
+        }
+
         setRegisteredItems((prev) => {
-          if (prev.some((item) => item.id === id)) return prev;
-          return [...prev, { id, text }];
+          const existing = prev.find((item) => item.id === id);
+          if (existing && existing.text === text) return prev;
+          const filtered = prev.filter((item) => item.id !== id);
+          return [...filtered, { id, text }];
         });
 
         return () => {
-          setRegisteredItems((prev) => prev.filter((item) => item.id !== id));
           itemCallbacksRef.current.delete(id);
+          setRegisteredItems((prev) => {
+            if (!prev.some((item) => item.id === id)) return prev;
+            return prev.filter((item) => item.id !== id);
+          });
         };
       },
       []
@@ -101,18 +110,21 @@ export const Command = React.forwardRef<HTMLDivElement, CommandProps>(
       }
     };
 
+    const contextValue = React.useMemo(
+      () => ({
+        searchQuery,
+        setSearchQuery,
+        activeIndex,
+        setActiveIndex,
+        registerItem,
+        items: visibleItems,
+        executeItem,
+      }),
+      [searchQuery, setSearchQuery, activeIndex, registerItem, visibleItems, executeItem]
+    );
+
     return (
-      <CommandContext.Provider
-        value={{
-          searchQuery,
-          setSearchQuery,
-          activeIndex,
-          setActiveIndex,
-          registerItem,
-          items: visibleItems,
-          executeItem,
-        }}
-      >
+      <CommandContext.Provider value={contextValue}>
         <div
           ref={ref}
           role="combobox"
@@ -122,7 +134,7 @@ export const Command = React.forwardRef<HTMLDivElement, CommandProps>(
           tabIndex={0}
           onKeyDown={handleKeyDown}
           className={cn(
-            "flex flex-col overflow-hidden rounded-card bg-surface text-foreground border border-border shadow-2xl focus:outline-none transition-all",
+            "flex flex-col overflow-hidden bg-surface text-foreground border border-border shadow-2xl focus:outline-none transition-all",
             className
           )}
           {...props}
@@ -209,7 +221,7 @@ export function CommandDialog({
         )}
       >
         {/* Top Hairline Luxury Gold Gradient */}
-        <div className="h-[2px] w-full bg-gradient-to-r from-brand-charcoal via-brand-gold to-brand-olive dark:from-brand-gold/70 dark:via-brand-olive dark:to-brand-gold/40" />
+        {/* <div className="h-[2px] w-full bg-gradient-to-r from-brand-charcoal via-brand-gold to-brand-olive dark:from-brand-gold/70 dark:via-brand-olive dark:to-brand-gold/40" /> */}
         {children}
       </div>
     </div>
@@ -413,7 +425,13 @@ export const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
   ) => {
     const generatedId = React.useId();
     const itemId = explicitId || generatedId;
-    const context = useCommand();
+    const {
+      registerItem,
+      searchQuery,
+      items,
+      activeIndex,
+      setActiveIndex,
+    } = useCommand();
 
     // Derived text representation for filtering
     const textRepresentation = React.useMemo(() => {
@@ -426,21 +444,28 @@ export const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
       return parts.filter(Boolean).join(" ");
     }, [explicitValue, children, keywords, badge]);
 
+    const onSelectRef = React.useRef(onSelect);
+    React.useEffect(() => {
+      onSelectRef.current = onSelect;
+    });
+
     // Register item with context
     React.useEffect(() => {
-      return context.registerItem(itemId, textRepresentation);
-    }, [context, itemId, textRepresentation]);
+      return registerItem(itemId, textRepresentation, () => {
+        onSelectRef.current?.();
+      });
+    }, [registerItem, itemId, textRepresentation]);
 
     // Determine visibility based on current search query
     const isVisible = React.useMemo(() => {
-      const q = context.searchQuery.toLowerCase().trim();
+      const q = searchQuery.toLowerCase().trim();
       if (!q) return true;
       return textRepresentation.toLowerCase().includes(q);
-    }, [context.searchQuery, textRepresentation]);
+    }, [searchQuery, textRepresentation]);
 
     // Calculate whether this item is currently active
-    const itemIndex = context.items.findIndex((item) => item.id === itemId);
-    const isActive = itemIndex === context.activeIndex;
+    const itemIndex = items.findIndex((item) => item.id === itemId);
+    const isActive = itemIndex === activeIndex;
 
     if (!isVisible) return null;
 
@@ -457,7 +482,7 @@ export const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
         aria-disabled={disabled}
         onClick={handleClick}
         onMouseEnter={() => {
-          if (itemIndex >= 0) context.setActiveIndex(itemIndex);
+          if (itemIndex >= 0) setActiveIndex(itemIndex);
         }}
         className={cn(
           "relative flex items-center justify-between gap-3 px-3 py-2 rounded-control text-xs font-medium cursor-pointer transition-colors duration-150 select-none group",
