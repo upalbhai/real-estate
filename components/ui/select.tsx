@@ -157,6 +157,14 @@ export function Select({
               aria-haspopup="listbox"
               disabled={disabled}
               onClick={() => !disabled && setOpen(!open)}
+              rightIcon={
+                <ChevronDown
+                  className={cn(
+                    "h-4 w-4 opacity-60 text-muted-foreground transition-transform duration-200 shrink-0",
+                    open && "rotate-180 opacity-100 text-foreground"
+                  )}
+                />
+              }
               className={cn(
                 "h-10 px-4 py-2 justify-between gap-2.5 bg-input text-sm text-foreground font-normal",
                 "outline-none transition-all duration-200 cursor-pointer select-none",
@@ -168,20 +176,14 @@ export function Select({
                 triggerClassName
               )}
             >
-              <div className="flex items-center gap-2 truncate">
+              <span className="flex items-center gap-2 truncate">
                 {selectedOption?.icon && (
                   <span className="shrink-0 text-brand-gold">{selectedOption.icon}</span>
                 )}
                 <span className="truncate">
                   {selectedOption ? selectedOption.label : placeholder}
                 </span>
-              </div>
-              <ChevronDown
-                className={cn(
-                  "h-4 w-4 opacity-60 text-muted-foreground transition-transform duration-200 shrink-0",
-                  open && "rotate-180 opacity-100 text-foreground"
-                )}
-              />
+              </span>
             </Button>
 
             {open && (
@@ -287,6 +289,14 @@ export function SelectTrigger({
       aria-haspopup="listbox"
       disabled={disabled}
       onClick={() => !disabled && setOpen(!open)}
+      rightIcon={
+        <ChevronDown
+          className={cn(
+            "h-4 w-4 opacity-60 text-muted-foreground transition-transform duration-200 shrink-0",
+            open && "rotate-180 opacity-100 text-foreground"
+          )}
+        />
+      }
       className={cn(
         "h-10 px-4 py-2 justify-between gap-2.5 bg-input text-sm text-foreground font-normal shadow-xs",
         "outline-none transition-all duration-200 cursor-pointer select-none",
@@ -297,13 +307,7 @@ export function SelectTrigger({
       )}
       {...props}
     >
-      <div className="truncate">{children || placeholder}</div>
-      <ChevronDown
-        className={cn(
-          "h-4 w-4 opacity-60 text-muted-foreground transition-transform duration-200 shrink-0",
-          open && "rotate-180 opacity-100 text-foreground"
-        )}
-      />
+      <span className="truncate">{children || placeholder}</span>
     </Button>
   );
 }

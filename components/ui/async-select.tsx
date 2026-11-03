@@ -279,6 +279,14 @@ export function AsyncSelect({
             role="combobox"
             aria-expanded={open}
             disabled={disabled}
+            rightIcon={
+              <ChevronDown
+                className={cn(
+                  "h-4 w-4 opacity-60 shrink-0 text-muted-foreground group-hover:text-foreground transition-transform duration-200",
+                  open && "rotate-180 opacity-100 text-foreground"
+                )}
+              />
+            }
             className={cn(
               "w-full h-auto min-h-10 px-3.5 py-2 flex items-center justify-between gap-2.5 group",
               "bg-surface text-foreground border-border hover:bg-surface-secondary hover:text-foreground hover:border-brand-olive/50 text-left font-normal shadow-xs",
@@ -286,9 +294,9 @@ export function AsyncSelect({
               !value && "text-muted-foreground hover:text-foreground"
             )}
           >
-            <div className="flex-1 truncate">
+            <span className="flex-1 truncate block text-left">
               {multi ? (
-                <div className="flex flex-wrap gap-1.5 py-0.5">
+                <span className="flex flex-wrap gap-1.5 py-0.5">
                   {Array.isArray(value) && (value as Option[]).length ? (
                     (value as Option[]).map((v) => (
                       <span
@@ -316,14 +324,13 @@ export function AsyncSelect({
                       {placeholder}
                     </span>
                   )}
-                </div>
+                </span>
               ) : (
                 <span className={cn("truncate", !value && "text-muted-foreground group-hover:text-foreground transition-colors")}>
                   {value ? getOptionLabel(value as Option) : placeholder}
                 </span>
               )}
-            </div>
-            <ChevronDown className="h-4 w-4 opacity-60 shrink-0 text-muted-foreground group-hover:text-foreground transition-colors" />
+            </span>
           </Button>
         </PopoverTrigger>
 

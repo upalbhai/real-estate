@@ -10,7 +10,6 @@ import {
   Globe2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { footerNavSections, globalOffices } from "@/data";
 
@@ -29,13 +28,13 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-border dark:border-[#282F23] bg-surface dark:bg-[#121511] text-foreground transition-colors relative overflow-hidden">
+    <footer className="border-t border-[#E8E2D8] dark:border-[#282F23] bg-[#FAF8F5] dark:bg-[#121511] text-foreground transition-colors relative overflow-hidden">
       {/* Top Hairline Accent Line with Champagne Gold Glow */}
-      <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-brand-gold to-transparent shadow-[0_1px_14px_rgba(197,168,120,0.35)]" />
+      <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-brand-gold/70 to-transparent dark:via-brand-gold shadow-[0_1px_10px_rgba(197,168,120,0.2)] dark:shadow-[0_1px_14px_rgba(197,168,120,0.35)]" />
 
-      {/* Ambient Lighting Orbs for Deep Dark Mode Atmosphere */}
+      {/* Ambient Lighting Orbs */}
       <div
-        className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-brand-gold/5 blur-[120px] dark:bg-brand-gold/[0.09]"
+        className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-brand-gold/10 blur-[130px] dark:bg-brand-gold/[0.09]"
         aria-hidden="true"
       />
       <div
@@ -45,54 +44,54 @@ export function Footer() {
 
       {/* Main Footer Container */}
       <div className="section-container relative z-10 py-16 sm:py-20 space-y-16">
-        {/* Row 1: Brand Manifesto & Confidential Newsletter Box */}
+        {/* Row 1: Brand Manifesto & Newsletter Box */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Brand Manifesto */}
           <div className="lg:col-span-6 space-y-4">
             <Link href="/" className="flex items-center gap-3.5 group inline-flex">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-primary dark:bg-[#1A2017] text-primary-foreground dark:text-brand-gold border border-brand-gold/40 shadow-xs dark:shadow-[0_0_16px_rgba(197,168,120,0.18)] group-hover:border-brand-gold transition-all duration-300">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-[#EDE7DA] text-brand-charcoal dark:bg-[#1A2017] dark:text-brand-gold border border-brand-gold/50 shadow-xs dark:shadow-[0_0_16px_rgba(197,168,120,0.18)] group-hover:border-brand-gold transition-all duration-300">
                 <Building2 className="h-5 w-5 text-brand-gold" />
               </div>
               <div className="flex flex-col">
-                <span className="font-heading text-2xl font-bold tracking-tight text-foreground leading-none">
+                <span className="font-heading text-2xl font-bold tracking-tight text-brand-charcoal dark:text-foreground leading-none">
                   AURA ESTATES
                 </span>
-                <span className="text-[10px] font-special uppercase tracking-[0.2em] text-brand-gold mt-1.5 leading-none font-semibold">
+                <span className="text-[10px] font-special uppercase tracking-[0.2em] text-[#9E7C3E] dark:text-brand-gold mt-1.5 leading-none font-semibold">
                   Luxury Real Estate &amp; Advisory
                 </span>
               </div>
             </Link>
 
-            <p className="text-sm text-muted-foreground dark:text-[#A4AC9A] max-w-lg leading-relaxed font-body">
+            <p className="text-sm text-[#5C6154] dark:text-[#A4AC9A] max-w-lg leading-relaxed font-body">
               Aura Estates represents distinctive modernist architecture, contemporary residences,
               and premier luxury estates across leading international destinations.
             </p>
 
             <div className="flex flex-wrap items-center gap-2.5 pt-2">
-              <Badge variant="gold" size="sm" className="dark:bg-brand-gold/15 dark:border-brand-gold/40 dark:text-brand-gold font-semibold">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-gold/15 text-[#7C5A20] border border-brand-gold/40 dark:bg-brand-gold/15 dark:border-brand-gold/40 dark:text-brand-gold">
                 Licensed Brokerage
-              </Badge>
-              <Badge variant="default" size="sm" className="dark:bg-[#1A2017] dark:border-[#2C3426] dark:text-[#D5D2C9]">
+              </span>
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#EDE7DA] text-[#4A4E42] border border-[#DDD5C7] dark:bg-[#1A2017] dark:border-[#2C3426] dark:text-[#D5D2C9]">
                 Equal Housing Opportunity
-              </Badge>
-              <Badge variant="available" size="sm" className="dark:bg-emerald-950/40 dark:border-emerald-600/30 dark:text-emerald-400">
+              </span>
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/40 dark:border-emerald-600/30 dark:text-emerald-400">
                 Discreet Representation
-              </Badge>
+              </span>
             </div>
           </div>
 
           {/* Newsletter Subscription Box */}
-          <div className="lg:col-span-6 relative p-6 sm:p-7 rounded-card border border-border dark:border-brand-gold/30 bg-surface-secondary/40 dark:bg-gradient-to-br dark:from-[#1C2119] dark:to-[#141811] space-y-4 shadow-md dark:shadow-[0_20px_45px_rgba(0,0,0,0.55)] overflow-hidden">
+          <div className="lg:col-span-6 relative p-6 sm:p-7 rounded-card border border-[#E5DFD5] dark:border-brand-gold/30 bg-white dark:bg-gradient-to-br dark:from-[#1C2119] dark:to-[#141811] space-y-4 shadow-sm dark:shadow-[0_20px_45px_rgba(0,0,0,0.55)] overflow-hidden">
             {/* Top Gold Card Hairline */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold/80 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold/70 to-transparent dark:via-brand-gold/80" />
 
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-special uppercase tracking-wider text-brand-gold bg-brand-gold/10 dark:bg-brand-gold/20 px-2.5 py-0.5 rounded-full border border-brand-gold/40 font-semibold">
+                <span className="text-[10px] font-special uppercase tracking-wider text-[#7C5A20] dark:text-brand-gold bg-brand-gold/15 dark:bg-brand-gold/20 px-2.5 py-0.5 rounded-full border border-brand-gold/40 font-semibold">
                   Property Updates
                 </span>
               </div>
-              <p className="text-xs text-muted-foreground dark:text-[#A4AC9A] leading-relaxed font-body">
+              <p className="text-xs text-[#5C6154] dark:text-[#A4AC9A] leading-relaxed font-body">
                 Subscribe to receive curated selections of newly listed residences, architectural spotlights, and prime real estate market insights.
               </p>
             </div>
@@ -112,21 +111,21 @@ export function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="flex-1 dark:bg-[#10130F] dark:border-[#2D3526] dark:focus:border-brand-gold dark:text-[#F5F2EB] dark:placeholder:text-[#788170]"
+                  className="flex-1 bg-[#FAF8F5] border-[#D8D2C5] text-brand-charcoal placeholder:text-[#8E9386] focus:border-brand-gold dark:bg-[#10130F] dark:border-[#2D3526] dark:focus:border-brand-gold dark:text-[#F5F2EB] dark:placeholder:text-[#788170]"
                 />
                 <Button
                   type="submit"
                   variant="gold"
                   size="md"
                   rightIcon={<ArrowRight className="h-4 w-4" />}
-                  className="shrink-0 font-bold shadow-[0_4px_16px_rgba(197,168,120,0.3)] hover:shadow-[0_6px_24px_rgba(197,168,120,0.5)]"
+                  className="shrink-0 font-bold shadow-xs hover:shadow-sm"
                 >
                   Subscribe
                 </Button>
               </form>
             )}
 
-            <div className="flex items-center gap-2 text-[11px] text-muted-foreground dark:text-[#889180] font-mono">
+            <div className="flex items-center gap-2 text-[11px] text-[#7A7F72] dark:text-[#889180] font-mono">
               <ShieldCheck className="h-3.5 w-3.5 text-brand-gold shrink-0" />
               <span>We respect your privacy. Unsubscribe at any time.</span>
             </div>
@@ -134,15 +133,15 @@ export function Footer() {
         </div>
 
         {/* Row 2: Office Locations */}
-        <div className="space-y-4 pt-4 border-t border-border dark:border-[#242A1F]">
+        <div className="space-y-4 pt-4 border-t border-[#E8E2D8] dark:border-[#242A1F]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Globe2 className="h-4 w-4 text-brand-gold" />
-              <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-muted-foreground dark:text-brand-gold/90">
+              <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-brand-charcoal dark:text-brand-gold/90">
                 Our Office Locations
               </h4>
             </div>
-            <span className="text-[10px] font-mono text-muted-foreground dark:text-[#889180]">
+            <span className="text-[10px] font-mono text-[#7A7F72] dark:text-[#889180]">
               Key Global Markets
             </span>
           </div>
@@ -151,21 +150,21 @@ export function Footer() {
             {globalOffices.map((office) => (
               <div
                 key={office.city}
-                className="p-4 rounded-control border border-border dark:border-[#2A3125] bg-surface-secondary/30 dark:bg-gradient-to-b dark:from-[#191D16] dark:to-[#131611] space-y-2 hover:border-brand-gold/50 hover:dark:border-brand-gold/50 hover:bg-surface-secondary/70 transition-all duration-300 shadow-2xs dark:shadow-[0_6px_20px_rgba(0,0,0,0.35)] group hover:-translate-y-0.5 hover:shadow-md"
+                className="p-4 rounded-control border border-[#E5DFD5] dark:border-[#2A3125] bg-white dark:bg-gradient-to-b dark:from-[#191D16] dark:to-[#131611] space-y-2 hover:border-brand-gold hover:dark:border-brand-gold/50 transition-all duration-300 shadow-2xs hover:shadow-xs dark:shadow-[0_6px_20px_rgba(0,0,0,0.35)] group hover:-translate-y-0.5"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-heading font-bold text-foreground group-hover:text-brand-gold transition-colors">
+                  <span className="font-heading font-bold text-brand-charcoal dark:text-white group-hover:text-brand-gold transition-colors">
                     {office.city}
                   </span>
-                  <span className="text-[10px] font-mono text-brand-gold uppercase tracking-wider border border-brand-gold/30 bg-brand-gold/10 px-2 py-0.5 rounded-full font-semibold">
+                  <span className="text-[10px] font-mono text-[#7C5A20] dark:text-brand-gold uppercase tracking-wider border border-brand-gold/40 dark:border-brand-gold/30 bg-brand-gold/15 dark:bg-brand-gold/10 px-2 py-0.5 rounded-full font-semibold">
                     Office Location
                   </span>
                 </div>
-                <p className="text-xs text-muted-foreground dark:text-[#A4AC9A] leading-relaxed font-body">
+                <p className="text-xs text-[#5C6154] dark:text-[#A4AC9A] leading-relaxed font-body">
                   {office.address}
                 </p>
-                <div className="pt-1 flex flex-col text-[11px] text-muted-foreground dark:text-[#7F8877] font-mono space-y-0.5">
-                  <a href={`tel:${office.phone}`} className="hover:text-foreground dark:hover:text-[#F5F2EB] transition-colors">
+                <div className="pt-1 flex flex-col text-[11px] text-[#7A7F72] dark:text-[#7F8877] font-mono space-y-0.5">
+                  <a href={`tel:${office.phone}`} className="hover:text-brand-charcoal dark:hover:text-[#F5F2EB] transition-colors">
                     {office.phone}
                   </a>
                   <a href={`mailto:${office.email}`} className="text-brand-gold hover:underline">
@@ -178,10 +177,10 @@ export function Footer() {
         </div>
 
         {/* Row 3: Multi-Column Navigation Links */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-border dark:border-[#242A1F]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-[#E8E2D8] dark:border-[#242A1F]">
           {footerNavSections.map((column) => (
             <div key={column.title} className="space-y-3">
-              <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-foreground dark:text-brand-gold/90">
+              <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-brand-charcoal dark:text-brand-gold/90">
                 {column.title}
               </h5>
               <ul className="space-y-2 text-xs">
@@ -189,7 +188,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-muted-foreground dark:text-[#9EA695] hover:text-brand-gold dark:hover:text-brand-gold hover:translate-x-1 transition-all inline-block py-0.5"
+                      className="text-[#5C6154] hover:text-brand-charcoal dark:text-[#9EA695] hover:text-brand-gold dark:hover:text-brand-gold hover:translate-x-1 transition-all inline-block py-0.5"
                     >
                       {link.label}
                     </Link>
@@ -201,20 +200,20 @@ export function Footer() {
         </div>
 
         {/* Row 4: Regulatory Disclaimers & Copyright */}
-        <div className="pt-8 border-t border-border dark:border-[#242A1F] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground dark:text-[#7F8877]">
+        <div className="pt-8 border-t border-[#E8E2D8] dark:border-[#242A1F] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#7A7F72] dark:text-[#7F8877]">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
             <span>© {CURRENT_YEAR} Aura Estates Inc. All rights reserved.</span>
-            <span className="hidden sm:inline-block text-border dark:text-[#32392D]">•</span>
+            <span className="hidden sm:inline-block text-[#DED7CB] dark:text-[#32392D]">•</span>
             <span>Equal Housing Opportunity</span>
-            <span className="hidden sm:inline-block text-border dark:text-[#32392D]">•</span>
+            <span className="hidden sm:inline-block text-[#DED7CB] dark:text-[#32392D]">•</span>
             <span>Licensed Real Estate Brokerage</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 sm:gap-4 font-mono text-[11px]">
-            <Link href="/about" className="hover:text-foreground dark:hover:text-[#F5F2EB] transition-colors">
+            <Link href="/about" className="hover:text-brand-charcoal dark:hover:text-[#F5F2EB] transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/about" className="hover:text-foreground dark:hover:text-[#F5F2EB] transition-colors">
+            <Link href="/about" className="hover:text-brand-charcoal dark:hover:text-[#F5F2EB] transition-colors">
               Terms of Service
             </Link>
           </div>
